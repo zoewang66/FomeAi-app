@@ -7,7 +7,7 @@ import { TouchableOpacity } from "react-native";
 const cardioIcon = require("../../assets/Cardio_Challenge_Icon.png");
 
 const styles = StyleSheet.create({
-  exercise_box: {
+  challenge_box: {
     width: 310,
     height: 132,
     borderRadius: 20,
@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
     paddingRight: 20, // Add padding for right column
   },
 
-  exercise_title: {
+  challenge_name: {
     width: 200,
     color: "#1D1617", // or use var(--Black-color, #1D1617) if you're using CSS variables
     fontFamily: "Arial",
@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
     lineHeight: 21, // No need to specify 'px' in React Native
   },
 
-  exercise_info: {
+  challenge_info: {
     width: 136,
     color: "#7B6F72", // or use var(--gray-1, #7B6F72) if you're using CSS variables
     fontFamily: "Arial",
@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
     lineHeight: 15,
   },
 
-  exercise_icon: {
+  challenge_icon: {
     width: 90.54,
     height: 89.09,
     // flexShrink: 0,
@@ -79,19 +79,19 @@ const styles = StyleSheet.create({
   },
 });
 
-export function ChallengeBox({ exercise_title, exercise_info }) {
+export function ChallengeBox({ challenge_name, challenge_info }) {
   return (
-    <View style={styles.exercise_box}>
+    <View style={styles.challenge_box}>
       <View style={styles.content_Container}>
         <View style={styles.textColumn}>
-          <Text style={styles.exercise_title} numberOfLines={1}>
-            {exercise_title}
+          <Text style={styles.challenge_name} numberOfLines={1}>
+            {challenge_name}
           </Text>
-          <Text style={styles.exercise_info}>{exercise_info}</Text>
+          <Text style={styles.challenge_info}>{challenge_info}</Text>
           <ViewMoreButton />
         </View>
         <View style={styles.iconColumn}>
-          <Image source={cardioIcon} style={styles.exercise_icon} />
+          <Image source={cardioIcon} style={styles.challenge_icon} />
         </View>
       </View>
     </View>

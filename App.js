@@ -1,17 +1,15 @@
 import React from "react";
 import WelcomeScreen from "./src/screens/Welcome";
-import { ChallengeBox } from "./src/components/ChallengeBox";
 import { View, Text, StyleSheet } from "react-native";
 import { SafeAreaView } from "react-native";
+import { ChallengeBox } from "./src/components/ChallengeBox";
+import UpcomingExercise from "./src/components/UpcomingExercise";
 
 export default function App() {
   return (
     // <WelcomeScreen />
     <SafeAreaView style={styles.safeArea}>
-      <ChallengeBox
-        exercise_title="Cardio Challenge"
-        exercise_info="4 Exercises | 6mins"
-      />
+      <UpcomingExercise name="Push-Ups" />
     </SafeAreaView>
   );
 }
@@ -19,6 +17,6 @@ export default function App() {
 const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: "#E4EBEE",
   },
 });
