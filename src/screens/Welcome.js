@@ -1,5 +1,6 @@
 import React from "react";
-import {View, Text, StyleSheet, StatusBar, Image, TouchableOpacity, ScrollView} from 'react-native';
+import {View, Text, StyleSheet, StatusBar, Image} from 'react-native';
+import DarkButton from "../components/Button-Dark";
 
 
 const logoImg = require("../../../FomeAi-app/assets/FOME-logo-blue.png")
@@ -10,12 +11,11 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#E7F8F6', 
-    },
-
-    scrollViewContent: {
         alignItems: 'center', 
         textAlign: 'center',
     },
+
+    
     text: {
         fontSize: 33,
         fontWeight: 'bold',
@@ -38,42 +38,18 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
 
-    button: {
-        width: 180,
-        height: 60,
-        paddingVertical: 10,
-        paddingHorizontal: 25,
-        borderRadius: 40,
-        elevation: 3,
-        backgroundColor: '#4A7AD1',
-        marginBottom: 40,
-      },
-
-      buttonText: {
-        fontSize: 24,
-        lineHeight: 20,
-        fontWeight: 'bold',
-        letterSpacing: 0.25,
-        color: 'white',
-        paddingTop: 10,
-      },
-
+    
 });
 
 
 const WelcomeScreen = () => {
     return (
         <View style={styles.container}>
-            <ScrollView contentContainerStyle={styles.scrollViewContent}>
             <Image source={logoImg} style={styles.logo}/>
             <Image source={picture} style={styles.pic} />
             <Text style={styles.text}>Ready for your Fitness Journey?</Text>
-            <TouchableOpacity style={styles.button}>
-               <Text style={styles.buttonText}>Get Started</Text>
-            </TouchableOpacity>
+            <DarkButton buttonText={"Get Started"}/>
             <StatusBar style="auto" />
-            </ScrollView>
-            
         </View>
     );
 };
