@@ -10,6 +10,7 @@ const picture = require("../../../FomeAi-app/assets/Welcome-img.png")
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        flexDirection: 'column',
         backgroundColor: '#E7F8F6', 
         alignItems: 'center', 
         textAlign: 'center',
