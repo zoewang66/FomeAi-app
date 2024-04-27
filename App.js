@@ -7,10 +7,10 @@ import UpcomingExercise from "./src/components/UpcomingExercise";
 
 export default function App() {
   return (
-    // <WelcomeScreen />
-    <SafeAreaView style={styles.safeArea}>
-      <UpcomingExercise name="Push-Ups" />
-    </SafeAreaView>
+    <WelcomeScreen />
+    // <SafeAreaView style={styles.safeArea}>
+    //   <UpcomingExercise name="Push-Ups" />
+    // </SafeAreaView>
   );
 }
 

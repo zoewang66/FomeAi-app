@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
         width: 308, 
         height: 105, 
         resizeMode: 'contain',
-        marginTop: 50,
+        marginTop: 55,
         margin: 40,
     },
     pic: {
