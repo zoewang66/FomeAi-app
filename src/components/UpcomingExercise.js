@@ -2,6 +2,10 @@ import { TouchableOpacity } from "react-native";
 
 import { View, Text, Image, StyleSheet } from "react-native";
 
-export default function IndividualExercise({ name }) {
+const styles = StyleSheet.create({
+  upcoming,
+});
+
+export default function UpcomingExercise({ name }) {
   return <TouchableOpacity></TouchableOpacity>;
 }
