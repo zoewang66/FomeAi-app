@@ -34,8 +34,8 @@ const styles = StyleSheet.create({
     pic: {
       width: windowWidth > 375 ? '95%' : '75%', 
       height: undefined,
-      aspectRatio: 300 / 330, 
-      marginBottom: windowHeight > 667 ? 30 : 20, 
+      aspectRatio: 300 / 330, // Adjust aspect ratio based on picture dimensions
+      marginBottom: windowHeight > 667 ? 30 : 20, // Adjust margin for larger screens
     },
   });
 
