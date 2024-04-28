@@ -2,6 +2,7 @@ import { StyleSheet, Text, View, Image } from "react-native";
 import NavbarTop from "../components/Navbar-top";
 import NavbarBottom from "../components/Navbar-bottom";
 import DemoVideo from "../components/DemoVideo";
+import DarkButton from "../components/Button-Dark";
 
 const tutorialPic = require("../../assets/Tutorial.png");
 
@@ -15,7 +16,7 @@ const styles = StyleSheet.create({
     width: 310,
     flexShrink: 0,
     paddingLeft: 70,
-    height: 670,
+    height: 600,
   },
 
   text: {
@@ -23,12 +24,12 @@ const styles = StyleSheet.create({
     fontStyle: "normal",
     textAlign: "center",
     fontWeight: 400,
-    paddingTop: 20,
-    paddingBottom: 20,
+    paddingTop: 30,
+    paddingBottom: 30,
   },
 
-  image: {
-    paddingBottom: 35,
+  buttonContainer: {
+    alignItems: "center",
   },
 });
 
@@ -40,13 +41,16 @@ export default function Tutorial() {
         <Text style={styles.text}>
           Adjust your Camera and We Can Record your Movement!
         </Text>
-        <View style={styles.image}>
+        <View>
           <Image source={tutorialPic} />
         </View>
-
         <Text style={styles.text}>Tutorial Video</Text>
         <DemoVideo videoID="CN_RsGkRScM" />
       </View>
+      <View style={styles.buttonContainer}>
+        <DarkButton buttonText="Start" />
+      </View>
+
       <NavbarBottom />
     </View>
   );
