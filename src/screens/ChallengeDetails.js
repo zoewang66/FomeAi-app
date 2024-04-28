@@ -1,8 +1,8 @@
 import { StyleSheet, Text, View } from "react-native";
-import { useState, useCallback, useRef } from "react";
-import { Alert } from "react-native";
-import YoutubePlayer from "react-native-youtube-iframe";
+import DemoVideo from "../components/DemoVideo";
 import DarkButton from "../components/Button-Dark";
+import NavbarBottom from "../components/Navbar-bottom";
+import NavbarTop from "../components/Navbar-top";
 
 const styles = StyleSheet.create({
   challengeName: {
@@ -105,19 +105,7 @@ export default function ChallengeDetails({ data }) {
       <View style={styles.buttonContainer}>
         <DarkButton buttonText="Next" />
       </View>
-    </View>
-  );
-}
-
-function DemoVideo({ videoID }) {
-  return (
-    <View>
-      <YoutubePlayer
-        style={styles.youtubePlayer}
-        height={220}
-        width={320}
-        videoId={videoID}
-      />
+      <NavbarBottom />
     </View>
   );
 }
