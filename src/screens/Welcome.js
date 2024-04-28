@@ -7,45 +7,37 @@ const logoImg = require("../../../FomeAi-app/assets/FOME-logo-blue.png")
 const picture = require("../../../FomeAi-app/assets/Welcome-img.png")
 
 const windowHeight = Dimensions.get("window").height
+const windowWidth = Dimensions.get("window").width
+
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
-        flexShrink: 1,
-        flexDirection: 'column',
-        backgroundColor: '#E7F8F6', 
-        alignItems: 'center', 
-        textAlign: 'center',
-        height: windowHeight,
+      flex: 1,
+      backgroundColor: '#E7F8F6',
+      alignItems: 'center',
+      justifyContent: 'center',
+      paddingHorizontal: windowWidth > 375 ? windowWidth * 0.1 : 20, 
     },
-
-    
     text: {
-        fontSize: windowHeight > 667 ? 33 : 28,
-        fontWeight: 'bold',
-        paddingVertical: 20,
-        textAlign: 'center',
-    
+      fontSize: windowHeight > 667 ? 30 : 26, 
+      fontWeight: 'bold',
+      paddingVertical: 30,
+      textAlign: 'center',
     },
     logo: {
-        width: '80%', 
-        height: 100, 
-        height: undefined,
-        aspectRatio: 308 / 50,
-        resizeMode: 'contain',
-        marginTop: 50,
-        marginBottom: 20,
+      width: windowWidth > 375 ? '85%' : '70%', 
+      height: undefined,
+      aspectRatio: 308 / 105, 
+      marginBottom: windowHeight > 667 ? 30 : 20, 
+      marginTop: windowHeight > 667 ? 20 : 40,
     },
     pic: {
-        width: '80%',
-        height: undefined,
-        aspectRatio: 330 / 360,
-        marginBottom: 25,
-        alignItems: 'center',
+      width: windowWidth > 375 ? '95%' : '75%', 
+      height: undefined,
+      aspectRatio: 300 / 330, 
+      marginBottom: windowHeight > 667 ? 30 : 20, 
     },
-
-    
-});
+  });
 
 
 const WelcomeScreen = () => {

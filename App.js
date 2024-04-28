@@ -6,10 +6,10 @@ import ChallengeProgressBar from "./src/components/ChallengeProgressBar";
 
 export default function App() {
   return (
-    // <WelcomeScreen />
-    <SafeAreaView style={styles.safeArea}>
-      <ChallengeProgressBar />
-    </SafeAreaView>
+    <WelcomeScreen />
+    // <SafeAreaView style={styles.safeArea}>
+    //   <ChallengeProgressBar />
+    // </SafeAreaView>
   );
 }
 

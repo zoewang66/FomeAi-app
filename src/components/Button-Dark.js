@@ -1,4 +1,4 @@
-import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
+import {View, Text, TouchableOpacity, StyleSheet, Dimensions} from 'react-native';
 
 export default function DarkButton({buttonText}){
     return(
@@ -10,27 +10,31 @@ export default function DarkButton({buttonText}){
     );
 }
 
+const windowWidth = Dimensions.get("window").width
+const windowHeight = Dimensions.get("window").height
+
 const styles = StyleSheet.create(
     {    
         text: {
-            fontSize: 17,
-            lineHeight: 25,
+            fontSize: windowHeight > 667 ? 26 : 22,
+            lineHeight: 35,
             fontWeight: 'bold',
             letterSpacing: 0.25,
             color: 'white',
+            justifyContent: 'center',
             textAlign: 'center',
-            paddingHorizontal: 10,
+            paddingHorizontal: 30,
             paddingVertical: 10,
         },
 
         button: {
-            width: '50%',
-            height: 50,
+            width: windowHeight > 667 ? '70%': '55%',
+            height: undefined,
             borderRadius: 15,
             backgroundColor: '#4A7AD1',
             borderWidth: 1,
             borderColor: '#4A7AD1',
-            marginBottom: 40,
+            marginBottom: windowHeight > 667 ? 20 : 40,
           },
     
     }
