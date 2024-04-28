@@ -1,41 +1,50 @@
 import React from "react";
-import {View, Text, StyleSheet, StatusBar, Image} from 'react-native';
+import {View, Text, StyleSheet, StatusBar, Image, Dimensions} from 'react-native';
 import DarkButton from "../components/Button-Dark";
 
 
 const logoImg = require("../../../FomeAi-app/assets/FOME-logo-blue.png")
 const picture = require("../../../FomeAi-app/assets/Welcome-img.png")
 
+const windowHeight = Dimensions.get("window").height
+const screenHeight = Dimensions.get("screen").height
+
+console.log('Window Height:', windowHeight)
+
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        flexShrink: 1,
         flexDirection: 'column',
         backgroundColor: '#E7F8F6', 
         alignItems: 'center', 
         textAlign: 'center',
+        height: windowHeight,
     },
 
     
     text: {
-        fontSize: 33,
+        fontSize: windowHeight > 667 ? 33 : 28,
         fontWeight: 'bold',
-        padding: 40,
+        paddingVertical: 20,
         textAlign: 'center',
     
     },
     logo: {
-        width: 308, 
-        height: 105, 
+        width: '80%', 
+        height: 100, 
+        height: undefined,
+        aspectRatio: 308 / 50,
         resizeMode: 'contain',
-        marginTop: 55,
-        margin: 40,
+        marginTop: 50,
+        marginBottom: 20,
     },
     pic: {
-        width: 300,
-        height: 330,
-        padding: 30,
-        margin: 35,
+        width: '80%',
+        height: undefined,
+        aspectRatio: 330 / 360,
+        marginBottom: 25,
         alignItems: 'center',
     },
 
@@ -49,7 +58,7 @@ const WelcomeScreen = () => {
             <Image source={logoImg} style={styles.logo}/>
             <Image source={picture} style={styles.pic} />
             <Text style={styles.text}>Ready for your Fitness Journey?</Text>
-            <DarkButton buttonText={"Get Started"}/>
+            <DarkButton buttonText={"Get Started"} onPress={() => navigation.navigate('SignIn')}/>
             <StatusBar style="auto" />
         </View>
     );
