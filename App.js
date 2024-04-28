@@ -9,7 +9,7 @@ export default function App() {
   return (
     // <WelcomeScreen />
     <SafeAreaView style={styles.safeArea}>
-      <ChallengeDetails data={data} />
+      <ChallengeProgressBar />
     </SafeAreaView>
   );
 }

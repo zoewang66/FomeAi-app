@@ -1,46 +1,43 @@
 import React from "react";
-import {View, Text, StyleSheet, StatusBar, Image} from 'react-native';
+import {View, Text, StyleSheet, StatusBar, Image, Dimensions} from 'react-native';
 import DarkButton from "../components/Button-Dark";
 
 
 const logoImg = require("../../../FomeAi-app/assets/FOME-logo-blue.png")
 const picture = require("../../../FomeAi-app/assets/Welcome-img.png")
 
+const windowHeight = Dimensions.get("window").height
+const windowWidth = Dimensions.get("window").width
+
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
-        flexDirection: 'column',
-        backgroundColor: '#E7F8F6', 
-        alignItems: 'center', 
-        textAlign: 'center',
+      flex: 1,
+      backgroundColor: '#E7F8F6',
+      alignItems: 'center',
+      justifyContent: 'center',
+      paddingHorizontal: windowWidth > 375 ? windowWidth * 0.1 : 20, 
     },
-
-    
     text: {
-        fontSize: 33,
-        fontWeight: 'bold',
-        padding: 40,
-        textAlign: 'center',
-    
+      fontSize: windowHeight > 667 ? 30 : 26, 
+      fontWeight: 'bold',
+      paddingVertical: 30,
+      textAlign: 'center',
     },
     logo: {
-        width: 308, 
-        height: 105, 
-        resizeMode: 'contain',
-        marginTop: 55,
-        margin: 40,
+      width: windowWidth > 375 ? '85%' : '70%', 
+      height: undefined,
+      aspectRatio: 308 / 105, 
+      marginBottom: windowHeight > 667 ? 30 : 20, 
+      marginTop: windowHeight > 667 ? 20 : 40,
     },
     pic: {
-        width: 300,
-        height: 330,
-        padding: 30,
-        margin: 35,
-        alignItems: 'center',
+      width: windowWidth > 375 ? '95%' : '75%', 
+      height: undefined,
+      aspectRatio: 300 / 330, 
+      marginBottom: windowHeight > 667 ? 30 : 20, 
     },
-
-    
-});
+  });
 
 
 const WelcomeScreen = () => {
@@ -49,7 +46,7 @@ const WelcomeScreen = () => {
             <Image source={logoImg} style={styles.logo}/>
             <Image source={picture} style={styles.pic} />
             <Text style={styles.text}>Ready for your Fitness Journey?</Text>
-            <DarkButton buttonText={"Get Started"}/>
+            <DarkButton buttonText={"Get Started"} onPress={() => navigation.navigate('SignIn')}/>
             <StatusBar style="auto" />
         </View>
     );
