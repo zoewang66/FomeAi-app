@@ -7,10 +7,6 @@ const logoImg = require("../../../FomeAi-app/assets/FOME-logo-blue.png")
 const picture = require("../../../FomeAi-app/assets/Welcome-img.png")
 
 const windowHeight = Dimensions.get("window").height
-const screenHeight = Dimensions.get("screen").height
-
-console.log('Window Height:', windowHeight)
-
 
 const styles = StyleSheet.create({
     container: {
