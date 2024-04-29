@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
     fontWeight: "400",
     lineHeight: "normal",
     textDecorationLine: "underline",
-    paddingBottom: 40,
+    paddingBottom: 20,
     paddingTop: 20,
   },
 
@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
   },
 
   buttonContainer: {
-    paddingTop: 40,
+    paddingTop: 10,
     alignItems: "center",
   },
 });
@@ -80,6 +80,7 @@ const styles = StyleSheet.create({
 export default function ChallengeDetails({ data }) {
   return (
     <View>
+      <NavbarTop />
       <Text style={styles.challengeName}>{data.challengeName}</Text>
       <View style={styles.ChallengeDetailsContainer}>
         <View style={styles.progressPath}>
