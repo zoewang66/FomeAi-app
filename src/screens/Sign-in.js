@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, StyleSheet, Image, Dimensions, TouchableOpacity, TextInput, ScrollView, KeyboardAvoidingView, Platform } from 'react-native';
+import { View, Text, StyleSheet, Image, Dimensions, TouchableOpacity, TextInput, ScrollView, KeyboardAvoidingView, Platform, StatusBar } from 'react-native';
 import DarkButton from "../components/Button-Dark";
 import NavbarTop from "../components/Navbar-top";
 import { useRef } from 'react';
