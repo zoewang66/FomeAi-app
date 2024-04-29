@@ -3,8 +3,7 @@ import { View, Text, Image, StyleSheet } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import LightButton from "./Button-Light";
 import { TouchableOpacity } from "react-native";
-
-const cardioIcon = require("../../assets/Cardio_Challenge_Icon.png");
+import cardioIcon from "../../assets/Cardio_Challenge_Icon.png";
 
 const styles = StyleSheet.create({
   challenge_box: {
@@ -79,7 +78,11 @@ const styles = StyleSheet.create({
   },
 });
 
-export function ChallengeBox({ challenge_name, challenge_info }) {
+export default function ChallengeBox({
+  challenge_name,
+  challenge_info,
+  challenge_icon,
+}) {
   return (
     <View style={styles.challenge_box}>
       <View style={styles.content_Container}>
@@ -91,7 +94,7 @@ export function ChallengeBox({ challenge_name, challenge_info }) {
           <ViewMoreButton />
         </View>
         <View style={styles.iconColumn}>
-          <Image source={cardioIcon} style={styles.challenge_icon} />
+          <Image source={challenge_icon} style={styles.challenge_icon} />
         </View>
       </View>
     </View>

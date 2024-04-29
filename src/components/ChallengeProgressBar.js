@@ -1,4 +1,4 @@
-import {View} from "react-native";
+import { View } from "react-native";
 import { ProgressSteps, ProgressStep } from "react-native-progress-steps";
 
 export default function ChallengeProgressBar() {
