@@ -13,7 +13,7 @@ const windowWidth = Dimensions.get("window").width
 const styles = StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: '#E7F8F6',
+      backgroundColor: '#E4EBEE',
       alignItems: 'center',
       justifyContent: 'center',
       paddingHorizontal: windowWidth > 375 ? windowWidth * 0.1 : 20, 
