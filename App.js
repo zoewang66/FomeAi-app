@@ -11,9 +11,13 @@ import ChallengeSelection from "./src/screens/Exercise";
 import Camera from "./src/screens/Camera";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+<<<<<<< Updated upstream
 import Congratulations from "./src/screens/Congratulation";
 import CardioAssessmentScreen from "./src/screens/Cardio-Assessment";
 import StrengthAssessmentScreen from "./src/screens/Strength-Assessment";
+=======
+import Exercise from "./src/screens/Exercise";
+>>>>>>> Stashed changes
 
 export default function App() {
   return (
@@ -23,9 +27,15 @@ export default function App() {
     </SafeAreaView>
     // <SignIn />
     // <SignUp />
+<<<<<<< Updated upstream
     // <SafeAreaView style={styles.safeArea}>
     //   <Congratulations />
       /* //   <NavigationContainer>
+=======
+    <SafeAreaView style={styles.safeArea}>
+      <Exercise />
+      {/* //   <NavigationContainer>
+>>>>>>> Stashed changes
     //     <Stack.Navigator>
     //       <Stack.Screen name={"Tutorial"} component={Tutorial} />
     //       <Stack.Screen */
