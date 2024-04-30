@@ -1,8 +1,5 @@
 import { TouchableOpacity } from "react-native";
-
 import { View, Text, Image, StyleSheet } from "react-native";
-
-const pushUpsIcon = require("../../assets/Push-Ups.jpg");
 
 const styles = StyleSheet.create({
   upcoming_exercise_box: {
@@ -46,12 +43,12 @@ const styles = StyleSheet.create({
   },
 });
 
-export default function UpcomingExercise({ name }) {
+export default function UpcomingExercise({ name, exercise_icon }) {
   return (
     <TouchableOpacity style={styles.upcoming_exercise_box}>
       <View style={styles.content_Container}>
         <View style={styles.iconColumn}>
-          <Image source={pushUpsIcon} style={styles.exercise_icon}></Image>
+          <Image source={exercise_icon} style={styles.exercise_icon}></Image>
         </View>
         <View style={styles.textColumn}>
           <Text style={styles.exercise_name}>{name}</Text>

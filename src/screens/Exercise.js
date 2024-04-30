@@ -2,6 +2,8 @@ import ChallengeBox from "../components/ChallengeBox";
 import { View, Text, StyleSheet } from "react-native";
 import NavbarBottom from "../components/Navbar-bottom";
 import NavbarTop from "../components/Navbar-top";
+import ChallengeProgressBar from "../components/ChallengeProgressBar";
+import UpcomingExercise from "../components/UpcomingExercise";
 
 const styles = StyleSheet.create({
   contentContainer: {
@@ -10,9 +12,9 @@ const styles = StyleSheet.create({
     alignItems: "center",
     alignContent: "center",
     flexDirection: "column",
-    width: 310,
+    width: 350,
     flexShrink: 0,
-    paddingLeft: 70,
+    paddingLeft: 50,
     height: 680,
   },
 
@@ -30,9 +32,23 @@ const styles = StyleSheet.create({
     paddingTop: 30,
     paddingBottom: 30,
   },
+
+  upcoming_exercise_container: {
+    paddingBottom: 120,
+  },
+
+  upcoming_exercise: {
+    paddingTop: 30,
+    paddingBottom: 30,
+  },
 });
 
-export default function ChallengeSelection() {
+export default function Exercise() {
+  const hasChallenge = false;
+  return hasChallenge ? <ChallengeProgress /> : <ChallengeSelection />;
+}
+
+function ChallengeSelection() {
   return (
     <View>
       <NavbarTop />
@@ -62,6 +78,34 @@ export default function ChallengeSelection() {
             challenge_info="4 Exercises | 6mins"
             challenge_icon={require("../../assets/Hybrid_Challenge_Icon.png")}
           />
+        </View>
+      </View>
+      <NavbarBottom />
+    </View>
+  );
+}
+
+function ChallengeProgress() {
+  return (
+    <View>
+      <NavbarTop />
+      <View style={styles.contentContainer}>
+        <Text style={styles.text}>Your Challenge Progress</Text>
+        <ChallengeProgressBar />
+        <Text style={styles.text}>Upcoming Exercises</Text>
+        <View style={styles.upcoming_exercise_container}>
+          <View style={styles.upcoming_exercise}>
+            <UpcomingExercise
+              name="Push-Ups"
+              exercise_icon={require("../../assets/Push-Ups.jpg")}
+            />
+          </View>
+          <View style={styles.upcoming_exercise}>
+            <UpcomingExercise
+              name="Plank"
+              exercise_icon={require("../../assets/Plank_Icon.jpg")}
+            />
+          </View>
         </View>
       </View>
       <NavbarBottom />
