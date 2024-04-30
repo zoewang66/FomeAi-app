@@ -8,48 +8,23 @@ import Tutorial from "./src/screens/Tutorial";
 import ChallengeDetails from "./src/screens/ChallengeDetails";
 import StrengthChallenge from "../FomeAi-app/assets/TestData/StrengthChallenge";
 import ChallengeSelection from "./src/screens/Exercise";
-import Camera from "./src/screens/Camera";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-<<<<<<< Updated upstream
 import Congratulations from "./src/screens/Congratulation";
 import CardioAssessmentScreen from "./src/screens/Cardio-Assessment";
 import StrengthAssessmentScreen from "./src/screens/Strength-Assessment";
-=======
-import Exercise from "./src/screens/Exercise";
->>>>>>> Stashed changes
+import CardioResultScreen from "./src/screens/Cardio-Result";
+import StrengthResultScreen from "./src/screens/Strength-Result";
 
 export default function App() {
   return (
     <SafeAreaView style={styles.safeArea}>
-      <StrengthAssessmentScreen />
+      <StrengthResultScreen />
       {/* <ChallengeSelection /> */}
     </SafeAreaView>
-    // <SignIn />
-    // <SignUp />
-<<<<<<< Updated upstream
-    // <SafeAreaView style={styles.safeArea}>
-    //   <Congratulations />
-      /* //   <NavigationContainer>
-=======
-    <SafeAreaView style={styles.safeArea}>
-      <Exercise />
-      {/* //   <NavigationContainer>
->>>>>>> Stashed changes
-    //     <Stack.Navigator>
-    //       <Stack.Screen name={"Tutorial"} component={Tutorial} />
-    //       <Stack.Screen */
-      /* //         name={"Camera"}
-    //         component={Camera}
-    //         options={{ */
-      /* //           headerShown: false,
-    //         }}
-    //       />
-    //     </Stack.Navigator> */
-      /* //   </NavigationContainer> */
-    // </SafeAreaView>
   );
 };
+
 
 const styles = StyleSheet.create({
   safeArea: {
