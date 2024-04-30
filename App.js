@@ -17,7 +17,7 @@ import CardioAssessmentScreen from "./src/screens/Cardio-Assessment";
 import StrengthAssessmentScreen from "./src/screens/Strength-Assessment";
 =======
 import Exercise from "./src/screens/Exercise";
-import Leaderboard from "./src/screens/Leaderboard";
+import LeaderBoard from "./src/screens/Leaderboard";
 >>>>>>> Stashed changes
 
 export default function App() {
@@ -32,7 +32,7 @@ export default function App() {
     // <SafeAreaView style={styles.safeArea}>
     //   <Congratulations />
       /* //   <NavigationContainer>
-      <Leaderbord leaderboardProps={leaderboardProps}/>
+      <LeaderBoard leaderboardProps={leaderboardProps}/>
 =======
     <SafeAreaView style={styles.safeArea}>
       <Exercise />
