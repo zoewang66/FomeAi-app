@@ -104,7 +104,7 @@ const styles = StyleSheet.create({
     marginLeft: 10,
   },
   leaderName: {
-    flex: 1,
+    fontWeight: "bold",
     fontSize: 18,
   },
   score: {
@@ -115,17 +115,16 @@ const styles = StyleSheet.create({
   },
   leaderScore: {
     fontSize: 18,
-    fontWeight: "bolder",
+    fontWeight: "bold",
     margin: "auto",
-    backgroundColor: "gold",
   },
   position: {
     fontSize: 16,
     fontWeight: "bold",
   },
   image: {
-    width: 50,
-    height: 50,
+    width: 40,
+    height: 40,
     borderRadius: 25,
     marginLeft: 20,
   },
@@ -154,13 +153,13 @@ const styles = StyleSheet.create({
     backgroundColor: "#F5F4F1",
   },
   goldBackground: {
-    backgroundColor: "gold",
+    backgroundColor: "#FFD700",
   },
   silverBackground: {
-    backgroundColor: "silver",
+    backgroundColor: "#C0C0C0",
   },
   bronzeBackground: {
-    backgroundColor: "bronze",
+    backgroundColor: "#CD7F32",
   },
 });
 
