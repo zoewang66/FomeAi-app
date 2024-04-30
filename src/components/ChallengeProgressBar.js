@@ -2,6 +2,12 @@ import { View } from "react-native";
 import { ProgressSteps, ProgressStep } from "react-native-progress-steps";
 
 export default function ChallengeProgressBar() {
+  const container = {
+    flex: 1,
+    paddingBottom: 0,
+    maxHeight: 80,
+  };
+
   const progressStepsStyle = {
     activeStepIconBorderColor: "#3C80E6",
     activeLabelColor: "black",
@@ -24,7 +30,7 @@ export default function ChallengeProgressBar() {
   };
 
   return (
-    <View style={{ flex: 1, marginTop: 50 }}>
+    <View style={container}>
       <ProgressSteps {...progressStepsStyle}>
         <ProgressStep nextBtnStyle={nextBtnStyle} />
         <ProgressStep nextBtnStyle={nextBtnStyle} />
