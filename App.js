@@ -32,7 +32,7 @@ export default function App() {
     // <SafeAreaView style={styles.safeArea}>
     //   <Congratulations />
       /* //   <NavigationContainer>
-      <Leaderbord />
+      <Leaderbord leaderboardProps={leaderboardProps}/>
 =======
     <SafeAreaView style={styles.safeArea}>
       <Exercise />
