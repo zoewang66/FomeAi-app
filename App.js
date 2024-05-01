@@ -15,11 +15,12 @@ import CardioAssessmentScreen from "./src/screens/Cardio-Assessment";
 import StrengthAssessmentScreen from "./src/screens/Strength-Assessment";
 import CardioResultScreen from "./src/screens/Cardio-Result";
 import StrengthResultScreen from "./src/screens/Strength-Result";
+import StrengthSkillScreen from "./src/screens/Strength-Skills";
 
 export default function App() {
   return (
     <SafeAreaView style={styles.safeArea}>
-      <StrengthResultScreen />
+      <StrengthSkillScreen />
       {/* <ChallengeSelection /> */}
     </SafeAreaView>
   );
