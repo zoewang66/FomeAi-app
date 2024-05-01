@@ -43,9 +43,17 @@ const styles = StyleSheet.create({
   },
 });
 
-export default function UpcomingExercise({ name, exercise_icon }) {
+export default function UpcomingExercise({
+  name,
+  exercise_icon,
+  navigation,
+  goTo,
+}) {
   return (
-    <TouchableOpacity style={styles.upcoming_exercise_box}>
+    <TouchableOpacity
+      style={styles.upcoming_exercise_box}
+      onPress={() => navigation.navigate("Congratulation")}
+    >
       <View style={styles.content_Container}>
         <View style={styles.iconColumn}>
           <Image source={exercise_icon} style={styles.exercise_icon}></Image>

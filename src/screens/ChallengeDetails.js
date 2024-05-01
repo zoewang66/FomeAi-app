@@ -5,6 +5,10 @@ import NavbarBottom from "../components/Navbar-bottom";
 import NavbarTop from "../components/Navbar-top";
 
 const styles = StyleSheet.create({
+  container: {
+    backgroundColor: "#E4EBEE",
+  },
+
   challengeName: {
     color: "#000",
     textAlign: "center",
@@ -16,6 +20,7 @@ const styles = StyleSheet.create({
     textDecorationLine: "underline",
     paddingBottom: 20,
     paddingTop: 20,
+    backgroundColor: "#E4EBEE",
   },
 
   strengthDetailsContainer: {
@@ -77,10 +82,24 @@ const styles = StyleSheet.create({
   },
 });
 
-export default function ChallengeDetails({ data }) {
+export default function ChallengeDetails({ navigation }) {
+  const data = {
+    challengeName: "Strength Challenge",
+    steps: [
+      {
+        name: "Push-Ups",
+        videoID: "0pkjOk0EiAk",
+      },
+      {
+        name: "Plank",
+        videoID: "sZxrs3C209k",
+      },
+    ],
+  };
+
   return (
-    <View>
-      <NavbarTop />
+    <View style={styles.container}>
+      {/* <NavbarTop /> */}
       <Text style={styles.challengeName}>{data.challengeName}</Text>
       <View style={styles.ChallengeDetailsContainer}>
         <View style={styles.progressPath}>
@@ -104,7 +123,7 @@ export default function ChallengeDetails({ data }) {
         </View>
       </View>
       <View style={styles.buttonContainer}>
-        <DarkButton buttonText="Next" />
+        <DarkButton buttonText="Next" navigation={navigation} goTo="Tutorial" />
       </View>
       <NavbarBottom />
     </View>

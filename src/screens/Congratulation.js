@@ -2,10 +2,15 @@ import { StyleSheet, Text, View, Image } from "react-native";
 import NavbarTop from "../components/Navbar-top";
 import NavbarBottom from "../components/Navbar-bottom";
 import DarkButton from "../components/Button-Dark";
+import HomePage from "./HomePage";
 
 const congratsPic = require("../../assets/Congratulations.png");
 
 const styles = StyleSheet.create({
+  container: {
+    backgroundColor: "#E4EBEE",
+  },
+
   contentContainer: {
     display: "flex",
     justifyContent: "center",
@@ -16,6 +21,7 @@ const styles = StyleSheet.create({
     flexShrink: 0,
     paddingLeft: 70,
     height: 600,
+    backgroundColor: "#E4EBEE",
   },
 
   text: {
@@ -31,10 +37,10 @@ const styles = StyleSheet.create({
   },
 });
 
-export default function Congratulations() {
+export default function Congratulations({ navigation }) {
   return (
-    <View>
-      <NavbarTop />
+    <View style={styles.container}>
+      {/* <NavbarTop /> */}
       <View style={styles.contentContainer}>
         <View>
           <Image source={congratsPic} />
@@ -45,7 +51,11 @@ export default function Congratulations() {
         </Text>
       </View>
       <View style={styles.buttonContainer}>
-        <DarkButton buttonText="Back To Home" />
+        <DarkButton
+          buttonText="Back To Home"
+          navigation={navigation}
+          goTo={HomePage}
+        />
       </View>
       <NavbarBottom />
     </View>
