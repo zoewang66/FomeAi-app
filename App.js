@@ -22,6 +22,7 @@ import StrengthSkillScreen from "./src/screens/Strength-Skills";
 import NavbarBottom from "./src/components/Navbar-bottom";
 import CardioSkillScreen from "./src/screens/Cardio-Skills";
 import AssessStart from "./src/screens/Assessment-Start";
+import Profile from "./src/screens/Profile";
 
 export default function App() {
   const Stack = createNativeStackNavigator();
@@ -50,6 +51,7 @@ export default function App() {
     // </SafeAreaView>
     // <SignIn />
     // <SignUp />
+
     
   );
 }
