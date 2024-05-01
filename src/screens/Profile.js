@@ -5,6 +5,7 @@ import notification from "./imgs/notification.png";
 import payment from "./imgs/payment.png";
 import support from "./imgs/support.png";
 import about from "./imgs/about.png";
+import NavbarTop from "../components/Navbar-top";
 
 export function Profile() {
   const profileInformation = {
@@ -15,6 +16,7 @@ export function Profile() {
 
   return (
     <View style={styles.container}>
+      <NavbarTop />
       <View style={styles.profileInfo}>
         <Image
           source={profileInformation.profilePic}
