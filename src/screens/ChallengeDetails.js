@@ -11,11 +11,9 @@ const styles = StyleSheet.create({
   challengeName: {
     color: "#000",
     textAlign: "center",
-    fontFamily: "Alice",
     fontSize: 25,
     fontStyle: "normal",
     fontWeight: "400",
-    lineHeight: "normal",
     textDecorationLine: "underline",
     paddingBottom: 20,
     paddingTop: 20,

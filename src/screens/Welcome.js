@@ -8,7 +8,6 @@ import {
   Dimensions,
 } from "react-native";
 import DarkButton from "../components/Button-Dark";
-import SignIn from "./Sign-in";
 
 const logoImg = require("../../../FomeAi-app/assets/FOME-logo-blue.png");
 const picture = require("../../../FomeAi-app/assets/Welcome-img.png");

@@ -54,11 +54,7 @@ export default function Tutorial({ navigation }) {
         <DemoVideo videoID="CN_RsGkRScM" />
       </View>
       <View style={styles.buttonContainer}>
-        <DarkButton
-          buttonText="Start"
-          navigation={navigation}
-          goTo="Exercise"
-        />
+        <DarkButton buttonText="Start" navigation={navigation} goTo="Camera" />
       </View>
 
       <NavbarBottom />

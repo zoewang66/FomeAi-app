@@ -1,15 +1,6 @@
 import { useState, useEffect, useRef } from "react";
-import {
-  SafeAreaView,
-  StyleSheet,
-  View,
-  Text,
-  TouchableOpacity,
-  Image,
-} from "react-native";
-// import { RNCamera } from "react-native-camera";
-import { useNavigation } from "@react-navigation/native";
-import { Camera, CameraType } from "expo-camera";
+import { StyleSheet, View, Text, TouchableOpacity, Image } from "react-native";
+import { Camera, CameraType, requestCameraPermissionsAsync } from "expo-camera";
 import * as MediaLibrary from "expo-media-library";
 import ButtonInCamera from "../components/ButtonInCamera";
 
@@ -17,7 +8,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "center",
-    backgroundColor: "#000",
+    backgroundColor: "#fff",
   },
   camera: {
     flex: 1,
@@ -28,20 +19,16 @@ const styles = StyleSheet.create({
 const TriggerCamera = ({ navigation }) => {
   const [hasCameraPermission, setHasCameraPermission] = useState(null);
   const [image, setImage] = useState(null);
-  const [cameraType, setCameraType] = useState(Camera.Constants.Type.back);
+  const [type, setType] = useState(Camera.Constants.Type.back);
   const [flashMode, setFlashMode] = useState(Camera.Constants.FlashMode.off);
   const cameraRef = useRef(null);
 
-  const handleCameraReady = () => {
-    setIsCameraReady(true);
-  };
-
   useEffect(() => {
-    async () => {
+    (async () => {
       MediaLibrary.requestPermissionsAsync();
       const cameraStatus = await Camera.requestCameraPermissionsAsync();
       setHasCameraPermission(cameraStatus.status === "granted");
-    };
+    })();
   }, []);
 
   const takePicture = async () => {
@@ -56,6 +43,18 @@ const TriggerCamera = ({ navigation }) => {
     }
   };
 
+  const saveImage = async () => {
+    if (image) {
+      try {
+        await MediaLibrary.createAssetAsync(image);
+        alert("Picture Saved! 🎉");
+        setImage(null);
+      } catch (e) {
+        console.log(e);
+      }
+    }
+  };
+
   if (hasCameraPermission === false) {
     return <Text>No access to camera</Text>;
   }
@@ -65,10 +64,42 @@ const TriggerCamera = ({ navigation }) => {
       {!image ? (
         <Camera
           style={styles.camera}
-          type={cameraType}
+          type={type}
           flashMode={flashMode}
           ref={cameraRef}
-        ></Camera>
+        >
+          <View
+            style={{
+              flexDirection: "row",
+              justifyContent: "space-between",
+              padding: 30,
+            }}
+          >
+            <ButtonInCamera
+              icon={"retweet"}
+              onPress={() => {
+                setType(
+                  type === CameraType.back ? CameraType.front : CameraType.back
+                );
+              }}
+            />
+            <ButtonInCamera
+              // color={
+              //   flashMode === Camera.Constants.flashMode.off
+              //     ? "gray"
+              //     : "#f1f1f1"
+              // }
+              icon={"flash"}
+              onPress={() => {
+                setFlashMode(
+                  flashMode === Camera.Constants.FlashMode.off
+                    ? Camera.Constants.FlashMode.on
+                    : Camera.Constants.FlashMode.off
+                );
+              }}
+            />
+          </View>
+        </Camera>
       ) : (
         <Image source={{ uri: image }} style={styles.camera} />
       )}
@@ -85,7 +116,7 @@ const TriggerCamera = ({ navigation }) => {
             icon="retweet"
             onPress={() => setImage(null)}
           />
-          <ButtonInCamera title={"Save"} icon="check" />
+          <ButtonInCamera title={"Save"} icon="check" onPress={saveImage} />
         </View>
       ) : (
         <View>
