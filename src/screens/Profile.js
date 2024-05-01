@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 import React from "react";
 import { View, Text, Image, StyleSheet } from "react-native";
 
@@ -64,3 +65,8 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
 });
+=======
+import { View, Text, StyleSheet } from "react-native";
+import NavbarBottom from "../components/Navbar-bottom";
+import NavbarTop from "../components/Navbar-top";
+>>>>>>> Stashed changes

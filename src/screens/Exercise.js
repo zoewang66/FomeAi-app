@@ -4,8 +4,14 @@ import NavbarBottom from "../components/Navbar-bottom";
 import NavbarTop from "../components/Navbar-top";
 import ChallengeProgressBar from "../components/ChallengeProgressBar";
 import UpcomingExercise from "../components/UpcomingExercise";
+import ChallengeDetails from "./ChallengeDetails";
+import Congratulations from "./Congratulation";
 
 const styles = StyleSheet.create({
+  container: {
+    backgroundColor: "#E4EBEE",
+  },
+
   contentContainer: {
     display: "flex",
     justifyContent: "center",
@@ -43,15 +49,19 @@ const styles = StyleSheet.create({
   },
 });
 
-const hasChallenge = false;
+const hasChallenge = true;
 
-export default function Exercise() {
-  return hasChallenge ? <ChallengeProgress /> : <ChallengeSelection />;
+export default function Exercise({ navigation }) {
+  return hasChallenge ? (
+    <ChallengeProgress navigation={navigation} />
+  ) : (
+    <ChallengeSelection navigation={navigation} />
+  );
 }
 
 function ChallengeSelection() {
   return (
-    <View>
+    <View style={styles.container}>
       <NavbarTop />
       <View style={styles.contentContainer}>
         <Text style={styles.text}>What Do You Want to Test</Text>
@@ -86,10 +96,10 @@ function ChallengeSelection() {
   );
 }
 
-function ChallengeProgress() {
+function ChallengeProgress({ navigation }) {
   return (
     <View>
-      <NavbarTop />
+      {/* <NavbarTop /> */}
       <View style={styles.contentContainer}>
         <Text style={styles.text}>Your Challenge Progress</Text>
         <ChallengeProgressBar />
@@ -99,12 +109,14 @@ function ChallengeProgress() {
             <UpcomingExercise
               name="Push-Ups"
               exercise_icon={require("../../assets/Push-Ups.jpg")}
+              navigation={navigation}
             />
           </View>
           <View style={styles.upcomingExercise}>
             <UpcomingExercise
               name="Plank"
               exercise_icon={require("../../assets/Plank_Icon.jpg")}
+              navigation={navigation}
             />
           </View>
         </View>

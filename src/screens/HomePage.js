@@ -6,6 +6,10 @@ import ChallengeProgressBar from "../components/ChallengeProgressBar";
 import UpcomingExercise from "../components/UpcomingExercise";
 
 const styles = StyleSheet.create({
+  container: {
+    backgroundColor: "#E4EBEE",
+  },
+
   contentContainer: {
     display: "flex",
     justifyContent: "center",
@@ -20,7 +24,7 @@ const styles = StyleSheet.create({
 
   greetingText: {
     alignSelf: "flex-start",
-    fontSize: 45,
+    fontSize: 35,
   },
 
   userName: {
@@ -32,7 +36,7 @@ const styles = StyleSheet.create({
 
   message: {
     alignSelf: "flex-start",
-    paddingTop: 25,
+    paddingTop: 10,
     paddingBottom: 25,
     fontSize: 15,
   },
@@ -58,9 +62,9 @@ const styles = StyleSheet.create({
   },
 });
 
-const hasChallenge = true;
+const hasChallenge = false;
 
-export default function Home() {
+export default function HomePage({ navigation }) {
   const currentTime = new Date().getHours();
   let greeting;
 
@@ -75,19 +79,23 @@ export default function Home() {
   const userName = "Dylan";
 
   return (
-    <View>
+    <View style={styles.container}>
       <NavbarTop />
       <View style={styles.contentContainer}>
         <Text style={styles.greetingText}>{greeting}!</Text>
         <Text style={styles.userName}>{userName}</Text>
-        {hasChallenge ? <HomeHasExercise /> : <HomeNoExercise />}
+        {hasChallenge ? (
+          <HomeHasExercise navigation={navigation} />
+        ) : (
+          <HomeNoExercise navigation={navigation} />
+        )}
       </View>
       <NavbarBottom />
     </View>
   );
 }
 
-function HomeNoExercise() {
+function HomeNoExercise({ navigation }) {
   return (
     <View>
       <Text style={styles.message}>
@@ -99,6 +107,7 @@ function HomeNoExercise() {
             challenge_name="Cardio Challenge"
             challenge_info="4 Exercises | 6mins"
             challenge_icon={require("../../assets/Cardio_Challenge_Icon.png")}
+            navigation={navigation}
           />
         </View>
         <View style={styles.challengeBox}>
@@ -107,6 +116,7 @@ function HomeNoExercise() {
             challenge_name="Strength Challenge"
             challenge_info="4 Exercises | 6mins"
             challenge_icon={require("../../assets/Strength_Challenge_Icon.png")}
+            navigation={navigation}
           />
         </View>
         <View style={styles.challengeBox}>
@@ -115,6 +125,7 @@ function HomeNoExercise() {
             challenge_name="Hybrid Challenge"
             challenge_info="4 Exercises | 6mins"
             challenge_icon={require("../../assets/Hybrid_Challenge_Icon.png")}
+            navigation={navigation}
           />
         </View>
       </View>

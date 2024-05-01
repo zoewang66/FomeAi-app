@@ -1,9 +1,6 @@
 import React from "react";
 import { View, Text, Image, StyleSheet } from "react-native";
-import { LinearGradient } from "expo-linear-gradient";
-import LightButton from "./Button-Light";
 import { TouchableOpacity } from "react-native";
-import cardioIcon from "../../assets/Cardio_Challenge_Icon.png";
 
 const styles = StyleSheet.create({
   challenge_box: {
@@ -79,6 +76,7 @@ const styles = StyleSheet.create({
 });
 
 export default function ChallengeBox({
+  navigation,
   challenge_name,
   challenge_info,
   challenge_icon,
@@ -91,7 +89,7 @@ export default function ChallengeBox({
             {challenge_name}
           </Text>
           <Text style={styles.challenge_info}>{challenge_info}</Text>
-          <ViewMoreButton />
+          <ViewMoreButton navigation={navigation} goTo="ChallengeDetails" />
         </View>
         <View style={styles.iconColumn}>
           <Image source={challenge_icon} style={styles.challenge_icon} />
@@ -101,9 +99,12 @@ export default function ChallengeBox({
   );
 }
 
-function ViewMoreButton() {
+function ViewMoreButton({ navigation, goTo }) {
   return (
-    <TouchableOpacity style={styles.view_more_button}>
+    <TouchableOpacity
+      style={styles.view_more_button}
+      onPress={() => navigation.navigate({ name: goTo })}
+    >
       <Text style={styles.view_more_button_text}>View More</Text>
     </TouchableOpacity>
   );
