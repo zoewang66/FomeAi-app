@@ -17,11 +17,12 @@ const styles = StyleSheet.create({
     height: 40,
     flexDirection: "row",
     alignItems: "center",
+    justifyContent: "center",
   },
   text: {
     fontWeight: "bold",
     fontSize: 16,
-    color: "#fff",
+    color: "#000",
     marginleft: 10,
   },
 });

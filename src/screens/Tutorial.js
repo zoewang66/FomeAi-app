@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";        
+import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
 import NavbarBottom from "../components/Navbar-bottom";
 import DemoVideo from "../components/DemoVideo";
 import DarkButton from "../components/Button-Dark";
@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
     width: 310,
     flexShrink: 0,
     paddingLeft: 70,
-    height: 600,
+    height: 610,
     backgroundColor: "#E4EBEE",
   },
 
@@ -43,7 +43,6 @@ const styles = StyleSheet.create({
 export default function Tutorial({ navigation }) {
   return (
     <View style={styles.container}>
-      {/* <NavbarTop /> */}
       <View style={styles.contentContainer}>
         <Text style={styles.text}>
           Adjust your Camera and We Can Record your Movement!
@@ -55,11 +54,7 @@ export default function Tutorial({ navigation }) {
         <DemoVideo videoID="CN_RsGkRScM" />
       </View>
       <View style={styles.buttonContainer}>
-        <DarkButton
-          buttonText="Start"
-          navigation={navigation}
-          goTo="Exercise"
-        />
+        <DarkButton buttonText="Start" navigation={navigation} goTo="Camera" />
       </View>
 
       <NavbarBottom />

@@ -53,7 +53,7 @@ export default function Congratulations({ navigation }) {
         <DarkButton
           buttonText="Back To Home"
           navigation={navigation}
-          goTo={HomePage}
+          goTo="HomePage"
         />
       </View>
       <NavbarBottom />

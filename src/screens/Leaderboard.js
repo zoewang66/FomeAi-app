@@ -23,7 +23,6 @@ export function LeaderBoard({ leaderboardProps }) {
 
   return (
     <View>
-      <NavbarTop />
       <Text style={styles.text}>Leaderboard</Text>
       <View style={styles.topLeadersContainer}>
         {number2.map((leader) => (

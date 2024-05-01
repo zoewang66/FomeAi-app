@@ -3,6 +3,7 @@ import NavbarBottom from "../components/Navbar-bottom";
 import ChallengeBox from "../components/ChallengeBox";
 import ChallengeProgressBar from "../components/ChallengeProgressBar";
 import UpcomingExercise from "../components/UpcomingExercise";
+import { NavigationContainer } from "@react-navigation/native";
 
 const styles = StyleSheet.create({
   container: {
@@ -47,7 +48,6 @@ const styles = StyleSheet.create({
 
   hasExerciseText: {
     color: "#472938",
-    // fontFamily: 'Alice',
     fontSize: 20,
     fontStyle: "normal",
     fontWeight: "400",

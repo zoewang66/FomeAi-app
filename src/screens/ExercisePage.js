@@ -25,11 +25,9 @@ const styles = StyleSheet.create({
 
   text: {
     color: "#472938",
-    // fontFamily: 'Alice',
     fontSize: 20,
     fontStyle: "normal",
     fontWeight: "400",
-    lineHeight: "normal",
     paddingTop: 20,
   },
 
@@ -50,7 +48,7 @@ const styles = StyleSheet.create({
 
 const hasChallenge = true;
 
-export default function Exercise({ navigation }) {
+export default function ExercisePage({ navigation }) {
   return hasChallenge ? (
     <ChallengeProgress navigation={navigation} />
   ) : (
@@ -98,7 +96,6 @@ function ChallengeSelection() {
 function ChallengeProgress({ navigation }) {
   return (
     <View>
-      {/* <NavbarTop /> */}
       <View style={styles.contentContainer}>
         <Text style={styles.text}>Your Challenge Progress</Text>
         <ChallengeProgressBar />
