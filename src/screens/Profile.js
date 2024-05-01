@@ -24,7 +24,6 @@ export function Profile() {
         <Text style={styles.email}>{profileInformation.email}</Text>
       </View>
 
-
       <View style={styles.optionsContainer}>
         <TouchableOpacity style={styles.optionContainer}>
           <Image source={profilePicLogo} style={styles.icon} />
@@ -109,15 +108,10 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     paddingVertical: 30,
-  optionContainer: {
-    flexDirection: "row",
-    alignItems: "center",
-    paddingVertical: 30,
     borderBottomWidth: 1,
     borderBottomColor: "#ddd",
   },
-  option: {
-  },
+  option: {},
   option: {
     fontSize: 16,
     marginLeft: 10,
