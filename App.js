@@ -1,36 +1,31 @@
 import React from "react";
-import WelcomeScreen from "./src/screens/Welcome";
-import { View, Text, StyleSheet } from "react-native";
+import { View, StyleSheet } from "react-native";
 import { SafeAreaView } from "react-native";
-import SignIn from "./src/screens/Sign-in";
-import SignUp from "./src/screens/Sign-up";
-import Tutorial from "./src/screens/Tutorial";
-import ChallengeDetails from "./src/screens/ChallengeDetails";
-import StrengthChallenge from "../FomeAi-app/assets/TestData/StrengthChallenge";
-import ChallengeSelection from "./src/screens/ExercisePage";
+import WelcomeScreen from "./src/screens/Welcome";
+import SignUp from "./src/screens/Sign-Up";
+import SignIn from "./src/screens/Sign-In";
+import AssessStart from "./src/screens/Assess-Start";
+import StrengthAssessmentScreen from "./src/screens/Strength-Assessment-Screen";
+import StrengthResultScreen from "./src/screens/Strength-Result";
+import StrengthSkillScreen from "./src/screens/Strength-Skill-Screen";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import CardioAssessmentScreen from "./src/screens/Cardio-Assessment";
-import StrengthAssessmentScreen from "./src/screens/Strength-Assessment";
-import Camera from "./src/screens/Camera";
-import ExercisePage from "./src/screens/ExercisePage";
 import HomePage from "./src/screens/HomePage";
+import ExercisePage from "./src/screens/ExercisePage";
+import ChallengeDetails from "./src/screens/ChallengeDetails";
+import Tutorial from "./src/screens/Tutorial";
+import TriggerCamera from "./src/screens/Camera";
 import Congratulations from "./src/screens/Congratulation";
 import CardioResultScreen from "./src/screens/Cardio-Result";
-import StrengthResultScreen from "./src/screens/Strength-Result";
-import StrengthSkillScreen from "./src/screens/Strength-Skills";
-import NavbarBottom from "./src/components/Navbar-bottom";
 import CardioSkillScreen from "./src/screens/Cardio-Skills";
-import AssessStart from "./src/screens/Assessment-Start";
-import LeaderBoard from "./src/screens/Leaderboard";
-import { Profile } from "./src/screens/Profile";
+import { LeaderBoard } from "./src/screens/LeaderboardPage";
 
 export default function App() {
   const Stack = createNativeStackNavigator();
   return (
-    // <SafeAreaView style={styles.safeArea}>
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home">
+      <Stack.Navigator initialRouteName="Welcome">
         <Stack.Screen
           name="Welcome"
           component={WelcomeScreen}
@@ -38,22 +33,22 @@ export default function App() {
         />
         <Stack.Screen name="SignIn" component={SignIn} />
         <Stack.Screen name="SignUp" component={SignUp} />
+        <Stack.Screen name="AssessStart" component={AssessStart} />
+        <Stack.Screen
+          name="StrengthAssessment"
+          component={StrengthAssessmentScreen}
+        />
+        <Stack.Screen name="StrengthSkill" component={StrengthResultScreen} />
+        <Stack.Screen name="StrengthResult" component={StrengthSkillScreen} />
         <Stack.Screen name="Home" component={HomePage} />
         <Stack.Screen name="ChallengeDetails" component={ChallengeDetails} />
         <Stack.Screen name="Tutorial" component={Tutorial} />
-        <Stack.Screen name="Camera" component={Camera} />
+        <Stack.Screen name="Camera" component={TriggerCamera} />
         <Stack.Screen name="Exercise" component={ExercisePage} />
         <Stack.Screen name="Congratulation" component={Congratulations} />
         <Stack.Screen name="LeaderBoard" component={LeaderBoard} />
-        <Stack.Screen name="Profile" component={Profile} />
       </Stack.Navigator>
     </NavigationContainer>
-    // </SafeAreaView>
-    //   <StrengthAssessmentScreen />
-    //   {/* <ChallengeSelection /> */}
-    // </SafeAreaView>
-    // <SignIn />
-    // <SignUp />
   );
 }
 

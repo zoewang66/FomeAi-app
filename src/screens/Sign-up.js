@@ -137,7 +137,7 @@ const SignUp = ({ navigation }) => {
           <DarkButton
             buttonText={"Sign in"}
             navigation={navigation}
-            goTo="HomePage"
+            goTo="AssessStart"
           />
         </ScrollView>
       </SafeAreaView>
