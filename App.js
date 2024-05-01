@@ -31,6 +31,11 @@ export default function App() {
     // <SafeAreaView style={styles.safeArea}>
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Home">
+        <Stack.Screen
+          name="Welcome"
+          component={WelcomeScreen}
+          options={{ headerShown: false }}
+        />
         <Stack.Screen name="SignIn" component={SignIn} />
         <Stack.Screen name="SignUp" component={SignUp} />
         <Stack.Screen name="Home" component={HomePage} />
