@@ -1,7 +1,6 @@
 import React from "react";
 import { View, Text, StyleSheet, Image, Dimensions, TouchableOpacity, TextInput, ScrollView, KeyboardAvoidingView, Platform, StatusBar } from 'react-native';
 import DarkButton from "../components/Button-Dark";
-import NavbarTop from "../components/Navbar-top";
 import { useRef } from 'react';
 
 const logoImg = require("../../../FomeAi-app/assets/FOME-logo-blue.png");

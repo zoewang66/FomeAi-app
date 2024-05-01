@@ -1,7 +1,6 @@
 import React from "react";
 import { View, Text, StyleSheet, Image, Dimensions, ScrollView, StatusBar } from 'react-native';
 import LightButton from "../components/Button-Light";
-import NavbarTop from "../components/Navbar-top";
 
 const logoImg = require("../../../FomeAi-app/assets/FOME-logo-blue.png");
 
@@ -9,6 +8,8 @@ const windowHeight = Dimensions.get("window").height
 const windowWidth = Dimensions.get("window").width
 
 const StrengthSkillScreen = () => {
+    const level = "Intermediate";
+
     return (
         <View style={styles.container}>
             <NavbarTop />
@@ -16,7 +17,7 @@ const StrengthSkillScreen = () => {
                 contentContainerStyle={styles.content}>
                 <Image source={logoImg} style={styles.logo} />
                 <Text style={styles.text}>Good Job!</Text>
-                <Text style={styles.subText}>Your Strength Fitness Level is Intermediate!</Text>
+                <Text style={styles.subText}>Your Strength Fitness Level is <Text style={styles.level}>{level}!</Text> </Text>
                 <LightButton buttonText={"Back To Home"} style={styles.buttontext} onPress={() => navigation.navigate('SignIn')}/>
                 <StatusBar style="auto" />    
             </ScrollView>
@@ -51,12 +52,15 @@ const styles = StyleSheet.create(
             paddingBottom: 15,
         },
         subText: {
-            fontSize: windowWidth > 375 ? 26 : 20,
+            width: windowWidth > 375 ? '85%' : '80%',
+            fontSize: windowWidth > 375 ? 25 : 20,
             fontWeight: 'normal',
             paddingTop: 10,
             paddingBottom: windowWidth > 375 ? 80 : 60,
         },
-
+        level: {
+            color: 'red',
+        },
     }
 )
 

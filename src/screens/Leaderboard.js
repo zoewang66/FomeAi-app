@@ -1,6 +1,6 @@
 import React from "react";
 import { View, Text, FlatList, StyleSheet, Image } from "react-native";
-import NavbarTop from "../components/Navbar-top";
+import NavbarBottom from "../components/Navbar-bottom";
 
 export function LeaderBoard({ leaderboardProps }) {
   const sortedLeaders = leaderboardProps

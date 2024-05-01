@@ -1,7 +1,6 @@
 import ChallengeBox from "../components/ChallengeBox";
 import { View, Text, StyleSheet } from "react-native";
 import NavbarBottom from "../components/Navbar-bottom";
-import NavbarTop from "../components/Navbar-top";
 import ChallengeProgressBar from "../components/ChallengeProgressBar";
 import UpcomingExercise from "../components/UpcomingExercise";
 import ChallengeDetails from "./ChallengeDetails";

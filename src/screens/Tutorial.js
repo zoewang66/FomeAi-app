@@ -1,5 +1,4 @@
-import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
-import NavbarTop from "../components/Navbar-top";
+import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";        
 import NavbarBottom from "../components/Navbar-bottom";
 import DemoVideo from "../components/DemoVideo";
 import DarkButton from "../components/Button-Dark";

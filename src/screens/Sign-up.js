@@ -2,7 +2,6 @@ import React from "react";
 import { View, Text, StyleSheet, Dimensions, TouchableOpacity, TextInput, ScrollView, KeyboardAvoidingView, Platform, StatusBar, SafeAreaView } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 import DarkButton from "../components/Button-Dark";
-import NavbarTop from "../components/Navbar-top";
 import { useRef, useState, useEffect } from 'react';
 import { getStatusBarHeight } from 'react-native-status-bar-height';
 

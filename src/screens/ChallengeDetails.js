@@ -2,7 +2,6 @@ import { StyleSheet, Text, View } from "react-native";
 import DemoVideo from "../components/DemoVideo";
 import DarkButton from "../components/Button-Dark";
 import NavbarBottom from "../components/Navbar-bottom";
-import NavbarTop from "../components/Navbar-top";
 
 const styles = StyleSheet.create({
   container: {

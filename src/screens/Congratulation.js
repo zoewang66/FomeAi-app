@@ -1,5 +1,4 @@
 import { StyleSheet, Text, View, Image } from "react-native";
-import NavbarTop from "../components/Navbar-top";
 import NavbarBottom from "../components/Navbar-bottom";
 import DarkButton from "../components/Button-Dark";
 import HomePage from "./HomePage";
