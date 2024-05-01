@@ -4,17 +4,17 @@ import { View, Text, Image, StyleSheet } from "react-native";
 
 import React from "react";
 import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
-import profilePicLogo from "./imgs/profilePicLogo.png";
-import notification from "./imgs/notification.png";
-import payment from "./imgs/payment.png";
-import support from "./imgs/support.png";
-import about from "./imgs/about.png";
+import profilePicLogo from "./assets/profilePicLogo.png";
+import notification from "./assets/notification.png";
+import payment from "./assets/payment.png";
+import support from "./assets/support.png";
+import about from "./assets/about.png";
 
 export function Profile() {
   const profileInformation = {
     name: "Dylan J",
     email: "dylan@example.com",
-    profilePic: require("./imgs/profilePic.png"),
+    profilePic: require("./assets/profilePic.png"),
   };
 
   return (
