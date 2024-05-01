@@ -19,30 +19,28 @@ import Congratulations from "./src/screens/Congratulation";
 import CardioResultScreen from "./src/screens/Cardio-Result";
 import StrengthResultScreen from "./src/screens/Strength-Result";
 import StrengthSkillScreen from "./src/screens/Strength-Skills";
-import CardioSkillScreen from "./src/screens/Cardio-Skills";
 
 export default function App() {
   const Stack = createNativeStackNavigator();
   return (
     // <SafeAreaView style={styles.safeArea}>
-    //   <StrengthAssessmentScreen />
-    //   {/* <ChallengeSelection /> */}
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Welcome">
+        <Stack.Screen
+          name="Welcome"
+          component={WelcomeScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen name="SignIn" component={SignIn} />
+        <Stack.Screen name="SignUp" component={SignUp} />
+        <Stack.Screen name="HomePage" component={HomePage} />
+        <Stack.Screen name="ChallengeDetails" component={ChallengeDetails} />
+        <Stack.Screen name="Tutorial" component={Tutorial} />
+        <Stack.Screen name="Exercise" component={Exercise} />
+        <Stack.Screen name="Congratulation" component={Congratulations} />
+      </Stack.Navigator>
+    </NavigationContainer>
     // </SafeAreaView>
-    // <SignIn />
-    // <SignUp />
-    <SafeAreaView style={styles.safeArea}>
-      {/* <NavigationContainer>
-        <Stack.Navigator initialRouteName="HomePage">
-          <Stack.Screen name="HomePage" component={HomePage} />
-          <Stack.Screen name="ChallengeDetails" component={ChallengeDetails} />
-          <Stack.Screen name="Tutorial" component={Tutorial} />
-          <Stack.Screen name="Exercise" component={Exercise} />
-          <Stack.Screen name="Congratulation" component={Congratulations} />
-        </Stack.Navigator>
-      </NavigationContainer> */}
-      {/* <ChallengeSelection /> */}
-      <CardioSkillScreen />
-    </SafeAreaView>
   );
 }
 

@@ -79,7 +79,6 @@ export default function HomePage({ navigation }) {
 
   return (
     <View style={styles.container}>
-      <NavbarTop />
       <View style={styles.contentContainer}>
         <Text style={styles.greetingText}>{greeting}!</Text>
         <Text style={styles.userName}>{userName}</Text>

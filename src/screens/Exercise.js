@@ -98,7 +98,6 @@ function ChallengeSelection() {
 function ChallengeProgress({ navigation }) {
   return (
     <View>
-      {/* <NavbarTop /> */}
       <View style={styles.contentContainer}>
         <Text style={styles.text}>Your Challenge Progress</Text>
         <ChallengeProgressBar />
