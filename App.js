@@ -22,6 +22,8 @@ import StrengthSkillScreen from "./src/screens/Strength-Skills";
 import NavbarBottom from "./src/components/Navbar-bottom";
 import CardioSkillScreen from "./src/screens/Cardio-Skills";
 import AssessStart from "./src/screens/Assessment-Start";
+import LeaderBoard from "./src/screens/Leaderboard";
+import { Profile } from "./src/screens/Profile";
 
 export default function App() {
   const Stack = createNativeStackNavigator();
@@ -29,11 +31,6 @@ export default function App() {
     // <SafeAreaView style={styles.safeArea}>
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Home">
-        <Stack.Screen
-          name="Welcome"
-          component={WelcomeScreen}
-          options={{ headerShown: false }}
-        />
         <Stack.Screen name="SignIn" component={SignIn} />
         <Stack.Screen name="SignUp" component={SignUp} />
         <Stack.Screen name="Home" component={HomePage} />
@@ -42,6 +39,8 @@ export default function App() {
         <Stack.Screen name="Camera" component={Camera} />
         <Stack.Screen name="Exercise" component={ExercisePage} />
         <Stack.Screen name="Congratulation" component={Congratulations} />
+        <Stack.Screen name="LeaderBoard" component={LeaderBoard} />
+        <Stack.Screen name="Profile" component={Profile} />
       </Stack.Navigator>
     </NavigationContainer>
     // </SafeAreaView>
@@ -50,7 +49,6 @@ export default function App() {
     // </SafeAreaView>
     // <SignIn />
     // <SignUp />
-    
   );
 }
 
