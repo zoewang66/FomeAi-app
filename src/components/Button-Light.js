@@ -13,8 +13,8 @@ export default function LightButton({buttonText}){
 const styles = StyleSheet.create(
     {    
         text: {
-            fontSize: 16,
-            lineHeight: 20,
+            fontSize: 20,
+            lineHeight: 21,
             fontWeight: 'bold',
             letterSpacing: 0.25,
             color: '#4A7AD1',
