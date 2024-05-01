@@ -24,7 +24,28 @@ export function Profile() {
         <Text style={styles.email}>{profileInformation.email}</Text>
       </View>
 
+
       <View style={styles.optionsContainer}>
+        <TouchableOpacity style={styles.optionContainer}>
+          <Image source={profilePicLogo} style={styles.icon} />
+          <Text style={styles.option}>My Information</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.optionContainer}>
+          <Image source={notification} style={styles.icon} />
+          <Text style={styles.option}>Notifications</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.optionContainer}>
+          <Image source={payment} style={styles.icon} />
+          <Text style={styles.option}>Payment</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.optionContainer}>
+          <Image source={support} style={styles.icon} />
+          <Text style={styles.option}>Support</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.optionContainer}>
+          <Image source={about} style={styles.icon} />
+          <Text style={styles.option}>About Us</Text>
+        </TouchableOpacity>
         <TouchableOpacity style={styles.optionContainer}>
           <Image source={profilePicLogo} style={styles.icon} />
           <Text style={styles.option}>My Information</Text>
@@ -66,16 +87,19 @@ const styles = StyleSheet.create({
     borderRadius: 50,
     marginBottom: 10,
     marginTop: 30,
+    marginTop: 30,
   },
   name: {
     fontSize: 20,
     fontWeight: "bold",
     marginBottom: 5,
     color: "red",
+    color: "red",
   },
   email: {
     fontSize: 16,
     color: "#888",
+    color: "red",
     color: "red",
   },
   optionsContainer: {
@@ -85,11 +109,23 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     paddingVertical: 30,
+  optionContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    paddingVertical: 30,
     borderBottomWidth: 1,
     borderBottomColor: "#ddd",
   },
   option: {
+  },
+  option: {
     fontSize: 16,
+    marginLeft: 10,
+  },
+  icon: {
+    width: 20,
+    height: 20,
+    marginRight: 40,
     marginLeft: 10,
   },
   icon: {
