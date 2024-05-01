@@ -1,15 +1,22 @@
 import React from "react";
-import { View, Text, Image, StyleSheet } from "react-native";
+import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
+import profilePicLogo from "./imgs/profilePicLogo.png";
+import notification from "./imgs/notification.png";
+import payment from "./imgs/payment.png";
+import support from "./imgs/support.png";
+import about from "./imgs/about.png";
+import NavbarTop from "../components/Navbar-top";
 
-export function Profile(props) {
+export function Profile() {
   const profileInformation = {
-    name: "John Doe",
-    email: "johndoe@example.com",
-    profilePic: require("./path_to_profile_pic.jpg"),
+    name: "Dylan J",
+    email: "dylan@example.com",
+    profilePic: require("./imgs/profilePic.png"),
   };
 
   return (
     <View style={styles.container}>
+      <NavbarTop />
       <View style={styles.profileInfo}>
         <Image
           source={profileInformation.profilePic}
@@ -18,12 +25,48 @@ export function Profile(props) {
         <Text style={styles.name}>{profileInformation.name}</Text>
         <Text style={styles.email}>{profileInformation.email}</Text>
       </View>
+
       <View style={styles.optionsContainer}>
-        <Text style={styles.option}>Info</Text>
-        <Text style={styles.option}>Notification Settings</Text>
-        <Text style={styles.option}>Payment</Text>
-        <Text style={styles.option}>Support</Text>
-        <Text style={styles.option}>Contact</Text>
+        <TouchableOpacity style={styles.optionContainer}>
+          <Image source={profilePicLogo} style={styles.icon} />
+          <Text style={styles.option}>My Information</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.optionContainer}>
+          <Image source={notification} style={styles.icon} />
+          <Text style={styles.option}>Notifications</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.optionContainer}>
+          <Image source={payment} style={styles.icon} />
+          <Text style={styles.option}>Payment</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.optionContainer}>
+          <Image source={support} style={styles.icon} />
+          <Text style={styles.option}>Support</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.optionContainer}>
+          <Image source={about} style={styles.icon} />
+          <Text style={styles.option}>About Us</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.optionContainer}>
+          <Image source={profilePicLogo} style={styles.icon} />
+          <Text style={styles.option}>My Information</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.optionContainer}>
+          <Image source={notification} style={styles.icon} />
+          <Text style={styles.option}>Notifications</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.optionContainer}>
+          <Image source={payment} style={styles.icon} />
+          <Text style={styles.option}>Payment</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.optionContainer}>
+          <Image source={support} style={styles.icon} />
+          <Text style={styles.option}>Support</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.optionContainer}>
+          <Image source={about} style={styles.icon} />
+          <Text style={styles.option}>About Us</Text>
+        </TouchableOpacity>
       </View>
     </View>
   );
@@ -44,23 +87,46 @@ const styles = StyleSheet.create({
     height: 100,
     borderRadius: 50,
     marginBottom: 10,
+    marginTop: 30,
+    marginTop: 30,
   },
   name: {
     fontSize: 20,
     fontWeight: "bold",
     marginBottom: 5,
+    color: "red",
+    color: "red",
   },
   email: {
     fontSize: 16,
     color: "#888",
+    color: "red",
+    color: "red",
   },
   optionsContainer: {
     width: "100%",
   },
-  option: {
-    paddingVertical: 15,
+  optionContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    paddingVertical: 30,
     borderBottomWidth: 1,
     borderBottomColor: "#ddd",
+  },
+  option: {},
+  option: {
     fontSize: 16,
+    marginLeft: 10,
+  },
+  icon: {
+    width: 20,
+    height: 20,
+    marginRight: 40,
+    marginLeft: 10,
+  },
+  icon: {
+    width: 20,
+    height: 20,
+    marginRight: 40,
   },
 });

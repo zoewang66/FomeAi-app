@@ -1,8 +1,71 @@
 import React from "react";
 import { View, Text, FlatList, StyleSheet, Image } from "react-native";
-import NavbarBottom from "../components/Navbar-bottom";
+import NavbarTop from "../components/Navbar-top";
 
-export function LeaderBoard({ leaderboardProps }) {
+export function LeaderBoard() {
+  const leaderboardProps = [
+    {
+      name: "Jesse",
+      score: 97,
+      position: 1,
+      image: require("./imgs/number1.png"),
+    },
+    {
+      name: "Zoe",
+      score: 85,
+      position: 2,
+      image: require("./imgs/number2.png"),
+    },
+    {
+      name: "Dylan",
+      score: 80,
+      position: 3,
+      image: require("./imgs/number3.png"),
+    },
+    {
+      name: "Bob",
+      score: 78,
+      position: 4,
+      image: require("./imgs/number4.png"),
+    },
+    {
+      name: "Sasha",
+      score: 77,
+      position: 5,
+      image: require("./imgs/number5.png"),
+    },
+    {
+      name: "Leo",
+      score: 72,
+      position: 6,
+      image: require("./imgs/number6.png"),
+    },
+    {
+      name: "Jason",
+      score: 69,
+      position: 7,
+      image: require("./imgs/number7.png"),
+    },
+    {
+      name: "Loretta",
+      score: 65,
+      position: 8,
+      image: require("./imgs/number8.png"),
+    },
+    {
+      name: "Chris",
+      score: 64,
+      position: 9,
+      image: require("./imgs/number9.png"),
+    },
+    {
+      name: "Tiffany",
+      score: 62,
+      position: 10,
+      image: require("./imgs/number10.png"),
+    },
+  ];
+
   const sortedLeaders = leaderboardProps
     .slice()
     .sort((a, b) => a.position - b.position);
@@ -23,6 +86,7 @@ export function LeaderBoard({ leaderboardProps }) {
 
   return (
     <View>
+      <NavbarTop />
       <Text style={styles.text}>Leaderboard</Text>
       <View style={styles.topLeadersContainer}>
         {number2.map((leader) => (

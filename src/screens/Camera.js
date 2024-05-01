@@ -14,6 +14,18 @@ const styles = StyleSheet.create({
     flex: 1,
     borderRadius: 20,
   },
+
+  button: {
+    height: 40,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  buttonText: {
+    fontWeight: "bold",
+    fontSize: 16,
+    color: "#000",
+  },
 });
 
 const TriggerCamera = ({ navigation }) => {
@@ -37,6 +49,18 @@ const TriggerCamera = ({ navigation }) => {
         const data = await cameraRef.current.takePictureAsync();
         console.log(data);
         setImage(data.uri);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  };
+
+  const takeVideo = async () => {
+    if (cameraRef) {
+      try {
+        const data = await camera.recordAsync();
+        setRecord(data.uri);
+        console.log(data.uri);
       } catch (error) {
         console.log(error);
       }
@@ -117,6 +141,12 @@ const TriggerCamera = ({ navigation }) => {
             onPress={() => setImage(null)}
           />
           <ButtonInCamera title={"Save"} icon="check" onPress={saveImage} />
+          <TouchableOpacity
+            style={styles.button}
+            onPress={() => navigation.navigate("Exercise")}
+          >
+            <Text style={styles.buttonText}>Done</Text>
+          </TouchableOpacity>
         </View>
       ) : (
         <View>
