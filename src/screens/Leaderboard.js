@@ -1,6 +1,5 @@
 import React from "react";
 import { View, Text, FlatList, StyleSheet, Image } from "react-native";
-import NavbarTop from "../components/Navbar-top";
 
 export function LeaderBoard() {
   const leaderboardProps = [
@@ -86,8 +85,6 @@ export function LeaderBoard() {
 
   return (
     <View>
-      <NavbarTop />
-      <Text style={styles.text}>Leaderboard</Text>
       <View style={styles.topLeadersContainer}>
         {number2.map((leader) => (
           <View
@@ -175,6 +172,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     marginRight: 10,
     backgroundColor: "#DBFFA1",
+    borderStyle: "solid",
   },
   leaderScore: {
     fontSize: 18,
@@ -202,6 +200,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     alignItems: "center",
     backgroundColor: "DBFFA1",
+    marginTop: 20,
   },
   topLeader: {
     alignItems: "center",
@@ -223,6 +222,37 @@ const styles = StyleSheet.create({
   },
   bronzeBackground: {
     backgroundColor: "#CD7F32",
+  },
+  hexagonContainer: {
+    width: 45,
+    height: 45, // Adjusted height for a proper hexagon
+    position: "relative",
+    marginBottom: 5,
+    marginLeft: 10,
+    overflow: "hidden",
+  },
+  hexagon: {
+    width: "100%",
+    height: "100%",
+    backgroundColor: "#DBFFA1",
+    position: "absolute",
+    bottom: 0,
+    left: 0,
+    zIndex: 1,
+    transform: [{ rotate: "30deg" }],
+    overflow: "hidden",
+    borderBottomWidth: 1, // Added border for the bottom side of the hexagon
+    borderBottomColor: "#000", // Black border color
+  },
+  hexagonText: {
+    position: "absolute",
+    top: 5,
+    left: 0,
+    width: "100%",
+    textAlign: "center",
+    fontSize: 16,
+    color: "#000",
+    transform: [{ rotate: "-30deg" }],
   },
 });
 
