@@ -19,7 +19,6 @@ import TriggerCamera from "./src/screens/Camera";
 import Congratulations from "./src/screens/Congratulation";
 import CardioResultScreen from "./src/screens/Cardio-Result";
 import CardioSkillScreen from "./src/screens/Cardio-Skills";
-import { LeaderBoard } from "./src/screens/LeaderboardPage";
 
 export default function App() {
   const Stack = createNativeStackNavigator();
@@ -40,13 +39,18 @@ export default function App() {
         />
         <Stack.Screen name="StrengthSkill" component={StrengthResultScreen} />
         <Stack.Screen name="StrengthResult" component={StrengthSkillScreen} />
+        <Stack.Screen
+          name="CardioAssessment"
+          component={CardioAssessmentScreen}
+        />
+        <Stack.Screen name="CardioSkill" component={CardioResultScreen} />
+        <Stack.Screen name="CardioResult" component={CardioSkillScreen} />
         <Stack.Screen name="Home" component={HomePage} />
         <Stack.Screen name="ChallengeDetails" component={ChallengeDetails} />
         <Stack.Screen name="Tutorial" component={Tutorial} />
         <Stack.Screen name="Camera" component={TriggerCamera} />
         <Stack.Screen name="Exercise" component={ExercisePage} />
         <Stack.Screen name="Congratulation" component={Congratulations} />
-        <Stack.Screen name="LeaderBoard" component={LeaderBoard} />
       </Stack.Navigator>
     </NavigationContainer>
   );

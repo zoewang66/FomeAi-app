@@ -63,7 +63,7 @@ const SignIn = ({ navigation }) => {
         <DarkButton
           buttonText={"Sign in"}
           navigation={navigation}
-          goTo="HomePage"
+          goTo="Home"
         />
       </ScrollView>
     </KeyboardAvoidingView>

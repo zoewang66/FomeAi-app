@@ -28,7 +28,7 @@ const StrengthSkillScreen = ({ navigation }) => {
           <Text style={styles.level}>{level}!</Text>{" "}
         </Text>
         <LightButton
-          buttonText={"Back To Home"}
+          buttonText={"Home"}
           style={styles.buttontext}
           navigation={navigation}
           goTo="Home"

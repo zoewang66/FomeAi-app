@@ -59,7 +59,6 @@ export default function ExercisePage({ navigation }) {
 function ChallengeSelection() {
   return (
     <View style={styles.container}>
-      <NavbarTop />
       <View style={styles.contentContainer}>
         <Text style={styles.text}>What Do You Want to Test</Text>
         <View style={styles.challengeBox}>
