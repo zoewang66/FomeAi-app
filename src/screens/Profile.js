@@ -1,11 +1,17 @@
 import React from "react";
-import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
+import {
+  View,
+  Text,
+  Image,
+  StyleSheet,
+  TouchableOpacity,
+  ScrollView,
+} from "react-native";
 import profilePicLogo from "./imgs/profilePicLogo.png";
 import notification from "./imgs/notification.png";
 import payment from "./imgs/payment.png";
 import support from "./imgs/support.png";
 import about from "./imgs/about.png";
-import NavbarTop from "../components/Navbar-top";
 
 export function Profile() {
   const profileInformation = {
@@ -15,8 +21,7 @@ export function Profile() {
   };
 
   return (
-    <View style={styles.container}>
-      <NavbarTop />
+    <ScrollView contentContainerStyle={styles.container}>
       <View style={styles.profileInfo}>
         <Image
           source={profileInformation.profilePic}
@@ -29,52 +34,50 @@ export function Profile() {
       <View style={styles.optionsContainer}>
         <TouchableOpacity style={styles.optionContainer}>
           <Image source={profilePicLogo} style={styles.icon} />
-          <Text style={styles.option}>My Information</Text>
+          <View style={styles.optionTextContainer}>
+            <Text style={styles.optionText}>My Information</Text>
+          </View>
+          <Text style={styles.arrow}>→</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.optionContainer}>
           <Image source={notification} style={styles.icon} />
-          <Text style={styles.option}>Notifications</Text>
+          <View style={styles.optionTextContainer}>
+            <Text style={styles.optionText}>Notifications</Text>
+          </View>
+          <Text style={styles.arrow}>→</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.optionContainer}>
           <Image source={payment} style={styles.icon} />
-          <Text style={styles.option}>Payment</Text>
+          <View style={styles.optionTextContainer}>
+            <Text style={styles.optionText}>Payment</Text>
+          </View>
+          <Text style={styles.arrow}>→</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.optionContainer}>
           <Image source={support} style={styles.icon} />
-          <Text style={styles.option}>Support</Text>
+          <View style={styles.optionTextContainer}>
+            <Text style={styles.optionText}>Support</Text>
+          </View>
+          <Text style={styles.arrow}>→</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.optionContainer}>
           <Image source={about} style={styles.icon} />
-          <Text style={styles.option}>About Us</Text>
+          <View style={styles.optionTextContainer}>
+            <Text style={styles.optionText}>About Us</Text>
+          </View>
+          <Text style={styles.arrow}>→</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.optionContainer}>
-          <Image source={profilePicLogo} style={styles.icon} />
-          <Text style={styles.option}>My Information</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.optionContainer}>
-          <Image source={notification} style={styles.icon} />
-          <Text style={styles.option}>Notifications</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.optionContainer}>
-          <Image source={payment} style={styles.icon} />
-          <Text style={styles.option}>Payment</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.optionContainer}>
-          <Image source={support} style={styles.icon} />
-          <Text style={styles.option}>Support</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.optionContainer}>
-          <Image source={about} style={styles.icon} />
-          <Text style={styles.option}>About Us</Text>
+        <TouchableOpacity style={styles.logoutButton}>
+          <Text style={styles.logoutText}>Logout</Text>
         </TouchableOpacity>
       </View>
-    </View>
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flexGrow: 1,
     padding: 20,
     alignItems: "center",
   },
@@ -88,23 +91,22 @@ const styles = StyleSheet.create({
     borderRadius: 50,
     marginBottom: 10,
     marginTop: 30,
-    marginTop: 30,
   },
   name: {
     fontSize: 20,
     fontWeight: "bold",
     marginBottom: 5,
     color: "red",
-    color: "red",
   },
   email: {
     fontSize: 16,
-    color: "#888",
-    color: "red",
     color: "red",
   },
   optionsContainer: {
     width: "100%",
+    justifyContent: "space-between",
+    flexGrow: 1,
+    alignItems: "center",
   },
   optionContainer: {
     flexDirection: "row",
@@ -113,20 +115,40 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: "#ddd",
   },
-  option: {},
-  option: {
+  optionTextContainer: {
+    flex: 1,
+    maxWidth: 150,
+  },
+  optionText: {
     fontSize: 16,
     marginLeft: 10,
+    alignSelf: "center",
+    flexShrink: 1,
   },
   icon: {
     width: 20,
     height: 20,
-    marginRight: 40,
+    marginRight: 10,
+    alignSelf: "center",
+  },
+  logoutButton: {
+    alignItems: "center",
+    paddingVertical: 15,
+    paddingHorizontal: 20,
+    backgroundColor: "#FFFFFF",
+    borderWidth: 1,
+    borderColor: "#4A7AD1",
+    borderRadius: 5,
+    width: 100,
+    alignSelf: "center",
+    marginTop: 10,
+  },
+  logoutText: {
+    color: "#4A7AD1",
+    fontSize: 18,
+  },
+  arrow: {
     marginLeft: 10,
-  },
-  icon: {
-    width: 20,
-    height: 20,
-    marginRight: 40,
+    fontSize: 16,
   },
 });

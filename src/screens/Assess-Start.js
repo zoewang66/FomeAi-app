@@ -56,13 +56,16 @@ export default function AssessStart({ navigation }) {
             <View style={styles.cardContent}>
               <Text style={styles.title}>Cardio</Text>
               <View style={styles.button}>
-                <LightButton buttonText={"Choose"} goTo="StrengthAssessment" />
+                <LightButton
+                  buttonText={"Choose"}
+                  navigation={navigation}
+                  goTo="CardioAssessment"
+                />
               </View>
             </View>
           </View>
         </View>
       </ScrollView>
-      <NavbarBottom />
     </View>
   );
 }
