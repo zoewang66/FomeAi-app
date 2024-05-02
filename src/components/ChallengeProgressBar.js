@@ -10,14 +10,14 @@ export default function ChallengeProgressBar() {
 
   const progressStepsStyle = {
     activeStepIconBorderColor: "#3C80E6",
-    activeLabelColor: "black",
+    activeLabelColor: "red",
     activeStepNumColor: "white",
     activeStepIconColor: "#3C80E6",
-    completedStepIconColor: "#3C80E6",
+    completedStepIconColor: "red",
     completedProgressBarColor: "#3C80E6",
     completedCheckColor: "#3C80E6",
     completedCheckColor: "white",
-    progressBarColor: "#3C80E6",
+    progressBarColor: "black",
     disabledStepIconColor: "lightgray",
   };
 

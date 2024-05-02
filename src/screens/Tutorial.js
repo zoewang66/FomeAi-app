@@ -1,16 +1,17 @@
-import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
+import { StyleSheet, Text, View, Image, TouchableOpacity, ScrollView } from "react-native";
 import NavbarBottom from "../components/Navbar-bottom";
 import DemoVideo from "../components/DemoVideo";
 import DarkButton from "../components/Button-Dark";
 import { useNavigation } from "@react-navigation/native";
 import Camera from "./Camera";
-import { Button } from "react-native";
 
 const tutorialPic = require("../../assets/Tutorial.png");
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
     backgroundColor: "#E4EBEE",
+    justifyContent: "space-around",
   },
 
   contentContainer: {
@@ -27,7 +28,7 @@ const styles = StyleSheet.create({
   },
 
   text: {
-    fontSize: 18,
+    fontSize: 20,
     fontStyle: "normal",
     textAlign: "center",
     fontWeight: 400,
@@ -36,6 +37,7 @@ const styles = StyleSheet.create({
   },
 
   buttonContainer: {
+    paddingTop: 30,
     alignItems: "center",
   },
 });
@@ -43,20 +45,21 @@ const styles = StyleSheet.create({
 export default function Tutorial({ navigation }) {
   return (
     <View style={styles.container}>
-      <View style={styles.contentContainer}>
-        <Text style={styles.text}>
-          Adjust your Camera and We Can Record your Movement!
-        </Text>
-        <View>
-          <Image source={tutorialPic} />
-        </View>
-        <Text style={styles.text}>Tutorial Video</Text>
-        <DemoVideo videoID="CN_RsGkRScM" />
-      </View>
-      <View style={styles.buttonContainer}>
-        <DarkButton buttonText="Start" navigation={navigation} goTo="Camera" />
-      </View>
-
+      <ScrollView>
+         <View style={styles.contentContainer}>
+           <Text style={styles.text}>
+             Adjust your Camera and We Can Record your Movement!
+           </Text>
+           <View>
+             <Image source={tutorialPic} />
+           </View>
+           <Text style={styles.text}>Tutorial Video</Text>
+           <DemoVideo videoID="CN_RsGkRScM" />
+         </View>
+         <View style={styles.buttonContainer}>
+           <DarkButton buttonText="Start" navigation={navigation} goTo="Camera" />
+         </View>
+      </ScrollView>
       <NavbarBottom />
     </View>
   );

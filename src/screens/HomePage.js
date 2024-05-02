@@ -1,4 +1,5 @@
-import { View, Text, Image, StyleSheet } from "react-native";
+import React from "react";
+import { View, Text, Image, StyleSheet, ScrollView } from "react-native";
 import NavbarBottom from "../components/Navbar-bottom";
 import ChallengeBox from "../components/ChallengeBox";
 import ChallengeProgressBar from "../components/ChallengeProgressBar";
@@ -9,7 +10,6 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: "#E4EBEE",
   },
-
   contentContainer: {
     display: "flex",
     justifyContent: "center",
@@ -18,43 +18,37 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     width: 350,
     flexShrink: 0,
-    paddingLeft: 50,
+    paddingLeft: 35,
     height: 680,
   },
-
   greetingText: {
     alignSelf: "flex-start",
     fontSize: 35,
   },
-
   userName: {
     alignSelf: "flex-start",
     fontSize: 45,
     color: "#F90A0A",
     paddingBottom: 20,
   },
-
   message: {
     alignSelf: "flex-start",
     paddingTop: 10,
     paddingBottom: 25,
     fontSize: 15,
   },
-
   challengeBox: {
     paddingTop: 10,
     paddingBottom: 10,
   },
-
   hasExerciseText: {
     color: "#472938",
     fontSize: 20,
     fontStyle: "normal",
     fontWeight: "400",
-    lineHeight: "normal",
+    lineHeight: 25, // Changed from "normal" to a numeric value
     paddingTop: 20,
   },
-
   upcomingExercise: {
     paddingTop: 20,
     paddingBottom: 20,
@@ -79,7 +73,7 @@ export default function HomePage({ navigation }) {
 
   return (
     <View style={styles.container}>
-      <View style={styles.contentContainer}>
+      <ScrollView contentContainerStyle={styles.contentContainer}>
         <Text style={styles.greetingText}>{greeting}!</Text>
         <Text style={styles.userName}>{userName}</Text>
         {hasChallenge ? (
@@ -87,7 +81,7 @@ export default function HomePage({ navigation }) {
         ) : (
           <HomeNoExercise navigation={navigation} />
         )}
-      </View>
+      </ScrollView>
       <NavbarBottom />
     </View>
   );
@@ -95,7 +89,7 @@ export default function HomePage({ navigation }) {
 
 function HomeNoExercise({ navigation }) {
   return (
-    <View>
+    <ScrollView>
       <Text style={styles.message}>
         Pick One Challenge to Start Your Journey!
       </Text>
@@ -127,13 +121,13 @@ function HomeNoExercise({ navigation }) {
           />
         </View>
       </View>
-    </View>
+    </ScrollView>
   );
 }
 
 function HomeHasExercise() {
   return (
-    <View>
+    <ScrollView>
       <Image source={require("../../assets/WeeklyScore.png")} />
       <Text style={styles.hasExerciseText}>Your Challenge Progress</Text>
       <ChallengeProgressBar />
@@ -152,6 +146,6 @@ function HomeHasExercise() {
           />
         </View>
       </View>
-    </View>
+    </ScrollView>
   );
 }

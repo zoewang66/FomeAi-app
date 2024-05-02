@@ -1,13 +1,15 @@
-import { StyleSheet, Text, View } from "react-native";
+import React from "react";
+import { StyleSheet, Text, View, ScrollView, Dimensions } from "react-native";
 import DemoVideo from "../components/DemoVideo";
 import DarkButton from "../components/Button-Dark";
 import NavbarBottom from "../components/Navbar-bottom";
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
     backgroundColor: "#E4EBEE",
+    justifyContent: "space-around",
   },
-
   challengeName: {
     color: "#000",
     textAlign: "center",
@@ -19,21 +21,14 @@ const styles = StyleSheet.create({
     paddingTop: 20,
     backgroundColor: "#E4EBEE",
   },
-
   strengthDetailsContainer: {
     paddingTop: 30, //TBC
   },
-
-  progressPath: {
-    borderLeft: "2px solid black",
-  },
-
   stepContainer: {
     flexDirection: "row",
     minHeight: 30,
-    position: "relative", // Added relative positioning
+    position: "relative", 
   },
-
   stepLine: {
     width: 2,
     height: "550%",
@@ -42,42 +37,43 @@ const styles = StyleSheet.create({
     position: "absolute",
     left: 24.5,
   },
-
   stepIndicator: {
     position: "relative",
     width: 50,
     justifyContent: "flex-start",
     alignItems: "center",
-    aspectRatio: "1/1",
+    aspectRatio: 1, 
   },
-
   stepIndicatorText: {
     textAlign: "center",
     justifyContent: "center",
     alignItems: "center",
-    aspectRatio: "1/1",
+    aspectRatio: 1, // Changed to aspectRatio: 1
     paddingTop: 2,
     color: "#fff",
     backgroundColor: "#262140",
     zIndex: 2,
   },
-
   setpName: {
     paddingBottom: 20,
     fontSize: 18,
-    fontWeight: 400,
+    fontWeight: "400", // Changed to "400"
   },
-
   step: {
     flex: 1,
-    justifyContent: "center",
+    justifyContent: "flex-start",
   },
-
+  videoContainer: {
+    flexWrap: "wrap",
+    width: '100%',
+    alignItems: "flex-start",
+  },
   buttonContainer: {
     paddingTop: 10,
     alignItems: "center",
   },
 });
+
 
 export default function ChallengeDetails({ navigation }) {
   const data = {
@@ -96,10 +92,10 @@ export default function ChallengeDetails({ navigation }) {
 
   return (
     <View style={styles.container}>
-      {/* <NavbarTop /> */}
+      <ScrollView >
       <Text style={styles.challengeName}>{data.challengeName}</Text>
-      <View style={styles.ChallengeDetailsContainer}>
-        <View style={styles.progressPath}>
+      <View style={styles.strengthDetailsContainer}>
+        <View>
           {data.steps.map((step, i) => (
             <View key={i}>
               <View style={styles.stepContainer}>
@@ -111,7 +107,10 @@ export default function ChallengeDetails({ navigation }) {
                 </View>
                 <View style={styles.step}>
                   <Text style={styles.setpName}>{step.name}</Text>
-                  <DemoVideo videoID={step.videoID} />
+                  <View style={styles.videoContainer}>
+                    <DemoVideo videoID={step.videoID} style={styles.videoStyle}/>
+                  </View>
+                  
                 </View>
               </View>
               <View style={styles.divider}></View>
@@ -122,7 +121,9 @@ export default function ChallengeDetails({ navigation }) {
       <View style={styles.buttonContainer}>
         <DarkButton buttonText="Next" navigation={navigation} goTo="Tutorial" />
       </View>
-      <NavbarBottom />
+    </ScrollView>
+    <NavbarBottom />
     </View>
+    
   );
 }

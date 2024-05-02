@@ -19,7 +19,7 @@ import TriggerCamera from "./src/screens/Camera";
 import Congratulations from "./src/screens/Congratulation";
 import CardioResultScreen from "./src/screens/Cardio-Result";
 import CardioSkillScreen from "./src/screens/Cardio-Skills";
-import { LeaderBoard } from "./src/screens/LeaderboardPage";
+import LeaderBoard from "./src/screens/Leaderboard";
 
 export default function App() {
   const Stack = createNativeStackNavigator();

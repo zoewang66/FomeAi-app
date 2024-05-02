@@ -28,11 +28,11 @@ const StrengthSkillScreen = ({ navigation }) => {
           <Text style={styles.level}>{level}!</Text>{" "}
         </Text>
         <LightButton
-          buttonText={"Back To Home"}
-          style={styles.buttontext}
-          navigation={navigation}
-          goTo="Home"
-        />
+            buttonText={"Back To Home"}
+            style={styles.buttontext}
+            navigation={navigation}
+            goTo="Home"
+          />
         <StatusBar style="auto" />
       </ScrollView>
     </View>
@@ -71,6 +71,7 @@ const styles = StyleSheet.create({
     paddingTop: 10,
     paddingBottom: windowWidth > 375 ? 80 : 60,
   },
+
   level: {
     color: "red",
   },

@@ -54,7 +54,7 @@ export default function AssessStart({ navigation }) {
           <View style={styles.card}>
             <Image source={picture2} style={styles.picture2} />
             <View style={styles.cardContent}>
-              <Text style={styles.title}>Strength</Text>
+              <Text style={styles.title}>Cardio</Text>
               <View style={styles.button}>
                 <LightButton buttonText={"Choose"} goTo="StrengthAssessment" />
               </View>

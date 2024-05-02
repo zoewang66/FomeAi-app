@@ -135,7 +135,7 @@ const SignUp = ({ navigation }) => {
             <Text style={styles.text}>Forgot password?</Text>
           </TouchableOpacity>
           <DarkButton
-            buttonText={"Sign in"}
+            buttonText={"Sign Up"}
             navigation={navigation}
             goTo="AssessStart"
           />

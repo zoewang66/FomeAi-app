@@ -15,7 +15,7 @@ export default function LightButton({ buttonText, navigation, goTo }) {
 
 const styles = StyleSheet.create({
   text: {
-    fontSize: 20,
+    fontSize: 18,
     lineHeight: 21,
     fontWeight: "bold",
     letterSpacing: 0.25,
@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
   },
 
   button: {
-    width: 130,
+    width: 140,
     height: 50,
     alignItems: "center",
     borderRadius: 10,
