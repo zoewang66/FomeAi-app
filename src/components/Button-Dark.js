@@ -24,7 +24,7 @@ const windowHeight = Dimensions.get("window").height;
 
 const styles = StyleSheet.create({
   text: {
-    fontSize: windowHeight > 667 ? 26 : 22,
+    fontSize: windowHeight > 667 ? 26 : 20,
     lineHeight: 35,
     fontWeight: "bold",
     letterSpacing: 0.25,

@@ -20,6 +20,10 @@ import Congratulations from "./src/screens/Congratulation";
 import CardioResultScreen from "./src/screens/Cardio-Result";
 import CardioSkillScreen from "./src/screens/Cardio-Skills";
 import LeaderBoard from "./src/screens/Leaderboard";
+import NavbarBottom from "./src/components/Navbar-bottom";
+import Profile from "./assets/Icons/Profile";
+import { Header } from "react-native/Libraries/NewAppScreen";
+
 
 export default function App() {
   const Stack = createNativeStackNavigator();
@@ -31,8 +35,8 @@ export default function App() {
           component={WelcomeScreen}
           options={{ headerShown: false }}
         />
-        <Stack.Screen name="SignIn" component={SignIn} />
-        <Stack.Screen name="SignUp" component={SignUp} />
+        <Stack.Screen name="SignIn" component={SignIn} options={{headerShown: false}}/>
+        <Stack.Screen name="SignUp" component={SignUp} options={{headerShown: false}}/>
         <Stack.Screen name="AssessStart" component={AssessStart} />
         <Stack.Screen
           name="StrengthAssessment"
@@ -53,6 +57,7 @@ export default function App() {
         <Stack.Screen name="Exercise" component={ExercisePage} />
         <Stack.Screen name="Congratulation" component={Congratulations} />
       </Stack.Navigator>
+      {/* <NavbarBottom /> */}
     </NavigationContainer>
   );
 }

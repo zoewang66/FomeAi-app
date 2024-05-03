@@ -4,11 +4,12 @@ import NavbarBottom from "../components/Navbar-bottom";
 import ChallengeBox from "../components/ChallengeBox";
 import ChallengeProgressBar from "../components/ChallengeProgressBar";
 import UpcomingExercise from "../components/UpcomingExercise";
-import { NavigationContainer } from "@react-navigation/native";
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
     backgroundColor: "#E4EBEE",
+    justifyContent: "space-around",
   },
   contentContainer: {
     display: "flex",
@@ -24,10 +25,11 @@ const styles = StyleSheet.create({
   greetingText: {
     alignSelf: "flex-start",
     fontSize: 35,
+    paddingTop: 20,
   },
   userName: {
     alignSelf: "flex-start",
-    fontSize: 45,
+    fontSize: 35,
     color: "#F90A0A",
     paddingBottom: 20,
   },
@@ -35,7 +37,7 @@ const styles = StyleSheet.create({
     alignSelf: "flex-start",
     paddingTop: 10,
     paddingBottom: 25,
-    fontSize: 15,
+    fontSize: 16,
   },
   challengeBox: {
     paddingTop: 10,

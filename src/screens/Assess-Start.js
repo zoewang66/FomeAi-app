@@ -66,6 +66,7 @@ export default function AssessStart({ navigation }) {
           </View>
         </View>
       </ScrollView>
+      <NavbarBottom />
     </View>
   );
 }

@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, Image } from "react-native";
+import { StyleSheet, Text, View, Image, ScrollView } from "react-native";
 import NavbarBottom from "../components/Navbar-bottom";
 import DarkButton from "../components/Button-Dark";
 import HomePage from "./HomePage";
@@ -7,7 +7,9 @@ const congratsPic = require("../../assets/Congratulations.png");
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
     backgroundColor: "#E4EBEE",
+    justifyContent: "space-around",
   },
 
   contentContainer: {
@@ -39,23 +41,23 @@ const styles = StyleSheet.create({
 export default function Congratulations({ navigation }) {
   return (
     <View style={styles.container}>
-      {/* <NavbarTop /> */}
-      <View style={styles.contentContainer}>
-        <View>
-          <Image source={congratsPic} />
+      <ScrollView>
+        <View style={styles.contentContainer}>
+          <View>
+            <Image source={congratsPic} />
+          </View>
+          <Text style={styles.text}>
+            Congratulations! You are Done. We’ll Notify you when Results are Ready..
+          </Text>
         </View>
-        <Text style={styles.text}>
-          Congratulations! You are Done. We’ll Notify you when Results are
-          Ready..
-        </Text>
-      </View>
-      <View style={styles.buttonContainer}>
-        <DarkButton
-          buttonText="Back To Home"
-          navigation={navigation}
-          goTo="Home"
-        />
-      </View>
+        <View style={styles.buttonContainer}>
+          <DarkButton
+            buttonText="Back To Home"
+            navigation={navigation}
+            goTo="Home"
+          />
+        </View>  
+      </ScrollView>
       <NavbarBottom />
     </View>
   );

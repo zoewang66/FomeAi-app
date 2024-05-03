@@ -13,7 +13,7 @@ import payment from "./imgs/payment.png";
 import support from "./imgs/support.png";
 import about from "./imgs/about.png";
 
-export function Profile() {
+export function Profile({ navigation }) {
   const profileInformation = {
     name: "Dylan J",
     email: "dylan@example.com",

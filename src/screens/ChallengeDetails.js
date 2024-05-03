@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
     alignItems: "flex-start",
   },
   buttonContainer: {
-    paddingTop: 10,
+    paddingTop: 40,
     alignItems: "center",
   },
 });

@@ -1,18 +1,36 @@
+import React from "react";
 import { useState, useEffect, useRef } from "react";
-import { StyleSheet, View, Text, TouchableOpacity, Image } from "react-native";
+import { StyleSheet, View, Text, TouchableOpacity, Image, Dimensions } from "react-native";
 import { Camera, CameraType, requestCameraPermissionsAsync } from "expo-camera";
 import * as MediaLibrary from "expo-media-library";
 import ButtonInCamera from "../components/ButtonInCamera";
+import { Video } from 'expo-av';
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "center",
-    backgroundColor: "#fff",
+    backgroundColor: "#E4EBEE",
   },
   camera: {
     flex: 1,
-    borderRadius: 20,
+    borderRadius: 7,
+    flexDirection: "column",
+    justifyContent: "flex-start",
+    flexGrow: 1,
+    flexShrink: 0.6, 
+    width: '100%',
+    marginBottom: 0,
+  },
+  buttonContainer: {
+    flexDirection: "row",
+    columnGap: 20,
+    justifyContent: "center",
+    position: 'absolute',
+    bottom: 20, 
+    left: 0,
+    right: 0,
+    alignItems: 'center',
   },
 
   button: {
@@ -22,14 +40,21 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   buttonText: {
+    marginTop: 7,
+    alignItems: "center",
     fontWeight: "bold",
     fontSize: 16,
-    color: "#000",
+    color: "#4A7AD1",
   },
 });
 
 const TriggerCamera = ({ navigation }) => {
   const [hasCameraPermission, setHasCameraPermission] = useState(null);
+  const [hasAudioPermission, setHasAudioPermission] = useState(null);
+  const [camera, setCamera] = useState(null);
+  const video = React.useRef(null);
+  const [record, setRecord] = useState(null);
+  const [status, setStatus] = React.useState({});
   const [image, setImage] = useState(null);
   const [type, setType] = useState(Camera.Constants.Type.back);
   const [flashMode, setFlashMode] = useState(Camera.Constants.FlashMode.off);
@@ -40,6 +65,10 @@ const TriggerCamera = ({ navigation }) => {
       MediaLibrary.requestPermissionsAsync();
       const cameraStatus = await Camera.requestCameraPermissionsAsync();
       setHasCameraPermission(cameraStatus.status === "granted");
+
+      const audioStatus = await Camera.requestMicrophonePermissionsAsync();
+      setHasAudioPermission(audioStatus.status === 'granted');
+
     })();
   }, []);
 
@@ -56,16 +85,25 @@ const TriggerCamera = ({ navigation }) => {
   };
 
   const takeVideo = async () => {
-    if (cameraRef) {
-      try {
-        const data = await camera.recordAsync();
+    if(camera){
+        const data = await camera.recordAsync({
+          maxDuration:10
+        })
         setRecord(data.uri);
         console.log(data.uri);
-      } catch (error) {
-        console.log(error);
-      }
     }
-  };
+  }
+
+  const stopVideo = async () => {
+    camera.stopRecording();
+  }
+
+  if (hasCameraPermission === null || hasAudioPermission === null ) {
+    return <View />;
+  }
+  if (hasCameraPermission === false || hasAudioPermission === false) {
+    return <Text>No access to camera</Text>;
+  }
 
   const saveImage = async () => {
     if (image) {
@@ -108,11 +146,6 @@ const TriggerCamera = ({ navigation }) => {
               }}
             />
             <ButtonInCamera
-              // color={
-              //   flashMode === Camera.Constants.flashMode.off
-              //     ? "gray"
-              //     : "#f1f1f1"
-              // }
               icon={"flash"}
               onPress={() => {
                 setFlashMode(
@@ -141,6 +174,7 @@ const TriggerCamera = ({ navigation }) => {
             onPress={() => setImage(null)}
           />
           <ButtonInCamera title={"Save"} icon="check" onPress={saveImage} />
+  
           <TouchableOpacity
             style={styles.button}
             onPress={() => navigation.navigate("Exercise")}
@@ -149,12 +183,13 @@ const TriggerCamera = ({ navigation }) => {
           </TouchableOpacity>
         </View>
       ) : (
-        <View>
+        <View style={styles.buttonContainer}>
           <ButtonInCamera
-            title={"Take a picture"}
+            title={"Picture"}
             onPress={takePicture}
             icon="camera"
           />
+          <ButtonInCamera title="Video" onPress={() => takeVideo()} icon='video'/>
         </View>
       )}
     </View>

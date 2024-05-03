@@ -1,12 +1,14 @@
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
-
+import { useNavigation } from '@react-navigation/native';
 import Exercise from '../../../FomeAi-app/assets/Icons/Exercise';
 import Home from '../../../FomeAi-app/assets/Icons/Home';
 import LeaderBoard from '../../../FomeAi-app/assets/Icons/Leaderboard';
 import Profile from '../../../FomeAi-app/assets/Icons/Profile';
 
 
-export default function NavbarBottom({ navigation }) {
+export default function NavbarBottom() {
+  const navigation = useNavigation(); 
+
     return (
         <View style={styles.navbar}>
           <TouchableOpacity style={styles.navItem} onPress={() => navigation.navigate('Home')}>
@@ -26,7 +28,7 @@ export default function NavbarBottom({ navigation }) {
             <Text style={styles.text}>Profile</Text>
           </TouchableOpacity>
         </View>
-      );
+    );
 }
 
 const styles = StyleSheet.create({
