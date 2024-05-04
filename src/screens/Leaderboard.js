@@ -1,5 +1,6 @@
 import React from "react";
 import { View, Text, FlatList, StyleSheet, Image } from "react-native";
+import NavbarBottom from "../components/Navbar-bottom";
 
 export function LeaderBoard() {
   const leaderboardProps = [
@@ -126,6 +127,7 @@ export function LeaderBoard() {
         keyExtractor={(item) => item.name}
         contentContainerStyle={styles.listContainer}
       />
+      <NavbarBottom />
     </View>
   );
 }

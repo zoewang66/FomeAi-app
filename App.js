@@ -21,8 +21,8 @@ import CardioResultScreen from "./src/screens/Cardio-Result";
 import CardioSkillScreen from "./src/screens/Cardio-Skills";
 import LeaderBoard from "./src/screens/Leaderboard";
 import NavbarBottom from "./src/components/Navbar-bottom";
-import Profile from "./assets/Icons/Profile";
 import { Header } from "react-native/Libraries/NewAppScreen";
+import ProfilePage from "./src/screens/ProfilePage";
 
 export default function App() {
   const Stack = createNativeStackNavigator();
@@ -63,6 +63,8 @@ export default function App() {
         <Stack.Screen name="Camera" component={TriggerCamera} />
         <Stack.Screen name="Exercise" component={ExercisePage} />
         <Stack.Screen name="Congratulation" component={Congratulations} />
+        <Stack.Screen name="LeaderBoard" component={LeaderBoard} />
+        <Stack.Screen name="Profile" component={ProfilePage} />
       </Stack.Navigator>
       {/* <NavbarBottom /> */}
     </NavigationContainer>

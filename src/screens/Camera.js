@@ -158,7 +158,16 @@ const TriggerCamera = ({ navigation }) => {
           </View>
         </Camera>
       ) : (
-        <Image source={{ uri: image }} style={styles.camera} />
+        <Video
+          style={styles.video}
+          source={{
+            uri: record.uri,
+          }}
+          useNativeControls
+          resizeMode="contain"
+          isLooping
+          // onPlaybackStatusUpdate={(status) => setStatus(() => status)}
+        />
       )}
       {record ? (
         <View

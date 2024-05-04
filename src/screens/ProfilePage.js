@@ -12,8 +12,9 @@ import notification from "./imgs/notification.png";
 import payment from "./imgs/payment.png";
 import support from "./imgs/support.png";
 import about from "./imgs/about.png";
+import NavbarBottom from "../components/Navbar-bottom";
 
-export function Profile({ navigation }) {
+export default function ProfilePage({ navigation }) {
   const profileInformation = {
     name: "Dylan J",
     email: "dylan@example.com",
@@ -71,6 +72,7 @@ export function Profile({ navigation }) {
           <Text style={styles.logoutText}>Logout</Text>
         </TouchableOpacity>
       </View>
+      <NavbarBottom />
     </ScrollView>
   );
 }
@@ -78,7 +80,6 @@ export function Profile({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flexGrow: 1,
-    padding: 20,
     alignItems: "center",
   },
   profileInfo: {
