@@ -24,7 +24,6 @@ import NavbarBottom from "./src/components/Navbar-bottom";
 import Profile from "./assets/Icons/Profile";
 import { Header } from "react-native/Libraries/NewAppScreen";
 
-
 export default function App() {
   const Stack = createNativeStackNavigator();
   return (
@@ -35,8 +34,16 @@ export default function App() {
           component={WelcomeScreen}
           options={{ headerShown: false }}
         />
-        <Stack.Screen name="SignIn" component={SignIn} options={{headerShown: false}}/>
-        <Stack.Screen name="SignUp" component={SignUp} options={{headerShown: false}}/>
+        <Stack.Screen
+          name="SignIn"
+          component={SignIn}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="SignUp"
+          component={SignUp}
+          options={{ headerShown: false }}
+        />
         <Stack.Screen name="AssessStart" component={AssessStart} />
         <Stack.Screen
           name="StrengthAssessment"

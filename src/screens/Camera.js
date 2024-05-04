@@ -1,10 +1,17 @@
 import React from "react";
 import { useState, useEffect, useRef } from "react";
-import { StyleSheet, View, Text, TouchableOpacity, Image, Dimensions } from "react-native";
+import {
+  StyleSheet,
+  View,
+  Text,
+  TouchableOpacity,
+  Image,
+  Dimensions,
+} from "react-native";
 import { Camera, CameraType, requestCameraPermissionsAsync } from "expo-camera";
 import * as MediaLibrary from "expo-media-library";
 import ButtonInCamera from "../components/ButtonInCamera";
-import { Video } from 'expo-av';
+import { Video } from "expo-av";
 
 const styles = StyleSheet.create({
   container: {
@@ -18,19 +25,19 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     justifyContent: "flex-start",
     flexGrow: 1,
-    flexShrink: 0.6, 
-    width: '100%',
+    flexShrink: 0.6,
+    width: "100%",
     marginBottom: 0,
   },
   buttonContainer: {
     flexDirection: "row",
     columnGap: 20,
     justifyContent: "center",
-    position: 'absolute',
-    bottom: 20, 
+    position: "absolute",
+    bottom: 20,
     left: 0,
     right: 0,
-    alignItems: 'center',
+    alignItems: "center",
   },
 
   button: {
@@ -51,10 +58,9 @@ const styles = StyleSheet.create({
 const TriggerCamera = ({ navigation }) => {
   const [hasCameraPermission, setHasCameraPermission] = useState(null);
   const [hasAudioPermission, setHasAudioPermission] = useState(null);
-  const [camera, setCamera] = useState(null);
-  const video = React.useRef(null);
   const [record, setRecord] = useState(null);
   const [status, setStatus] = React.useState({});
+  const [isRecording, setIsRecording] = useState(false);
   const [image, setImage] = useState(null);
   const [type, setType] = useState(Camera.Constants.Type.back);
   const [flashMode, setFlashMode] = useState(Camera.Constants.FlashMode.off);
@@ -67,50 +73,44 @@ const TriggerCamera = ({ navigation }) => {
       setHasCameraPermission(cameraStatus.status === "granted");
 
       const audioStatus = await Camera.requestMicrophonePermissionsAsync();
-      setHasAudioPermission(audioStatus.status === 'granted');
-
+      setHasAudioPermission(audioStatus.status === "granted");
     })();
   }, []);
 
-  const takePicture = async () => {
+  const takeVideo = async () => {
+    setIsRecording(true);
     if (cameraRef) {
       try {
-        const data = await cameraRef.current.takePictureAsync();
+        const data = await cameraRef.current.recordAsync({
+          maxDuration: 10,
+        });
         console.log(data);
-        setImage(data.uri);
+        setRecord(data.uri);
+        setIsRecording(false);
       } catch (error) {
         console.log(error);
       }
     }
   };
 
-  const takeVideo = async () => {
-    if(camera){
-        const data = await camera.recordAsync({
-          maxDuration:10
-        })
-        setRecord(data.uri);
-        console.log(data.uri);
-    }
-  }
-
   const stopVideo = async () => {
-    camera.stopRecording();
-  }
+    setIsRecording(false);
+    cameraRef.current.stopRecording();
+  };
 
-  if (hasCameraPermission === null || hasAudioPermission === null ) {
+  if (hasCameraPermission === null || hasAudioPermission === null) {
     return <View />;
   }
   if (hasCameraPermission === false || hasAudioPermission === false) {
     return <Text>No access to camera</Text>;
   }
 
-  const saveImage = async () => {
-    if (image) {
+  const saveVideo = async () => {
+    if (record) {
       try {
-        await MediaLibrary.createAssetAsync(image);
-        alert("Picture Saved! 🎉");
-        setImage(null);
+        await MediaLibrary.createAssetAsync(record);
+        alert("Video Saved! 🎉");
+        setRecord(null);
       } catch (e) {
         console.log(e);
       }
@@ -123,7 +123,7 @@ const TriggerCamera = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      {!image ? (
+      {!record ? (
         <Camera
           style={styles.camera}
           type={type}
@@ -160,7 +160,7 @@ const TriggerCamera = ({ navigation }) => {
       ) : (
         <Image source={{ uri: image }} style={styles.camera} />
       )}
-      {image ? (
+      {record ? (
         <View
           style={{
             flexDirection: "row",
@@ -173,8 +173,8 @@ const TriggerCamera = ({ navigation }) => {
             icon="retweet"
             onPress={() => setImage(null)}
           />
-          <ButtonInCamera title={"Save"} icon="check" onPress={saveImage} />
-  
+          <ButtonInCamera title={"Save"} icon="check" onPress={saveVideo} />
+
           <TouchableOpacity
             style={styles.button}
             onPress={() => navigation.navigate("Exercise")}
@@ -185,11 +185,10 @@ const TriggerCamera = ({ navigation }) => {
       ) : (
         <View style={styles.buttonContainer}>
           <ButtonInCamera
-            title={"Picture"}
-            onPress={takePicture}
+            title={isRecording ? "Stop Recording" : "Start Recording"}
+            onPress={isRecording ? stopVideo : takeVideo}
             icon="camera"
           />
-          <ButtonInCamera title="Video" onPress={() => takeVideo()} icon='video'/>
         </View>
       )}
     </View>
