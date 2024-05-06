@@ -7,10 +7,10 @@ import {
   TouchableOpacity,
   ScrollView,
 } from "react-native";
-import profilePicLogo from "./imgs/profilePicLogo.png";
-import notification from "./imgs/notification.png";
-import payment from "./imgs/payment.png";
-import support from "./imgs/support.png";
+import profilePicLogo from "../../assets/imgs/profilePicLogo.png";
+import notification from "../../assets/imgs/notification.png";
+import payment from "../../assets/imgs/payment.png";
+import support from "../../assets/imgs/support.png";
 import about from "./imgs/about.png";
 import NavbarBottom from "../components/Navbar-bottom";
 
@@ -18,7 +18,7 @@ export default function ProfilePage({ navigation }) {
   const profileInformation = {
     name: "Dylan J",
     email: "dylan@example.com",
-    profilePic: require("./imgs/profilePic.png"),
+    profilePic: require("../../assets/imgs/profilePic.png"),
   };
 
   return (
