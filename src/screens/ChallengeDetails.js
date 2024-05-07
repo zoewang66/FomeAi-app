@@ -17,21 +17,21 @@ const styles = StyleSheet.create({
     fontStyle: "normal",
     fontWeight: "400",
     textDecorationLine: "underline",
-    paddingBottom: 20,
+    paddingBottom: 10,
     paddingTop: 20,
     backgroundColor: "#E4EBEE",
   },
   strengthDetailsContainer: {
-    paddingTop: 30, //TBC
+    paddingTop: 20, //TBC
   },
   stepContainer: {
     flexDirection: "row",
     minHeight: 30,
-    position: "relative", 
+    position: "relative",
   },
   stepLine: {
     width: 2,
-    height: "550%",
+    height: "530%",
     backgroundColor: "black",
     zIndex: 1,
     position: "absolute",
@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
     width: 50,
     justifyContent: "flex-start",
     alignItems: "center",
-    aspectRatio: 1, 
+    aspectRatio: 1,
   },
   stepIndicatorText: {
     textAlign: "center",
@@ -65,15 +65,14 @@ const styles = StyleSheet.create({
   },
   videoContainer: {
     flexWrap: "wrap",
-    width: '100%',
+    width: "100%",
     alignItems: "flex-start",
   },
   buttonContainer: {
-    paddingTop: 40,
+    paddingTop: 10,
     alignItems: "center",
   },
 });
-
 
 export default function ChallengeDetails({ navigation }) {
   const data = {
@@ -92,38 +91,43 @@ export default function ChallengeDetails({ navigation }) {
 
   return (
     <View style={styles.container}>
-      <ScrollView >
-      <Text style={styles.challengeName}>{data.challengeName}</Text>
-      <View style={styles.strengthDetailsContainer}>
-        <View>
-          {data.steps.map((step, i) => (
-            <View key={i}>
-              <View style={styles.stepContainer}>
-                <View style={styles.stepIndicator}>
-                  {i < data.steps.length ? (
-                    <View style={styles.stepLine}></View>
-                  ) : null}
-                  <Text style={styles.stepIndicatorText}>{i + 1}</Text>
-                </View>
-                <View style={styles.step}>
-                  <Text style={styles.setpName}>{step.name}</Text>
-                  <View style={styles.videoContainer}>
-                    <DemoVideo videoID={step.videoID} style={styles.videoStyle}/>
+      <ScrollView>
+        <Text style={styles.challengeName}>{data.challengeName}</Text>
+        <View style={styles.strengthDetailsContainer}>
+          <View>
+            {data.steps.map((step, i) => (
+              <View key={i}>
+                <View style={styles.stepContainer}>
+                  <View style={styles.stepIndicator}>
+                    {i < data.steps.length ? (
+                      <View style={styles.stepLine}></View>
+                    ) : null}
+                    <Text style={styles.stepIndicatorText}>{i + 1}</Text>
                   </View>
-                  
+                  <View style={styles.step}>
+                    <Text style={styles.setpName}>{step.name}</Text>
+                    <View style={styles.videoContainer}>
+                      <DemoVideo
+                        videoID={step.videoID}
+                        style={styles.videoStyle}
+                      />
+                    </View>
+                  </View>
                 </View>
+                <View style={styles.divider}></View>
               </View>
-              <View style={styles.divider}></View>
-            </View>
-          ))}
+            ))}
+          </View>
         </View>
-      </View>
-      <View style={styles.buttonContainer}>
-        <DarkButton buttonText="Next" navigation={navigation} goTo="Tutorial" />
-      </View>
-    </ScrollView>
-    <NavbarBottom />
+        <View style={styles.buttonContainer}>
+          <DarkButton
+            buttonText="Next"
+            navigation={navigation}
+            goTo="Tutorial"
+          />
+        </View>
+      </ScrollView>
+      <NavbarBottom />
     </View>
-    
   );
 }

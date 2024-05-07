@@ -12,6 +12,8 @@ import { Camera, CameraType, requestCameraPermissionsAsync } from "expo-camera";
 import * as MediaLibrary from "expo-media-library";
 import ButtonInCamera from "../components/ButtonInCamera";
 import { Video } from "expo-av";
+import { manipulateAsync } from "expo-image-manipulator";
+import { Asset } from "expo-asset";
 
 const styles = StyleSheet.create({
   container: {
@@ -53,6 +55,13 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: "#4A7AD1",
   },
+
+  flippedVideo: {
+    alignSelf: "center",
+    flex: 1,
+    flexGrow: 1,
+    width: "100%",
+  },
 });
 
 const TriggerCamera = ({ navigation }) => {
@@ -61,10 +70,10 @@ const TriggerCamera = ({ navigation }) => {
   const [record, setRecord] = useState(null);
   const [status, setStatus] = React.useState({});
   const [isRecording, setIsRecording] = useState(false);
-  const [image, setImage] = useState(null);
   const [type, setType] = useState(Camera.Constants.Type.back);
   const [flashMode, setFlashMode] = useState(Camera.Constants.FlashMode.off);
   const cameraRef = useRef(null);
+  const flippedVideo = useRef(null);
 
   useEffect(() => {
     (async () => {
@@ -86,6 +95,7 @@ const TriggerCamera = ({ navigation }) => {
         });
         console.log(data);
         setRecord(data.uri);
+        // await flipVideoHorizontally(data.uri);
         setIsRecording(false);
       } catch (error) {
         console.log(error);
@@ -159,13 +169,14 @@ const TriggerCamera = ({ navigation }) => {
         </Camera>
       ) : (
         <Video
-          style={styles.video}
+          ref={flippedVideo}
+          style={styles.flippedVideo}
           source={{
-            uri: record.uri,
+            uri: record,
           }}
           useNativeControls
           resizeMode="contain"
-          isLooping
+          // isLooping
           // onPlaybackStatusUpdate={(status) => setStatus(() => status)}
         />
       )}

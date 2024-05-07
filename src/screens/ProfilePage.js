@@ -11,7 +11,7 @@ import profilePicLogo from "../../assets/imgs/profilePicLogo.png";
 import notification from "../../assets/imgs/notification.png";
 import payment from "../../assets/imgs/payment.png";
 import support from "../../assets/imgs/support.png";
-import about from "./imgs/about.png";
+import about from "../../assets/about.png";
 import NavbarBottom from "../components/Navbar-bottom";
 
 export default function ProfilePage({ navigation }) {

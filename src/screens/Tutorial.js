@@ -1,4 +1,11 @@
-import { StyleSheet, Text, View, Image, TouchableOpacity, ScrollView } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  TouchableOpacity,
+  ScrollView,
+} from "react-native";
 import NavbarBottom from "../components/Navbar-bottom";
 import DemoVideo from "../components/DemoVideo";
 import DarkButton from "../components/Button-Dark";
@@ -23,7 +30,7 @@ const styles = StyleSheet.create({
     width: 310,
     flexShrink: 0,
     paddingLeft: 70,
-    height: 610,
+    height: 580,
     backgroundColor: "#E4EBEE",
   },
 
@@ -33,11 +40,11 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontWeight: 400,
     paddingTop: 30,
-    paddingBottom: 30,
+    paddingBottom: 20,
   },
 
   buttonContainer: {
-    paddingTop: 30,
+    paddingTop: 10,
     alignItems: "center",
   },
 });
@@ -46,19 +53,23 @@ export default function Tutorial({ navigation }) {
   return (
     <View style={styles.container}>
       <ScrollView>
-         <View style={styles.contentContainer}>
-           <Text style={styles.text}>
-             Adjust your Camera and We Can Record your Movement!
-           </Text>
-           <View>
-             <Image source={tutorialPic} />
-           </View>
-           <Text style={styles.text}>Tutorial Video</Text>
-           <DemoVideo videoID="CN_RsGkRScM" />
-         </View>
-         <View style={styles.buttonContainer}>
-           <DarkButton buttonText="Start" navigation={navigation} goTo="Camera" />
-         </View>
+        <View style={styles.contentContainer}>
+          <Text style={styles.text}>
+            Adjust your Camera and We Can Record your Movement!
+          </Text>
+          <View>
+            <Image source={tutorialPic} />
+          </View>
+          <Text style={styles.text}>Tutorial Video</Text>
+          <DemoVideo videoID="CN_RsGkRScM" />
+        </View>
+        <View style={styles.buttonContainer}>
+          <DarkButton
+            buttonText="Start"
+            navigation={navigation}
+            goTo="Camera"
+          />
+        </View>
       </ScrollView>
       <NavbarBottom />
     </View>
