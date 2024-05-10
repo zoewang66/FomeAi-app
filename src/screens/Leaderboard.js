@@ -1,6 +1,9 @@
 import React from "react";
-import { View, Text, FlatList, StyleSheet, Image } from "react-native";
+import { View, Text, FlatList, StyleSheet, Image, ScrollView, Dimensions } from "react-native";
 import NavbarBottom from "../components/Navbar-bottom";
+
+const windowHeight = Dimensions.get("window").height;
+const windowWidth = Dimensions.get("window").width;
 
 export function LeaderBoard() {
   const leaderboardProps = [
@@ -85,7 +88,8 @@ export function LeaderBoard() {
   );
 
   return (
-    <View>
+  <View>
+    <ScrollView>
       <View style={styles.topLeadersContainer}>
         {number2.map((leader) => (
           <View
@@ -121,34 +125,42 @@ export function LeaderBoard() {
           </View>
         ))}
       </View>
-      <FlatList
+    </ScrollView>
+      
+    <FlatList
         data={remainingLeaders}
         renderItem={renderLeader}
         keyExtractor={(item) => item.name}
         contentContainerStyle={styles.listContainer}
       />
-      <NavbarBottom />
-    </View>
+    <NavbarBottom />
+  </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
+    backgroundColor: "#E4EBEE",
+    justifyContent: "space-between",
+    borderWidth: 1,
   },
+  
   text: {
     color: "#472938",
     fontSize: 20,
     fontWeight: "bold",
     margin: 30,
     marginLeft: 125,
+    borderWidth: 1,
+    borderColor: "red",
   },
   listContainer: {
-    flexGrow: 1,
+    // flexGrow: 1,
     justifyContent: "center",
     alignItems: "center",
+    borderWidth: 1,
+    borderColor: "red",
   },
   item: {
     flexDirection: "row",
@@ -159,6 +171,8 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: "#ddd",
     width: "100%",
+    borderWidth: 1,
+    borderColor: "red",
   },
   name: {
     flex: 1,

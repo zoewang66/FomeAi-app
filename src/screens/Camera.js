@@ -1,5 +1,4 @@
-import React from "react";
-import { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import {
   StyleSheet,
   View,
@@ -61,6 +60,7 @@ const styles = StyleSheet.create({
     flex: 1,
     flexGrow: 1,
     width: "100%",
+    transform: [{ scaleX: -1 }],
   },
 });
 
@@ -68,16 +68,14 @@ const TriggerCamera = ({ navigation }) => {
   const [hasCameraPermission, setHasCameraPermission] = useState(null);
   const [hasAudioPermission, setHasAudioPermission] = useState(null);
   const [record, setRecord] = useState(null);
-  const [status, setStatus] = React.useState({});
   const [isRecording, setIsRecording] = useState(false);
   const [type, setType] = useState(Camera.Constants.Type.back);
   const [flashMode, setFlashMode] = useState(Camera.Constants.FlashMode.off);
   const cameraRef = useRef(null);
-  const flippedVideo = useRef(null);
 
   useEffect(() => {
     (async () => {
-      MediaLibrary.requestPermissionsAsync();
+      const mediaLibStatus = await MediaLibrary.requestPermissionsAsync();
       const cameraStatus = await Camera.requestCameraPermissionsAsync();
       setHasCameraPermission(cameraStatus.status === "granted");
 
@@ -88,14 +86,13 @@ const TriggerCamera = ({ navigation }) => {
 
   const takeVideo = async () => {
     setIsRecording(true);
-    if (cameraRef) {
+    if (cameraRef.current) {
       try {
         const data = await cameraRef.current.recordAsync({
           maxDuration: 10,
         });
         console.log(data);
         setRecord(data.uri);
-        // await flipVideoHorizontally(data.uri);
         setIsRecording(false);
       } catch (error) {
         console.log(error);
@@ -108,17 +105,11 @@ const TriggerCamera = ({ navigation }) => {
     cameraRef.current.stopRecording();
   };
 
-  if (hasCameraPermission === null || hasAudioPermission === null) {
-    return <View />;
-  }
-  if (hasCameraPermission === false || hasAudioPermission === false) {
-    return <Text>No access to camera</Text>;
-  }
-
   const saveVideo = async () => {
     if (record) {
       try {
-        await MediaLibrary.createAssetAsync(record);
+        const asset = await MediaLibrary.createAssetAsync(record);
+        await MediaLibrary.createAlbumAsync("Fome Ai", asset, false);
         alert("Video Saved! 🎉");
         setRecord(null);
       } catch (e) {
@@ -127,7 +118,10 @@ const TriggerCamera = ({ navigation }) => {
     }
   };
 
-  if (hasCameraPermission === false) {
+  if (hasCameraPermission === null || hasAudioPermission === null) {
+    return <View />;
+  }
+  if (hasCameraPermission === false || hasAudioPermission === false) {
     return <Text>No access to camera</Text>;
   }
 
@@ -169,15 +163,13 @@ const TriggerCamera = ({ navigation }) => {
         </Camera>
       ) : (
         <Video
-          ref={flippedVideo}
+          ref={cameraRef}
           style={styles.flippedVideo}
           source={{
             uri: record,
           }}
           useNativeControls
           resizeMode="contain"
-          // isLooping
-          // onPlaybackStatusUpdate={(status) => setStatus(() => status)}
         />
       )}
       {record ? (
@@ -191,7 +183,7 @@ const TriggerCamera = ({ navigation }) => {
           <ButtonInCamera
             title={"Re-take"}
             icon="retweet"
-            onPress={() => setImage(null)}
+            onPress={() => setRecord(null)}
           />
           <ButtonInCamera title={"Save"} icon="check" onPress={saveVideo} />
 
