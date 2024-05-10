@@ -108,9 +108,9 @@ const TriggerCamera = ({ navigation }) => {
   const saveVideo = async () => {
     if (record) {
       try {
-        const asset = await MediaLibrary.createAssetAsync(record);
-        await MediaLibrary.createAlbumAsync("Fome Ai", asset, false);
-        alert("Video Saved! 🎉");
+        // Call handleUpload function with the uploadUri
+        await handleUpload(record);
+        alert("Video Uploaded! 🎉");
         setRecord(null);
       } catch (e) {
         console.log(e);
@@ -118,10 +118,33 @@ const TriggerCamera = ({ navigation }) => {
     }
   };
 
-  if (hasCameraPermission === null || hasAudioPermission === null) {
-    return <View />;
-  }
-  if (hasCameraPermission === false || hasAudioPermission === false) {
+  const handleUpload = async () => {
+    const backendUrl = "http://172.16.11.254:3000/";
+    try {
+      const formData = new FormData();
+      formData.append("video", {
+        uri: record,
+        name: "QUTvideo.mp4",
+        type: "video/mp4",
+      });
+
+      const response = await fetch(`${backendUrl}`, {
+        method: "POST",
+        body: formData,
+      });
+
+      if (!response.ok) {
+        throw new Error("Upload failed");
+      }
+
+      console.log("Upload successful");
+    } catch (error) {
+      console.error("Error uploading video:", error.message);
+      throw error; // rethrow error to be caught by the saveVideo function
+    }
+  };
+
+  if (hasCameraPermission === false) {
     return <Text>No access to camera</Text>;
   }
 
