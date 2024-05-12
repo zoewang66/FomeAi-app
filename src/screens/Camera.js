@@ -1,4 +1,5 @@
-import React, { useState, useEffect, useRef } from "react";
+import React from "react";
+import { useState, useEffect, useRef } from "react";
 import {
   StyleSheet,
   View,
@@ -60,7 +61,6 @@ const styles = StyleSheet.create({
     flex: 1,
     flexGrow: 1,
     width: "100%",
-    transform: [{ scaleX: -1 }],
   },
 });
 
@@ -68,14 +68,16 @@ const TriggerCamera = ({ navigation }) => {
   const [hasCameraPermission, setHasCameraPermission] = useState(null);
   const [hasAudioPermission, setHasAudioPermission] = useState(null);
   const [record, setRecord] = useState(null);
+  const [status, setStatus] = React.useState({});
   const [isRecording, setIsRecording] = useState(false);
   const [type, setType] = useState(Camera.Constants.Type.back);
   const [flashMode, setFlashMode] = useState(Camera.Constants.FlashMode.off);
   const cameraRef = useRef(null);
+  const flippedVideo = useRef(null);
 
   useEffect(() => {
     (async () => {
-      const mediaLibStatus = await MediaLibrary.requestPermissionsAsync();
+      MediaLibrary.requestPermissionsAsync();
       const cameraStatus = await Camera.requestCameraPermissionsAsync();
       setHasCameraPermission(cameraStatus.status === "granted");
 
@@ -86,13 +88,14 @@ const TriggerCamera = ({ navigation }) => {
 
   const takeVideo = async () => {
     setIsRecording(true);
-    if (cameraRef.current) {
+    if (cameraRef) {
       try {
         const data = await cameraRef.current.recordAsync({
           maxDuration: 10,
         });
         console.log(data);
         setRecord(data.uri);
+        // await flipVideoHorizontally(data.uri);
         setIsRecording(false);
       } catch (error) {
         console.log(error);
@@ -104,6 +107,13 @@ const TriggerCamera = ({ navigation }) => {
     setIsRecording(false);
     cameraRef.current.stopRecording();
   };
+
+  if (hasCameraPermission === null || hasAudioPermission === null) {
+    return <View />;
+  }
+  if (hasCameraPermission === false || hasAudioPermission === false) {
+    return <Text>No access to camera</Text>;
+  }
 
   const saveVideo = async () => {
     if (record) {
@@ -186,13 +196,15 @@ const TriggerCamera = ({ navigation }) => {
         </Camera>
       ) : (
         <Video
-          ref={cameraRef}
+          ref={flippedVideo}
           style={styles.flippedVideo}
           source={{
             uri: record,
           }}
           useNativeControls
           resizeMode="contain"
+          // isLooping
+          // onPlaybackStatusUpdate={(status) => setStatus(() => status)}
         />
       )}
       {record ? (

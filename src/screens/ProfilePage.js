@@ -6,13 +6,18 @@ import {
   StyleSheet,
   TouchableOpacity,
   ScrollView,
+  Dimensions
 } from "react-native";
-import profilePicLogo from "../../assets/imgs/profilePicLogo.png";
-import notification from "../../assets/imgs/notification.png";
-import payment from "../../assets/imgs/payment.png";
-import support from "../../assets/imgs/support.png";
-import about from "../../assets/about.png";
 import NavbarBottom from "../components/Navbar-bottom";
+import LightButton from "../components/Button-Light";
+import ProfileInfo from '../../../FomeAi-app/assets/Icons/ProfileInfo';
+import Notification from '../../../FomeAi-app/assets/Icons/Notification';
+import Payment from "../../assets/Icons/Payment";
+import Chat from "../../assets/Icons/Chat";
+import Contact from "../../assets/Icons/Contact";
+import Arrow from "../../assets/Icons/Arrow";
+
+const windowHeight = Dimensions.get("window").height;
 
 export default function ProfilePage({ navigation }) {
   const profileInformation = {
@@ -22,7 +27,8 @@ export default function ProfilePage({ navigation }) {
   };
 
   return (
-    <ScrollView contentContainerStyle={styles.container}>
+    <View style={styles.container}>
+      <ScrollView>
       <View style={styles.profileInfo}>
         <Image
           source={profileInformation.profilePic}
@@ -34,57 +40,76 @@ export default function ProfilePage({ navigation }) {
 
       <View style={styles.optionsContainer}>
         <TouchableOpacity style={styles.optionContainer}>
-          <Image source={profilePicLogo} style={styles.icon} />
+          <View style={styles.icon}>
+            <ProfileInfo style={styles.icon} />
+          </View>
           <View style={styles.optionTextContainer}>
             <Text style={styles.optionText}>My Information</Text>
           </View>
-          <Text style={styles.arrow}>→</Text>
+          <Arrow />
         </TouchableOpacity>
         <TouchableOpacity style={styles.optionContainer}>
-          <Image source={notification} style={styles.icon} />
+          <View style={styles.icon}>
+            <Notification />
+          </View> 
           <View style={styles.optionTextContainer}>
             <Text style={styles.optionText}>Notifications</Text>
           </View>
-          <Text style={styles.arrow}>→</Text>
+          <Arrow />
         </TouchableOpacity>
         <TouchableOpacity style={styles.optionContainer}>
-          <Image source={payment} style={styles.icon} />
+          <View style={styles.icon}>
+            <Payment style={styles.icon} />
+          </View>
           <View style={styles.optionTextContainer}>
             <Text style={styles.optionText}>Payment</Text>
           </View>
-          <Text style={styles.arrow}>→</Text>
+          <Arrow />
         </TouchableOpacity>
         <TouchableOpacity style={styles.optionContainer}>
-          <Image source={support} style={styles.icon} />
+          <View style={styles.icon}>
+            <Chat />
+          </View> 
           <View style={styles.optionTextContainer}>
             <Text style={styles.optionText}>Support</Text>
           </View>
-          <Text style={styles.arrow}>→</Text>
+          <Arrow />
         </TouchableOpacity>
         <TouchableOpacity style={styles.optionContainer}>
-          <Image source={about} style={styles.icon} />
+          <View style={styles.icon}>
+            <Contact />
+          </View>
           <View style={styles.optionTextContainer}>
             <Text style={styles.optionText}>About Us</Text>
           </View>
-          <Text style={styles.arrow}>→</Text>
+          <Arrow />
         </TouchableOpacity>
         <TouchableOpacity style={styles.logoutButton}>
-          <Text style={styles.logoutText}>Logout</Text>
+          <LightButton style={styles.logoutButton}
+            buttonText={"Logout"} 
+            navigation={navigation} 
+            goTo="HomePage"
+          />
         </TouchableOpacity>
       </View>
-      <NavbarBottom />
     </ScrollView>
+    <NavbarBottom />
+    </View>
+    
+    
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flexGrow: 1,
-    alignItems: "center",
+    justifyContent: "space-around",
+    width: "100%",
   },
   profileInfo: {
     alignItems: "center",
-    marginBottom: 20,
+    width: "100%",
+    marginBottom: 10,
   },
   profilePic: {
     width: 100,
@@ -94,62 +119,55 @@ const styles = StyleSheet.create({
     marginTop: 30,
   },
   name: {
-    fontSize: 20,
+    fontSize: 22,
     fontWeight: "bold",
     marginBottom: 5,
     color: "red",
   },
   email: {
-    fontSize: 16,
+    fontSize: 19,
     color: "red",
   },
   optionsContainer: {
     width: "100%",
-    justifyContent: "space-between",
+    height: windowHeight > 679 ? "90%" : "57%",
+    justifyContent: "space-around",
     flexGrow: 1,
     alignItems: "center",
   },
   optionContainer: {
+    height: 55, 
+    width: "80%",
     flexDirection: "row",
-    alignItems: "center",
-    paddingVertical: 30,
+    alignItems: "flex-start",
+    paddingVertical: 10,
     borderBottomWidth: 1,
     borderBottomColor: "#ddd",
   },
   optionTextContainer: {
     flex: 1,
-    maxWidth: 150,
+    width: "85%",
+    height: 45,
   },
   optionText: {
-    fontSize: 16,
-    marginLeft: 10,
-    alignSelf: "center",
+    fontSize: 23,
+    marginLeft: 20,
+    alignSelf: "flex-start",
     flexShrink: 1,
   },
   icon: {
-    width: 20,
-    height: 20,
-    marginRight: 10,
+    width: 25,
+    height: 25,
     alignSelf: "center",
-  },
-  logoutButton: {
-    alignItems: "center",
-    paddingVertical: 15,
-    paddingHorizontal: 20,
-    backgroundColor: "#FFFFFF",
-    borderWidth: 1,
-    borderColor: "#4A7AD1",
-    borderRadius: 5,
-    width: 100,
-    alignSelf: "center",
-    marginTop: 10,
-  },
-  logoutText: {
-    color: "#4A7AD1",
-    fontSize: 18,
+    borderWidth: 2,
+    borderColor: "red",
   },
   arrow: {
     marginLeft: 10,
-    fontSize: 16,
+    alignSelf: "center",
+  },
+  logoutButton: {
+    marginTop: windowHeight > 679 ? 0 : 10,
+    alignSelf: "center",
   },
 });
