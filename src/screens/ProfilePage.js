@@ -10,8 +10,8 @@ import {
 } from "react-native";
 import NavbarBottom from "../components/Navbar-bottom";
 import LightButton from "../components/Button-Light";
-import ProfileInfo from "../../../FomeAi-app/assets/Icons/ProfileInfo";
-import Notification from "../../../FomeAi-app/assets/Icons/Notification";
+import ProfileInfo from "../../assets/Icons/ProfileInfo";
+import Notification from "../../assets/Icons/Notification";
 import Payment from "../../assets/Icons/Payment";
 import Chat from "../../assets/Icons/Chat";
 import Contact from "../../assets/Icons/Contact";

@@ -52,7 +52,7 @@ export default function UpcomingExercise({
   return (
     <TouchableOpacity
       style={styles.upcoming_exercise_box}
-      onPress={() => navigation.navigate("Congratulation")}
+      onPress={() => navigation.navigate("Exercise")}
     >
       <View style={styles.content_Container}>
         <View style={styles.iconColumn}>

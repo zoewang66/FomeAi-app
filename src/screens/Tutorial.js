@@ -66,8 +66,8 @@ export default function Tutorial({ navigation }) {
         <View style={styles.buttonContainer}>
           <DarkButton
             buttonText="Start"
-            onPress={() => navigation.navigate("Camera")}
-            
+            navigation={navigation}
+            goTo="Camera"
           />
         </View>
       </ScrollView>

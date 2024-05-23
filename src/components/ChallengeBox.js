@@ -6,9 +6,9 @@ const windowWidth = Dimensions.get("window").width;
 
 const styles = StyleSheet.create({
   challenge_box: {
-    width: '100%',
+    width: "100%",
     height: undefined,
-    aspectRatio: 310/132,
+    aspectRatio: 310 / 132,
     borderRadius: 20,
     backgroundColor: "rgba(146, 163, 253, 0.2)",
     justifyContent: "center",
@@ -16,8 +16,8 @@ const styles = StyleSheet.create({
   },
 
   content_Container: {
-    flexDirection: "row", 
-    justifyContent: "space-between", 
+    flexDirection: "row",
+    justifyContent: "space-between",
     width: "100%",
     paddingTop: 10,
   },
@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
     fontSize: 15,
     fontStyle: "normal",
     fontWeight: "400",
-    lineHeight: 20, 
+    lineHeight: 20,
     paddingBottom: 10,
   },
 
@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
     width: 97,
     height: 37,
     backgroundColor: "#fff",
-    marginLeft:15,
+    marginLeft: 15,
   },
 
   view_more_button_text: {

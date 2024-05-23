@@ -1,5 +1,12 @@
 import React from "react";
-import { View, Text, Image, StyleSheet, ScrollView } from "react-native";
+import {
+  View,
+  Text,
+  Image,
+  StyleSheet,
+  ScrollView,
+  TouchableOpacity,
+} from "react-native";
 import NavbarBottom from "../components/Navbar-bottom";
 import ChallengeBox from "../components/ChallengeBox";
 import ChallengeProgressBar from "../components/ChallengeProgressBar";
@@ -58,11 +65,9 @@ const styles = StyleSheet.create({
   },
 });
 
-const hasChallenge = false;
+const hasChallenge = true;
 
-export default function HomePage() {
-  const navigation = useNavigation();
-  
+export default function HomePage({ navigation }) {
   const currentTime = new Date().getHours();
   let greeting;
 
@@ -130,10 +135,15 @@ function HomeNoExercise({ navigation }) {
   );
 }
 
-function HomeHasExercise() {
+function HomeHasExercise({ navigation }) {
   return (
     <ScrollView>
-      <Image source={require("../../assets/WeeklyScore.png")} />
+      <TouchableOpacity
+        navigate={navigation}
+        onPress={() => navigation.navigate("Score")}
+      >
+        <Image source={require("../../assets/WeeklyScore.png")} />
+      </TouchableOpacity>
       <Text style={styles.hasExerciseText}>Your Challenge Progress</Text>
       <ChallengeProgressBar />
       <Text style={styles.hasExerciseText}>Upcoming Exercises</Text>
@@ -141,12 +151,14 @@ function HomeHasExercise() {
         <View style={styles.upcomingExercise}>
           <UpcomingExercise
             name="Push-Ups"
+            navigation={navigation}
             exercise_icon={require("../../assets/Push-Ups.jpg")}
           />
         </View>
         <View style={styles.upcomingExercise}>
           <UpcomingExercise
             name="Plank"
+            navigation={navigation}
             exercise_icon={require("../../assets/Plank_Icon.jpg")}
           />
         </View>

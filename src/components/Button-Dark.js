@@ -6,12 +6,12 @@ import {
   Dimensions,
 } from "react-native";
 
-export default function DarkButton({ buttonText, onPress }) {
+export default function DarkButton({ buttonText, navigation, goTo }) {
   return (
     <View>
       <TouchableOpacity
         style={styles.button}
-        onPress={onPress}
+        onPress={() => navigation.navigate({ name: goTo })}
       >
         <Text style={styles.text}>{buttonText}</Text>
       </TouchableOpacity>

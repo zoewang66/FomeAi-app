@@ -47,15 +47,17 @@ export default function Congratulations({ navigation }) {
             <Image source={congratsPic} />
           </View>
           <Text style={styles.text}>
-            Congratulations! You are Done. We’ll Notify you when Results are Ready..
+            Congratulations! You are Done. We’ll Notify you when Results are
+            Ready..
           </Text>
         </View>
         <View style={styles.buttonContainer}>
           <DarkButton
             buttonText="Back To Home"
-            onPress={() => navigation.navigate("HomePage")}
+            navigation={navigation}
+            goTo="HomePage"
           />
-        </View>  
+        </View>
       </ScrollView>
       <NavbarBottom />
     </View>

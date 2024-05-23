@@ -7,13 +7,11 @@ import {
   TouchableOpacity,
   Dimensions,
 } from "react-native";
-import { Camera, CameraType } from 'expo-camera/legacy';
+import { Camera, CameraType } from "expo-camera/legacy";
 import * as MediaLibrary from "expo-media-library";
 import ButtonInCamera from "../components/ButtonInCamera";
 import { Video } from "expo-av";
 import * as ImagePicker from "expo-image-picker";
-
-const windowHeight = Dimensions.get("window").height;
 
 const styles = StyleSheet.create({
   container: {
@@ -42,23 +40,18 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
 
-  text: {
-    fontSize: windowHeight > 667 ? 17 : 15,
-    lineHeight: 19,
-    fontWeight: "bold",
-    color: "white", 
-    textAlign: "center",
+  button: {
+    height: 40,
+    flexDirection: "row",
+    alignItems: "center",
     justifyContent: "center",
   },
-
-  button: {
-    width: windowHeight > 667 ? "22%" : "20%",
-    height: windowHeight > 667 ? 50 : 40,
-    borderRadius: 15,
-    backgroundColor: "#4A7AD1",
-    borderWidth: 1,
-    borderColor: "#4A7AD1",
-    marginVertical: windowHeight > 667 ? 20 : 35,
+  buttonText: {
+    marginTop: 7,
+    alignItems: "center",
+    fontWeight: "bold",
+    fontSize: 16,
+    color: "#4A7AD1",
   },
 
   flippedVideo: {
@@ -73,6 +66,7 @@ const TriggerCamera = ({ navigation }) => {
   const [hasCameraPermission, setHasCameraPermission] = useState(null);
   const [hasAudioPermission, setHasAudioPermission] = useState(null);
   const [record, setRecord] = useState(null);
+  // const [status, setStatus] = React.useState({});
   const [isRecording, setIsRecording] = useState(false);
   const [type, setType] = useState(Camera.Constants.Type.back);
   const [flashMode, setFlashMode] = useState(Camera.Constants.FlashMode.off);
@@ -152,7 +146,8 @@ const TriggerCamera = ({ navigation }) => {
   };
 
   const handleUpload = async () => {
-    const backendUrl = "http://172.16.11.254:3000/";
+    //Replace with your local host IP address
+    const backendUrl = "http://172.16.11.254:3000/api/CVProcessing";
     try {
       const formData = new FormData();
       formData.append("video", {
@@ -169,7 +164,7 @@ const TriggerCamera = ({ navigation }) => {
       if (!response.ok) {
         throw new Error("Upload failed");
       }
-      alert("Upload successfully Uploaded! 🎉");
+      alert("Video Uploaded Successfully! 🎉");
       console.log("Upload successful");
     } catch (error) {
       console.error("Error uploading video:", error.message);
@@ -194,7 +189,7 @@ const TriggerCamera = ({ navigation }) => {
             style={{
               flexDirection: "row",
               justifyContent: "space-between",
-              padding: 20,
+              padding: 30,
             }}
           >
             <ButtonInCamera
@@ -226,51 +221,47 @@ const TriggerCamera = ({ navigation }) => {
           }}
           useNativeControls
           resizeMode="contain"
-          
+          // isLooping
+          // onPlaybackStatusUpdate={(status) => setStatus(() => status)}
         />
       )}
       {draftvideo ? (
         <View
           style={{
             flexDirection: "row",
-            justifyContent: "space-evenly",
+            justifyContent: "space-between",
+            paddingHorizontal: 50,
           }}
         >
-            <View>
-              <ButtonInCamera
-                title={"Re-take"}
-                icon="retweet"
-                onPress={() => setDraftVideo(null)}
-              />
-            
-              <ButtonInCamera
-                title={"SaveVideo"}
-                icon="save"
-                onPress={saveVideo}
-              />
-          </View>
-          
-          <View>
-            <ButtonInCamera
-              title={"PickVideo"}
-              // icon="get"
-              onPress={pickVideo}
-            />
+          <ButtonInCamera
+            title={"Re-take"}
+            icon="retweet"
+            onPress={() => setDraftVideo(null)}
+          />
+          <ButtonInCamera
+            title={"SaveVideo"}
+            // icon="check"
+            onPress={saveVideo}
+          />
 
-            <ButtonInCamera
-              title={"UploadVideo"}
-              icon="check"
-              onPress={handleUpload}
-            />
-          </View>
+          <ButtonInCamera
+            title={"PickVideo"}
+            // icon="check"
+            onPress={pickVideo}
+          />
+
+          <ButtonInCamera
+            title={"UploadVideo"}
+            icon="check"
+            onPress={handleUpload}
+          />
 
           <TouchableOpacity
-            style={[styles.button, styles.text]}
-            onPress={() => navigation.navigate("Exercise")}
+            style={styles.button}
+            onPress={() => navigation.navigate("Congratulation")}
           >
-            <Text style={styles.text}>Done</Text>
+            <Text style={styles.buttonText}>Done</Text>
           </TouchableOpacity>
-
         </View>
       ) : (
         <View style={styles.buttonContainer}>

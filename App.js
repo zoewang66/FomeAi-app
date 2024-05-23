@@ -1,6 +1,5 @@
 import React from "react";
 import { View, StyleSheet } from "react-native";
-import { SafeAreaView } from "react-native";
 import WelcomeScreen from "./src/screens/Welcome";
 import SignUp from "./src/screens/Sign-up";
 import SignIn from "./src/screens/Sign-in";
@@ -20,8 +19,7 @@ import Congratulations from "./src/screens/Congratulation";
 import CardioResultScreen from "./src/screens/Cardio-Result";
 import CardioSkillScreen from "./src/screens/Cardio-Skills";
 import LeaderBoard from "./src/screens/Leaderboard";
-import NavbarBottom from "./src/components/Navbar-bottom";
-import { Header } from "react-native/Libraries/NewAppScreen";
+import ScoreResult from "./src/screens/ScoreResult";
 import ProfilePage from "./src/screens/ProfilePage";
 
 export default function App() {
@@ -49,13 +47,22 @@ export default function App() {
           name="StrengthAssessment"
           component={StrengthAssessmentScreen}
         />
-        <Stack.Screen name="StrengthResultScreen" component={StrengthResultScreen} />
-        <Stack.Screen name="StrengthSkillScreen" component={StrengthSkillScreen} />
+        <Stack.Screen
+          name="StrengthResultScreen"
+          component={StrengthResultScreen}
+        />
+        <Stack.Screen
+          name="StrengthSkillScreen"
+          component={StrengthSkillScreen}
+        />
         <Stack.Screen
           name="CardioAssessment"
           component={CardioAssessmentScreen}
         />
-        <Stack.Screen name="CardioResultScreen" component={CardioResultScreen} />
+        <Stack.Screen
+          name="CardioResultScreen"
+          component={CardioResultScreen}
+        />
         <Stack.Screen name="CardioSkillScreen" component={CardioSkillScreen} />
         <Stack.Screen name="HomePage" component={HomePage} />
         <Stack.Screen name="ChallengeDetails" component={ChallengeDetails} />
@@ -63,10 +70,10 @@ export default function App() {
         <Stack.Screen name="Camera" component={TriggerCamera} />
         <Stack.Screen name="Exercise" component={ExercisePage} />
         <Stack.Screen name="Congratulation" component={Congratulations} />
+        <Stack.Screen name="Score" component={ScoreResult} />
         <Stack.Screen name="LeaderBoard" component={LeaderBoard} />
         <Stack.Screen name="Profile" component={ProfilePage} />
       </Stack.Navigator>
-      {/* <NavbarBottom /> */}
     </NavigationContainer>
   );
 }
@@ -76,4 +83,3 @@ const styles = StyleSheet.create({
     flex: 1,
   },
 });
-

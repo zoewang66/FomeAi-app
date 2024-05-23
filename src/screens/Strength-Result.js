@@ -11,7 +11,7 @@ import {
 } from "react-native";
 import LightButton from "../components/Button-Light";
 
-const logoImg = require("../../../FomeAi-app/assets/FOME-logo-blue.png");
+const logoImg = require("../../assets/FOME-logo-blue.png");
 
 const windowHeight = Dimensions.get("window").height;
 const windowWidth = Dimensions.get("window").width;

@@ -9,10 +9,10 @@ import {
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import DarkButton from "../components/Button-Dark";
-import SignIn from "./Sign-in";
+import SignIn from "../screens/Sign-in";
 
-const logoImg = require("../../../FomeAi-app/assets/FOME-logo-blue.png");
-const picture = require("../../../FomeAi-app/assets/Welcome-img.png");
+const logoImg = require("../../assets/FOME-logo-blue.png");
+const picture = require("../../assets/Welcome-img.png");
 
 const windowHeight = Dimensions.get("window").height;
 const windowWidth = Dimensions.get("window").width;
@@ -47,7 +47,6 @@ const styles = StyleSheet.create({
 });
 
 const WelcomeScreen = () => {
-
   const navigation = useNavigation();
   return (
     <View style={styles.container}>
@@ -56,7 +55,8 @@ const WelcomeScreen = () => {
       <Text style={styles.text}>Ready for your Fitness Journey?</Text>
       <DarkButton
         buttonText={"Get Started"}
-        onPress={() => navigation.navigate("SignIn")}
+        navigation={navigation}
+        goTo="SignIn"
       />
       <StatusBar style="auto" />
     </View>

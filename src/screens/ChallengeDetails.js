@@ -124,7 +124,8 @@ export default function ChallengeDetails() {
         <View style={styles.buttonContainer}>
           <DarkButton
             buttonText="Next"
-            onPress={() => navigation.navigate("Tutorial")}
+            navigation={navigation}
+            goTo="Tutorial"
           />
         </View>
       </ScrollView>

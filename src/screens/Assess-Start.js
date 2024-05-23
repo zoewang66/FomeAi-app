@@ -9,8 +9,8 @@ import {
 import NavbarBottom from "../components/Navbar-bottom";
 import LightButton from "../components/Button-Light";
 
-const picture1 = require("../../../FomeAi-app/assets/Strength-choose.png");
-const picture2 = require("../../../FomeAi-app/assets/Cardio-choose.png");
+const picture1 = require("../../assets/Strength-choose.png");
+const picture2 = require("../../assets/Cardio-choose.png");
 
 const windowHeight = Dimensions.get("window").height;
 const windowWidth = Dimensions.get("window").width;

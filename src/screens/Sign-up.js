@@ -12,13 +12,11 @@ import {
   StatusBar,
   SafeAreaView,
 } from "react-native";
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation } from "@react-navigation/native";
 import { Picker } from "@react-native-picker/picker";
 import DarkButton from "../components/Button-Dark";
 import { useRef, useState, useEffect } from "react";
 import { getStatusBarHeight } from "react-native-status-bar-height";
-
-const API_URL = "http://10.88.54.124:3001/users/register"
 
 const windowHeight = Dimensions.get("window").height;
 const windowWidth = Dimensions.get("window").width;
@@ -43,7 +41,6 @@ const SignUp = () => {
   const [genderError, setGenderError] = useState("");
   const [ageError, setAgeError] = useState("");
   const [gymAffiliationError, setGymAffiliationError] = useState("");
-
 
   useEffect(() => {
     const height = getStatusBarHeight();
@@ -81,9 +78,7 @@ const SignUp = () => {
           }
         } else {
           console.log("User created!");
-          navigation.navigate("SignIn")
-
-
+          navigation.navigate("SignIn");
         }
       })
       .catch((error) => {
@@ -128,7 +123,7 @@ const SignUp = () => {
     if (age >= "80" || age <= "0") {
       setAgeError("Age is invalid");
       isValid = false;
-    } else if(age === ""){
+    } else if (age === "") {
       setAgeError("Age is required");
       isValid = false;
     } else {
@@ -143,11 +138,10 @@ const SignUp = () => {
       setGymAffiliationError("");
     }
 
-    if(isValid){
+    if (isValid) {
       navigation.navigate("AssessStart");
     }
-  }
-
+  };
 
   return (
     <KeyboardAvoidingView
@@ -250,14 +244,10 @@ const SignUp = () => {
             />
             <Text style={styles.errorText}>{gymAffiliationError}</Text>
           </View>
-          <TouchableOpacity
-            onPress={() => navigation.navigate("ForgotPassword")}
-          >
-            <Text style={styles.text}>Forgot password?</Text>
-          </TouchableOpacity>
           <DarkButton
-            buttonText={"Sign Up"}
-            onPress={handleSignUp}
+            buttonText="Sign Up"
+            navigation={navigation}
+            goTo="AssessStart"
           />
         </ScrollView>
       </SafeAreaView>
@@ -283,7 +273,7 @@ const styles = StyleSheet.create({
     width: "100%",
   },
   errorText: {
-    color: 'red',
+    color: "red",
   },
   greeting: {
     fontSize: windowHeight > 667 ? 37 : 26,

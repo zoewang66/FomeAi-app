@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const hasChallenge = true;
+const hasChallenge = false;
 
 export default function ExercisePage({ navigation }) {
   return hasChallenge ? (
@@ -56,7 +56,7 @@ export default function ExercisePage({ navigation }) {
   );
 }
 
-function ChallengeSelection() {
+function ChallengeSelection({ navigation }) {
   return (
     <View style={styles.container}>
       <ScrollView>
@@ -66,8 +66,9 @@ function ChallengeSelection() {
             <ChallengeBox
               challenge_name="Cardio Challenge"
               challenge_info="4 Exercises | 6mins"
-            challenge_icon={require("../../assets/Cardio_Challenge_Icon.png")}
-          />  
+              challenge_icon={require("../../assets/Cardio_Challenge_Icon.png")}
+              navigation={navigation}
+            />
           </View>
 
           <View style={styles.challengeBox}>
@@ -76,6 +77,7 @@ function ChallengeSelection() {
               challenge_name="Strength Challenge"
               challenge_info="4 Exercises | 6mins"
               challenge_icon={require("../../assets/Strength_Challenge_Icon.png")}
+              navigation={navigation}
             />
           </View>
 
@@ -85,11 +87,12 @@ function ChallengeSelection() {
               challenge_name="Hybrid Challenge"
               challenge_info="4 Exercises | 6mins"
               challenge_icon={require("../../assets/Hybrid_Challenge_Icon.png")}
+              navigation={navigation}
             />
           </View>
         </View>
       </ScrollView>
-      
+
       <NavbarBottom />
     </View>
   );
@@ -100,28 +103,28 @@ function ChallengeProgress({ navigation }) {
     <View style={styles.container}>
       <ScrollView>
         <View style={styles.contentContainer}>
-         <Text style={styles.text}>Your Challenge Progress</Text>
-         <ChallengeProgressBar />
-         <Text style={styles.text}>Upcoming Exercises</Text>
-         <View style={styles.upcomingExerciseContainer}>
-           <View style={styles.upcomingExercise}>
+          <Text style={styles.text}>Your Challenge Progress</Text>
+          <ChallengeProgressBar />
+          <Text style={styles.text}>Upcoming Exercises</Text>
+          <View style={styles.upcomingExerciseContainer}>
+            <View style={styles.upcomingExercise}>
               <UpcomingExercise
                 name="Push-Ups"
                 exercise_icon={require("../../assets/Push-Ups.jpg")}
                 navigation={navigation}
-             />
+              />
             </View>
-           <View style={styles.upcomingExercise}>
-             <UpcomingExercise
-               name="Plank"
-               exercise_icon={require("../../assets/Plank_Icon.jpg")}
-               navigation={navigation}
-             />
-           </View>
+            <View style={styles.upcomingExercise}>
+              <UpcomingExercise
+                name="Plank"
+                exercise_icon={require("../../assets/Plank_Icon.jpg")}
+                navigation={navigation}
+              />
+            </View>
           </View>
         </View>
       </ScrollView>
-      
+
       <NavbarBottom />
     </View>
   );
