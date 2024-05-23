@@ -159,7 +159,7 @@ const CardioResultScreen = ({ navigation }) => {
           <LightButton
             buttonText={"Submit"}
             navigation={navigation}
-            goTo="Home"
+            goTo="CardioSkillScreen"
           />
         </View>
 

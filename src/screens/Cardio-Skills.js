@@ -15,7 +15,7 @@ const logoImg = require("../../../FomeAi-app/assets/FOME-logo-blue.png");
 const windowHeight = Dimensions.get("window").height;
 const windowWidth = Dimensions.get("window").width;
 
-const CardioSkillScreen = () => {
+const CardioSkillScreen = ({navigation}) => {
   const level = "Intermediate";
 
   return (
@@ -30,7 +30,8 @@ const CardioSkillScreen = () => {
         <LightButton
           buttonText={"Home"}
           style={styles.buttontext}
-          onPress={() => navigation.navigate("SignIn")}
+          navigation={navigation}
+          goTo="HomePage"
         />
         <StatusBar style="auto" />
       </ScrollView>

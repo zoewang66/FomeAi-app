@@ -6,12 +6,12 @@ import {
   StyleSheet,
   TouchableOpacity,
   ScrollView,
-  Dimensions
+  Dimensions,
 } from "react-native";
 import NavbarBottom from "../components/Navbar-bottom";
 import LightButton from "../components/Button-Light";
-import ProfileInfo from '../../../FomeAi-app/assets/Icons/ProfileInfo';
-import Notification from '../../../FomeAi-app/assets/Icons/Notification';
+import ProfileInfo from "../../../FomeAi-app/assets/Icons/ProfileInfo";
+import Notification from "../../../FomeAi-app/assets/Icons/Notification";
 import Payment from "../../assets/Icons/Payment";
 import Chat from "../../assets/Icons/Chat";
 import Contact from "../../assets/Icons/Contact";
@@ -29,74 +29,73 @@ export default function ProfilePage({ navigation }) {
   return (
     <View style={styles.container}>
       <ScrollView>
-      <View style={styles.profileInfo}>
-        <Image
-          source={profileInformation.profilePic}
-          style={styles.profilePic}
-        />
-        <Text style={styles.name}>{profileInformation.name}</Text>
-        <Text style={styles.email}>{profileInformation.email}</Text>
-      </View>
-
-      <View style={styles.optionsContainer}>
-        <TouchableOpacity style={styles.optionContainer}>
-          <View style={styles.icon}>
-            <ProfileInfo style={styles.icon} />
-          </View>
-          <View style={styles.optionTextContainer}>
-            <Text style={styles.optionText}>My Information</Text>
-          </View>
-          <Arrow />
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.optionContainer}>
-          <View style={styles.icon}>
-            <Notification />
-          </View> 
-          <View style={styles.optionTextContainer}>
-            <Text style={styles.optionText}>Notifications</Text>
-          </View>
-          <Arrow />
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.optionContainer}>
-          <View style={styles.icon}>
-            <Payment style={styles.icon} />
-          </View>
-          <View style={styles.optionTextContainer}>
-            <Text style={styles.optionText}>Payment</Text>
-          </View>
-          <Arrow />
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.optionContainer}>
-          <View style={styles.icon}>
-            <Chat />
-          </View> 
-          <View style={styles.optionTextContainer}>
-            <Text style={styles.optionText}>Support</Text>
-          </View>
-          <Arrow />
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.optionContainer}>
-          <View style={styles.icon}>
-            <Contact />
-          </View>
-          <View style={styles.optionTextContainer}>
-            <Text style={styles.optionText}>About Us</Text>
-          </View>
-          <Arrow />
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.logoutButton}>
-          <LightButton style={styles.logoutButton}
-            buttonText={"Logout"} 
-            navigation={navigation} 
-            goTo="HomePage"
+        <View style={styles.profileInfo}>
+          <Image
+            source={profileInformation.profilePic}
+            style={styles.profilePic}
           />
-        </TouchableOpacity>
-      </View>
-    </ScrollView>
-    <NavbarBottom />
+          <Text style={styles.name}>{profileInformation.name}</Text>
+          <Text style={styles.email}>{profileInformation.email}</Text>
+        </View>
+
+        <View style={styles.optionsContainer}>
+          <TouchableOpacity style={styles.optionContainer}>
+            <View style={styles.icon}>
+              <ProfileInfo style={styles.icon} />
+            </View>
+            <View style={styles.optionTextContainer}>
+              <Text style={styles.optionText}>My Information</Text>
+            </View>
+            <Arrow />
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.optionContainer}>
+            <View style={styles.icon}>
+              <Notification />
+            </View>
+            <View style={styles.optionTextContainer}>
+              <Text style={styles.optionText}>Notifications</Text>
+            </View>
+            <Arrow />
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.optionContainer}>
+            <View style={styles.icon}>
+              <Payment style={styles.icon} />
+            </View>
+            <View style={styles.optionTextContainer}>
+              <Text style={styles.optionText}>Payment</Text>
+            </View>
+            <Arrow />
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.optionContainer}>
+            <View style={styles.icon}>
+              <Chat />
+            </View>
+            <View style={styles.optionTextContainer}>
+              <Text style={styles.optionText}>Support</Text>
+            </View>
+            <Arrow />
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.optionContainer}>
+            <View style={styles.icon}>
+              <Contact />
+            </View>
+            <View style={styles.optionTextContainer}>
+              <Text style={styles.optionText}>About Us</Text>
+            </View>
+            <Arrow />
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.logoutButton}>
+            <LightButton
+              style={styles.logoutButton}
+              buttonText={"Logout"}
+              navigation={navigation}
+              goTo="SignIn"
+            />
+          </TouchableOpacity>
+        </View>
+      </ScrollView>
+      <NavbarBottom />
     </View>
-    
-    
   );
 }
 
@@ -136,7 +135,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   optionContainer: {
-    height: 55, 
+    height: 55,
     width: "80%",
     flexDirection: "row",
     alignItems: "flex-start",
@@ -156,11 +155,9 @@ const styles = StyleSheet.create({
     flexShrink: 1,
   },
   icon: {
-    width: 25,
-    height: 25,
+    width: 29,
+    height: 29,
     alignSelf: "center",
-    borderWidth: 2,
-    borderColor: "red",
   },
   arrow: {
     marginLeft: 10,

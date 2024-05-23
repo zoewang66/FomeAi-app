@@ -27,7 +27,7 @@ const StrengthAssessmentScreen = ({ navigation }) => {
         <LightButton
           buttonText={"Next"}
           navigation={navigation}
-          goTo="StrengthSkill"
+          goTo="StrengthResultScreen"
         />
         <StatusBar style="auto" />
       </ScrollView>

@@ -4,6 +4,7 @@ import NavbarBottom from "../components/Navbar-bottom";
 import ChallengeBox from "../components/ChallengeBox";
 import ChallengeProgressBar from "../components/ChallengeProgressBar";
 import UpcomingExercise from "../components/UpcomingExercise";
+import { useNavigation } from "@react-navigation/native";
 
 const styles = StyleSheet.create({
   container: {
@@ -59,7 +60,9 @@ const styles = StyleSheet.create({
 
 const hasChallenge = false;
 
-export default function HomePage({ navigation }) {
+export default function HomePage() {
+  const navigation = useNavigation();
+  
   const currentTime = new Date().getHours();
   let greeting;
 

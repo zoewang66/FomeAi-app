@@ -31,7 +31,7 @@ const StrengthSkillScreen = ({ navigation }) => {
             buttonText={"Back To Home"}
             style={styles.buttontext}
             navigation={navigation}
-            goTo="Home"
+            goTo="HomePage"
           />
         <StatusBar style="auto" />
       </ScrollView>

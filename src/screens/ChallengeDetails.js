@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, ScrollView, Dimensions } from "react-native";
 import DemoVideo from "../components/DemoVideo";
 import DarkButton from "../components/Button-Dark";
 import NavbarBottom from "../components/Navbar-bottom";
+import { useNavigation } from "@react-navigation/native";
 
 const styles = StyleSheet.create({
   container: {
@@ -74,7 +75,8 @@ const styles = StyleSheet.create({
   },
 });
 
-export default function ChallengeDetails({ navigation }) {
+export default function ChallengeDetails() {
+  const navigation = useNavigation();
   const data = {
     challengeName: "Strength Challenge",
     steps: [
@@ -122,8 +124,7 @@ export default function ChallengeDetails({ navigation }) {
         <View style={styles.buttonContainer}>
           <DarkButton
             buttonText="Next"
-            navigation={navigation}
-            goTo="Tutorial"
+            onPress={() => navigation.navigate("Tutorial")}
           />
         </View>
       </ScrollView>

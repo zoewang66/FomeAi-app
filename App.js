@@ -2,8 +2,8 @@ import React from "react";
 import { View, StyleSheet } from "react-native";
 import { SafeAreaView } from "react-native";
 import WelcomeScreen from "./src/screens/Welcome";
-import SignUp from "./src/screens/Sign-Up";
-import SignIn from "./src/screens/Sign-In";
+import SignUp from "./src/screens/Sign-up";
+import SignIn from "./src/screens/Sign-in";
 import AssessStart from "./src/screens/Assess-Start";
 import StrengthAssessmentScreen from "./src/screens/Strength-Assessment-Screen";
 import StrengthResultScreen from "./src/screens/Strength-Result";
@@ -49,15 +49,15 @@ export default function App() {
           name="StrengthAssessment"
           component={StrengthAssessmentScreen}
         />
-        <Stack.Screen name="StrengthSkill" component={StrengthResultScreen} />
-        <Stack.Screen name="StrengthResult" component={StrengthSkillScreen} />
+        <Stack.Screen name="StrengthResultScreen" component={StrengthResultScreen} />
+        <Stack.Screen name="StrengthSkillScreen" component={StrengthSkillScreen} />
         <Stack.Screen
           name="CardioAssessment"
           component={CardioAssessmentScreen}
         />
-        <Stack.Screen name="CardioSkill" component={CardioResultScreen} />
-        <Stack.Screen name="CardioResult" component={CardioSkillScreen} />
-        <Stack.Screen name="Home" component={HomePage} />
+        <Stack.Screen name="CardioResultScreen" component={CardioResultScreen} />
+        <Stack.Screen name="CardioSkillScreen" component={CardioSkillScreen} />
+        <Stack.Screen name="HomePage" component={HomePage} />
         <Stack.Screen name="ChallengeDetails" component={ChallengeDetails} />
         <Stack.Screen name="Tutorial" component={Tutorial} />
         <Stack.Screen name="Camera" component={TriggerCamera} />
@@ -76,3 +76,4 @@ const styles = StyleSheet.create({
     flex: 1,
   },
 });
+

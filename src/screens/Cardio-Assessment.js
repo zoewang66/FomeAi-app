@@ -27,7 +27,7 @@ const CardioAssessmentScreen = ({ navigation }) => {
         <LightButton
           buttonText={"Next"}
           navigation={navigation}
-          goTo="CardioSkill"
+          goTo="CardioResultScreen"
         />
         <StatusBar style="auto" />
       </ScrollView>

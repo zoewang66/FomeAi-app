@@ -53,8 +53,7 @@ export default function Congratulations({ navigation }) {
         <View style={styles.buttonContainer}>
           <DarkButton
             buttonText="Back To Home"
-            navigation={navigation}
-            goTo="Home"
+            onPress={() => navigation.navigate("HomePage")}
           />
         </View>  
       </ScrollView>

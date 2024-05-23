@@ -158,7 +158,7 @@ const StrengthResultScreen = ({ navigation }) => {
           <LightButton
             buttonText={"Submit"}
             navigation={navigation}
-            goTo="StrengthResult"
+            goTo="StrengthSkillScreen"
           />
         </View>
 

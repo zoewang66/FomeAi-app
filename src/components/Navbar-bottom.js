@@ -11,7 +11,7 @@ export default function NavbarBottom() {
 
     return (
         <View style={styles.navbar}>
-          <TouchableOpacity style={styles.navItem} onPress={() => navigation.navigate('Home')}>
+          <TouchableOpacity style={styles.navItem} onPress={() => navigation.navigate('HomePage')}>
             <Home style={styles.icon} />
             <Text style={styles.text}>Home</Text>
           </TouchableOpacity>

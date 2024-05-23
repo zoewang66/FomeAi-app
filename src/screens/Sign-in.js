@@ -1,4 +1,5 @@
-import React from "react";
+
+import React, { useState } from "react";
 import {
   View,
   Text,
@@ -10,17 +11,58 @@ import {
   ScrollView,
   KeyboardAvoidingView,
   Platform,
+  Alert,
   StatusBar,
 } from "react-native";
 import DarkButton from "../components/Button-Dark";
 import { useRef } from "react";
+import { useNavigation } from '@react-navigation/native';
+import HomePage from "./HomePage";
 
 const logoImg = require("../../../FomeAi-app/assets/FOME-logo-blue.png");
 const windowHeight = Dimensions.get("window").height;
 const windowWidth = Dimensions.get("window").width;
 
-const SignIn = ({ navigation }) => {
+const SignIn = () => {
+
+  const navigation = useNavigation();
+
+  const API_URL = "http://10.88.54.124:3001/users/login";
+
   const scrollViewRef = useRef(null);
+
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleLogin = () => {
+    return fetch(API_URL, {
+      method: "POST",
+      headers: {
+        accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ username, password }),
+    })
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return res.json();
+      })
+      .then((res) => {
+        console.log(`User logged in as ${username}`);
+        Alert.alert(`Logged in as ${username}`);
+        navigation.navigate("HomePage"); // navigates to home page upon successful login
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+        Alert.alert(
+          "Login Error",
+          "Invalid username or password. Please try again."
+        );
+      });
+    };
+
 
   const scrollToPasswordInput = () => {
     if (scrollViewRef.current) {
@@ -47,14 +89,20 @@ const SignIn = ({ navigation }) => {
           <Text style={styles.text1}>Haven't have an Account?</Text>
         </TouchableOpacity>
         <View style={styles.form}>
-          <Text style={styles.label}>Email</Text>
-          <TextInput style={styles.input} placeholder="email@example.com" />
+          <Text style={styles.label}>Username</Text>
+            <TextInput
+              style={styles.input}
+              placeholder="Enter your username"
+              onFocus={scrollToPasswordInput}
+              onChangeText={setUsername}
+            />
           <Text style={styles.label}>Password</Text>
           <TextInput
             style={styles.input}
             placeholder="Enter your password"
             secureTextEntry
             onFocus={scrollToPasswordInput}
+            onChangeText={setPassword}
           />
         </View>
         <TouchableOpacity onPress={() => navigation.navigate("ForgotPassword")}>
@@ -62,8 +110,7 @@ const SignIn = ({ navigation }) => {
         </TouchableOpacity>
         <DarkButton
           buttonText={"Sign in"}
-          navigation={navigation}
-          goTo="Home"
+          onPress={handleLogin}
         />
       </ScrollView>
     </KeyboardAvoidingView>
