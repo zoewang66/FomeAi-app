@@ -35,14 +35,14 @@ A capstone project mobile app developed for Fome Ai, a real-industry company lev
    ```
 
 2. **Install dependencies:**
-  If you use npm:
-  ```bash
-  npm install
-  ```
-  Or if you prefer Yarn:
-  ```bash
-  yarn
-  ```
+   If you use npm:
+   ```bash
+   npm install
+   ```
+   Or if you prefer Yarn:
+   ```bash
+   yarn
+   ```
 3. **Start the project:**
    ```bash
    npm start
