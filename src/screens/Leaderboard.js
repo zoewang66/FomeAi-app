@@ -83,7 +83,12 @@ export function LeaderBoard() {
   const remainingLeaders = sortedLeaders.slice(3);
 
   const renderLeader = ({ item, index }) => (
-    <View style={[styles.item, index % 2 === 0 ? styles.itemAlternate : styles.itemUnchange]}>
+    <View
+      style={[
+        styles.item,
+        index % 2 === 0 ? styles.itemAlternate : styles.itemUnchange,
+      ]}
+    >
       <Text style={styles.position}>{item.position}</Text>
       <Image source={item.image} style={styles.image} />
       <Text style={styles.name}>{item.name}</Text>
@@ -92,16 +97,12 @@ export function LeaderBoard() {
       </Hexagon>
     </View>
   );
-  
 
   return (
     <View style={styles.container}>
       <View style={styles.topLeadersContainer}>
         {number2.map((leader) => (
-          <View
-            key={leader.name}
-            style={styles.topLeader2}
-          >
+          <View key={leader.name} style={styles.topLeader2}>
             <Image source={leader.image} style={styles.imageLeader} />
             <No2>
               <Text style={styles.topLeader2Position}>{leader.position}</Text>
@@ -113,10 +114,7 @@ export function LeaderBoard() {
           </View>
         ))}
         {number1.map((leader) => (
-          <View
-            key={leader.name}
-            style={styles.topLeader1}
-          >
+          <View key={leader.name} style={styles.topLeader1}>
             <Image source={leader.image} style={styles.imageLeader} />
             <No1>
               <Text style={styles.topLeader1Position}>{leader.position}</Text>
@@ -128,15 +126,12 @@ export function LeaderBoard() {
           </View>
         ))}
         {number3.map((leader) => (
-          <View
-            key={leader.name}
-            style={styles.topLeader3}
-          >
+          <View key={leader.name} style={styles.topLeader3}>
             <Image source={leader.image} style={styles.imageLeader} />
             <No3>
               <Text style={styles.topLeader3Position}>{leader.position}</Text>
             </No3>
-            
+
             <Text style={styles.leaderName}>{leader.name}</Text>
             <BronzeHexagon>
               <Text style={styles.leaderScore}>{leader.score}</Text>
@@ -145,16 +140,18 @@ export function LeaderBoard() {
         ))}
       </View>
       <FlatList
-      data={remainingLeaders}
-      renderItem={renderLeader}
-      keyExtractor={(item) => item.name}
-      contentContainerStyle={[
-        styles.listContainer,
-        { backgroundColor: "#F5F4F1" }, 
-      ]}
-/>
+        data={remainingLeaders}
+        renderItem={renderLeader}
+        keyExtractor={(item) => item.name}
+        contentContainerStyle={[
+          styles.listContainer,
+          { backgroundColor: "#F5F4F1" },
+        ]}
+      />
 
-      <NavbarBottom />
+      <View style={styles.navbarWrapper}>
+        <NavbarBottom />
+      </View>
     </View>
   );
 }
@@ -165,6 +162,15 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "#E4EBEE",
+  },
+  navbarWrapper: {
+    position: "absolute",
+    bottom: 0,
+    left: 0,
+    right: 0,
+    backgroundColor: "#fff",
+    borderTopWidth: 1,
+    borderColor: "#ddd",
   },
   text: {
     color: "#472938",
@@ -221,7 +227,7 @@ const styles = StyleSheet.create({
     position: "relative",
     width: 90,
     height: 90,
-    borderRadius:45,
+    borderRadius: 45,
   },
   topLeadersContainer: {
     flexDirection: "row",
@@ -260,13 +266,12 @@ const styles = StyleSheet.create({
     fontSize: 16,
     position: "absolute",
   },
-  itemUnchange:{
+  itemUnchange: {
     backgroundColor: "#E4EBEE",
   },
   itemAlternate: {
     backgroundColor: "#F5F4F1",
   },
-  
 });
 
 export default LeaderBoard;

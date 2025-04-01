@@ -19,6 +19,15 @@ const styles = StyleSheet.create({
     backgroundColor: "#E4EBEE",
     justifyContent: "space-around",
   },
+  navbarWrapper: {
+    position: "absolute",
+    bottom: 0,
+    left: 0,
+    right: 0,
+    backgroundColor: "#fff",
+    borderTopWidth: 1,
+    borderColor: "#ddd",
+  },
   contentContainer: {
     display: "flex",
     justifyContent: "center",
@@ -79,7 +88,7 @@ export default function HomePage({ navigation }) {
     greeting = "Good Evening";
   }
 
-  const userName = "Dylan";
+  const userName = "Zoe W";
 
   return (
     <View style={styles.container}>
@@ -92,7 +101,9 @@ export default function HomePage({ navigation }) {
           <HomeNoExercise navigation={navigation} />
         )}
       </ScrollView>
-      <NavbarBottom />
+      <View style={styles.navbarWrapper}>
+        <NavbarBottom />
+      </View>
     </View>
   );
 }

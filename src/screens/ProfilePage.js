@@ -21,8 +21,8 @@ const windowHeight = Dimensions.get("window").height;
 
 export default function ProfilePage({ navigation }) {
   const profileInformation = {
-    name: "Dylan J",
-    email: "dylan@example.com",
+    name: "Zoe W",
+    email: "zoe@example.com",
     profilePic: require("../../assets/imgs/profilePic.png"),
   };
 
@@ -94,7 +94,9 @@ export default function ProfilePage({ navigation }) {
           </TouchableOpacity>
         </View>
       </ScrollView>
-      <NavbarBottom />
+      <View style={styles.navbarWrapper}>
+        <NavbarBottom />
+      </View>
     </View>
   );
 }
@@ -116,6 +118,15 @@ const styles = StyleSheet.create({
     borderRadius: 50,
     marginBottom: 10,
     marginTop: 30,
+  },
+  navbarWrapper: {
+    position: "absolute",
+    bottom: 0,
+    left: 0,
+    right: 0,
+    backgroundColor: "#fff",
+    borderTopWidth: 1,
+    borderColor: "#ddd",
   },
   name: {
     fontSize: 22,

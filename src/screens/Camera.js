@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
   Dimensions,
 } from "react-native";
-import { Camera, CameraType } from "expo-camera/legacy";
+import { Camera, CameraType } from "expo-camera";
 import * as MediaLibrary from "expo-media-library";
 import ButtonInCamera from "../components/ButtonInCamera";
 import { Video } from "expo-av";
@@ -66,7 +66,6 @@ const TriggerCamera = ({ navigation }) => {
   const [hasCameraPermission, setHasCameraPermission] = useState(null);
   const [hasAudioPermission, setHasAudioPermission] = useState(null);
   const [record, setRecord] = useState(null);
-  // const [status, setStatus] = React.useState({});
   const [isRecording, setIsRecording] = useState(false);
   const [type, setType] = useState(Camera.Constants.Type.back);
   const [flashMode, setFlashMode] = useState(Camera.Constants.FlashMode.off);
@@ -179,12 +178,7 @@ const TriggerCamera = ({ navigation }) => {
   return (
     <View style={styles.container}>
       {!draftvideo ? (
-        <Camera
-          style={styles.camera}
-          type={CameraType}
-          flashMode={flashMode}
-          ref={cameraRef}
-        >
+        <Camera style={styles.camera} type={CameraType} ref={cameraRef}>
           <View
             style={{
               flexDirection: "row",
@@ -196,10 +190,13 @@ const TriggerCamera = ({ navigation }) => {
               icon={"retweet"}
               onPress={() => {
                 setType(
-                  type === CameraType.back ? CameraType.front : CameraType.back
+                  type === Camera.Constants.Type.back
+                    ? Camera.Constants.Type.front
+                    : Camera.Constants.Type.back
                 );
               }}
             />
+
             <ButtonInCamera
               icon={"flash"}
               onPress={() => {
