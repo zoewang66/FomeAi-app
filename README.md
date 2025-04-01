@@ -9,7 +9,6 @@ A capstone project mobile app developed for Fome Ai, a real-industry company lev
 - **Cross-Platform Support:** Built with Expo and React Native, ensuring compatibility across Android and iOS.
 - **Modern UI:** Implements a sleek, responsive user interface with a focus on visual design.
 - **Prototype Functionality:** Many features are designed as visual prototypes to demonstrate the intended user experience.
-- *(Add more features as needed)*
 
 ---
 
