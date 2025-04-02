@@ -106,6 +106,7 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     justifyContent: "space-around",
     width: "100%",
+    paddingBottom: 80,
   },
   profileInfo: {
     alignItems: "center",
@@ -132,11 +133,11 @@ const styles = StyleSheet.create({
     fontSize: 22,
     fontWeight: "bold",
     marginBottom: 5,
-    color: "red",
+    color: "#3C80E6",
   },
   email: {
     fontSize: 19,
-    color: "red",
+    color: "#3C80E6",
   },
   optionsContainer: {
     width: "100%",
@@ -175,7 +176,7 @@ const styles = StyleSheet.create({
     alignSelf: "center",
   },
   logoutButton: {
-    marginTop: windowHeight > 679 ? 0 : 10,
+    marginTop: windowHeight > 679 ? 20 : 35,
     alignSelf: "center",
   },
 });

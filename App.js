@@ -21,60 +21,66 @@ import CardioSkillScreen from "./src/screens/Cardio-Skills";
 import LeaderBoard from "./src/screens/Leaderboard";
 import ScoreResult from "./src/screens/ScoreResult";
 import ProfilePage from "./src/screens/ProfilePage";
+import { UserProvider } from "./src/components/UserContext";
 
 export default function App() {
   const Stack = createNativeStackNavigator();
   return (
-    <NavigationContainer>
-      <Stack.Navigator initialRouteName="Welcome">
-        <Stack.Screen
-          name="Welcome"
-          component={WelcomeScreen}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="SignIn"
-          component={SignIn}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="SignUp"
-          component={SignUp}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen name="AssessStart" component={AssessStart} />
-        <Stack.Screen
-          name="StrengthAssessment"
-          component={StrengthAssessmentScreen}
-        />
-        <Stack.Screen
-          name="StrengthResultScreen"
-          component={StrengthResultScreen}
-        />
-        <Stack.Screen
-          name="StrengthSkillScreen"
-          component={StrengthSkillScreen}
-        />
-        <Stack.Screen
-          name="CardioAssessment"
-          component={CardioAssessmentScreen}
-        />
-        <Stack.Screen
-          name="CardioResultScreen"
-          component={CardioResultScreen}
-        />
-        <Stack.Screen name="CardioSkillScreen" component={CardioSkillScreen} />
-        <Stack.Screen name="HomePage" component={HomePage} />
-        <Stack.Screen name="ChallengeDetails" component={ChallengeDetails} />
-        <Stack.Screen name="Tutorial" component={Tutorial} />
-        <Stack.Screen name="Camera" component={TriggerCamera} />
-        <Stack.Screen name="Exercise" component={ExercisePage} />
-        <Stack.Screen name="Congratulation" component={Congratulations} />
-        <Stack.Screen name="Score" component={ScoreResult} />
-        <Stack.Screen name="LeaderBoard" component={LeaderBoard} />
-        <Stack.Screen name="Profile" component={ProfilePage} />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <UserProvider>
+      <NavigationContainer>
+        <Stack.Navigator initialRouteName="Welcome">
+          <Stack.Screen
+            name="Welcome"
+            component={WelcomeScreen}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="SignIn"
+            component={SignIn}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="SignUp"
+            component={SignUp}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen name="AssessStart" component={AssessStart} />
+          <Stack.Screen
+            name="StrengthAssessment"
+            component={StrengthAssessmentScreen}
+          />
+          <Stack.Screen
+            name="StrengthResultScreen"
+            component={StrengthResultScreen}
+          />
+          <Stack.Screen
+            name="StrengthSkillScreen"
+            component={StrengthSkillScreen}
+          />
+          <Stack.Screen
+            name="CardioAssessment"
+            component={CardioAssessmentScreen}
+          />
+          <Stack.Screen
+            name="CardioResultScreen"
+            component={CardioResultScreen}
+          />
+          <Stack.Screen
+            name="CardioSkillScreen"
+            component={CardioSkillScreen}
+          />
+          <Stack.Screen name="HomePage" component={HomePage} />
+          <Stack.Screen name="ChallengeDetails" component={ChallengeDetails} />
+          <Stack.Screen name="Tutorial" component={Tutorial} />
+          <Stack.Screen name="Camera" component={TriggerCamera} />
+          <Stack.Screen name="Exercise" component={ExercisePage} />
+          <Stack.Screen name="Congratulation" component={Congratulations} />
+          <Stack.Screen name="Score" component={ScoreResult} />
+          <Stack.Screen name="LeaderBoard" component={LeaderBoard} />
+          <Stack.Screen name="Profile" component={ProfilePage} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </UserProvider>
   );
 }
 

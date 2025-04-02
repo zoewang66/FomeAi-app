@@ -6,7 +6,7 @@ import UpcomingExercise from "../components/UpcomingExercise";
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flex: 0,
     backgroundColor: "#E4EBEE",
     justifyContent: "space-around",
   },
@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
     width: 350,
     flexShrink: 0,
     paddingLeft: 50,
-    height: 680,
+    height: 7000,
   },
 
   text: {
@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
   },
 
   upcomingExerciseContainer: {
-    paddingBottom: 120,
+    paddingBottom: 250,
   },
 
   upcomingExercise: {
@@ -112,29 +112,29 @@ function ChallengeSelection({ navigation }) {
 function ChallengeProgress({ navigation }) {
   return (
     <View style={styles.container}>
-      <ScrollView>
-        <View style={styles.contentContainer}>
-          <Text style={styles.text}>Your Challenge Progress</Text>
-          <ChallengeProgressBar />
-          <Text style={styles.text}>Upcoming Exercises</Text>
-          <View style={styles.upcomingExerciseContainer}>
-            <View style={styles.upcomingExercise}>
-              <UpcomingExercise
-                name="Push-Ups"
-                exercise_icon={require("../../assets/Push-Ups.jpg")}
-                navigation={navigation}
-              />
-            </View>
-            <View style={styles.upcomingExercise}>
-              <UpcomingExercise
-                name="Plank"
-                exercise_icon={require("../../assets/Plank_Icon.jpg")}
-                navigation={navigation}
-              />
-            </View>
+      {/* <ScrollView> */}
+      <View style={styles.contentContainer}>
+        <Text style={styles.text}>Your Challenge Progress</Text>
+        <ChallengeProgressBar />
+        <Text style={styles.text}>Upcoming Exercises</Text>
+        <View style={styles.upcomingExerciseContainer}>
+          <View style={styles.upcomingExercise}>
+            <UpcomingExercise
+              name="Push-Ups"
+              exercise_icon={require("../../assets/Push-Ups.jpg")}
+              navigation={navigation}
+            />
+          </View>
+          <View style={styles.upcomingExercise}>
+            <UpcomingExercise
+              name="Plank"
+              exercise_icon={require("../../assets/Plank_Icon.jpg")}
+              navigation={navigation}
+            />
           </View>
         </View>
-      </ScrollView>
+      </View>
+      {/* </ScrollView> */}
 
       <NavbarBottom />
     </View>

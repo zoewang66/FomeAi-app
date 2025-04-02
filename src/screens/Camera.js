@@ -65,7 +65,6 @@ const styles = StyleSheet.create({
 const TriggerCamera = ({ navigation }) => {
   const [hasCameraPermission, setHasCameraPermission] = useState(null);
   const [hasAudioPermission, setHasAudioPermission] = useState(null);
-  const [record, setRecord] = useState(null);
   const [isRecording, setIsRecording] = useState(false);
   const [type, setType] = useState(Camera.Constants.Type.back);
   const [flashMode, setFlashMode] = useState(Camera.Constants.FlashMode.off);
@@ -87,7 +86,7 @@ const TriggerCamera = ({ navigation }) => {
 
   const takeVideo = async () => {
     setIsRecording(true);
-    if (cameraRef) {
+    if (cameraRef.current) {
       try {
         const data = await cameraRef.current.recordAsync();
         setDraftVideo(data.uri);
@@ -138,7 +137,9 @@ const TriggerCamera = ({ navigation }) => {
 
       console.log("ImagePicker result:", result.assets[0].uri); // Log ImagePicker result
 
-      setSelectedVideo(result.assets[0].uri);
+      if (!result.cancelled && result.assets && result.assets.length > 0) {
+        setSelectedVideo(result.assets[0].uri);
+      }
     } catch (error) {
       console.error("Error picking video:", error);
     }
@@ -148,9 +149,14 @@ const TriggerCamera = ({ navigation }) => {
     //Replace with your local host IP address
     const backendUrl = "http://172.16.11.254:3000/api/CVProcessing";
     try {
+      const videoUri = draftvideo || selectedVideo;
+      if (!videoUri) {
+        alert("No video available to upload.");
+        return;
+      }
       const formData = new FormData();
       formData.append("video", {
-        uri: selectedVideo,
+        uri: videoUri,
         name: "testvideoQUT_plank.mp4",
         type: "video/mp4",
       });
@@ -167,7 +173,7 @@ const TriggerCamera = ({ navigation }) => {
       console.log("Upload successful");
     } catch (error) {
       console.error("Error uploading video:", error.message);
-      throw error; // rethrow error to be caught by the saveVideo function
+      throw error;
     }
   };
 
@@ -175,10 +181,17 @@ const TriggerCamera = ({ navigation }) => {
     return <Text>No access to camera</Text>;
   }
 
+  const videoAvailable = draftvideo || selectedVideo;
+
   return (
     <View style={styles.container}>
-      {!draftvideo ? (
-        <Camera style={styles.camera} type={CameraType} ref={cameraRef}>
+      {!videoAvailable ? (
+        <Camera
+          style={styles.camera}
+          type={type}
+          flashMode={flashMode}
+          ref={cameraRef}
+        >
           <View
             style={{
               flexDirection: "row",
@@ -213,16 +226,12 @@ const TriggerCamera = ({ navigation }) => {
         <Video
           ref={flippedVideo}
           style={styles.flippedVideo}
-          source={{
-            uri: selectedVideo,
-          }}
+          source={{ uri: draftvideo || selectedVideo }}
           useNativeControls
           resizeMode="contain"
-          // isLooping
-          // onPlaybackStatusUpdate={(status) => setStatus(() => status)}
         />
       )}
-      {draftvideo ? (
+      {videoAvailable ? (
         <View
           style={{
             flexDirection: "row",
@@ -233,19 +242,14 @@ const TriggerCamera = ({ navigation }) => {
           <ButtonInCamera
             title={"Re-take"}
             icon="retweet"
-            onPress={() => setDraftVideo(null)}
+            onPress={() => {
+              setDraftVideo(null);
+              setSelectedVideo(null);
+            }}
           />
-          <ButtonInCamera
-            title={"SaveVideo"}
-            // icon="check"
-            onPress={saveVideo}
-          />
+          <ButtonInCamera title={"SaveVideo"} onPress={saveVideo} />
 
-          <ButtonInCamera
-            title={"PickVideo"}
-            // icon="check"
-            onPress={pickVideo}
-          />
+          <ButtonInCamera title={"PickVideo"} onPress={pickVideo} />
 
           <ButtonInCamera
             title={"UploadVideo"}

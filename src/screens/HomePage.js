@@ -11,13 +11,15 @@ import NavbarBottom from "../components/Navbar-bottom";
 import ChallengeBox from "../components/ChallengeBox";
 import ChallengeProgressBar from "../components/ChallengeProgressBar";
 import UpcomingExercise from "../components/UpcomingExercise";
-import { useNavigation } from "@react-navigation/native";
+import { useEffect, useState } from "react";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flex: 0,
     backgroundColor: "#E4EBEE",
     justifyContent: "space-around",
+    paddingBottom: 110,
   },
   navbarWrapper: {
     position: "absolute",
@@ -42,12 +44,12 @@ const styles = StyleSheet.create({
   greetingText: {
     alignSelf: "flex-start",
     fontSize: 35,
-    paddingTop: 20,
+    paddingTop: 50,
   },
   userName: {
     alignSelf: "flex-start",
     fontSize: 35,
-    color: "#F90A0A",
+    color: "#3C80E6",
     paddingBottom: 20,
   },
   message: {
@@ -65,7 +67,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontStyle: "normal",
     fontWeight: "400",
-    lineHeight: 25, // Changed from "normal" to a numeric value
+    lineHeight: 25,
     paddingTop: 20,
   },
   upcomingExercise: {
@@ -74,15 +76,29 @@ const styles = StyleSheet.create({
   },
 });
 
-const hasChallenge = true;
-
 export default function HomePage({ navigation }) {
+  const [hasChallenge, setHasChallenge] = useState(false);
+
+  useEffect(() => {
+    const getUserStatus = async () => {
+      try {
+        const value = await AsyncStorage.getItem("isNewUser");
+        // Set hasChallenge to true only if value is "true"
+        setHasChallenge(value === "true");
+      } catch (error) {
+        console.error("Error retrieving user status", error);
+      }
+    };
+
+    getUserStatus();
+  }, []);
+
   const currentTime = new Date().getHours();
   let greeting;
 
-  if (currentTime < 12) {
+  if (currentTime <= 12) {
     greeting = "Good Morning";
-  } else if (currentTime < 18) {
+  } else if (currentTime <= 18) {
     greeting = "Good Afternoon";
   } else {
     greeting = "Good Evening";
@@ -110,7 +126,7 @@ export default function HomePage({ navigation }) {
 
 function HomeNoExercise({ navigation }) {
   return (
-    <ScrollView>
+    <View>
       <Text style={styles.message}>
         Pick One Challenge to Start Your Journey!
       </Text>
@@ -142,13 +158,13 @@ function HomeNoExercise({ navigation }) {
           />
         </View>
       </View>
-    </ScrollView>
+    </View>
   );
 }
 
 function HomeHasExercise({ navigation }) {
   return (
-    <ScrollView>
+    <View>
       <TouchableOpacity
         navigate={navigation}
         onPress={() => navigation.navigate("Score")}
@@ -158,7 +174,7 @@ function HomeHasExercise({ navigation }) {
       <Text style={styles.hasExerciseText}>Your Challenge Progress</Text>
       <ChallengeProgressBar />
       <Text style={styles.hasExerciseText}>Upcoming Exercises</Text>
-      <View>
+      <View style={styles.container}>
         <View style={styles.upcomingExercise}>
           <UpcomingExercise
             name="Push-Ups"
@@ -174,6 +190,6 @@ function HomeHasExercise({ navigation }) {
           />
         </View>
       </View>
-    </ScrollView>
+    </View>
   );
 }

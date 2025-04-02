@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
   },
 
   level: {
-    color: "red",
+    color: "#3C80E6",
   },
 });
 

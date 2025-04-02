@@ -162,6 +162,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "#E4EBEE",
+    paddingBottom: 100,
   },
   navbarWrapper: {
     position: "absolute",

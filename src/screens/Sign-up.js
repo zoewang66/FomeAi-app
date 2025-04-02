@@ -17,6 +17,7 @@ import { Picker } from "@react-native-picker/picker";
 import DarkButton from "../components/Button-Dark";
 import { useRef, useState, useEffect } from "react";
 import { getStatusBarHeight } from "react-native-status-bar-height";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const windowHeight = Dimensions.get("window").height;
 const windowWidth = Dimensions.get("window").width;
@@ -78,7 +79,15 @@ const SignUp = () => {
           }
         } else {
           console.log("User created!");
-          navigation.navigate("SignIn");
+          // Set isNewUser flag to "true" for new users
+          AsyncStorage.setItem("isNewUser", "true")
+            .then(() => {
+              // Navigate to the next screen (or SignIn if you prefer)
+              navigation.navigate("SignIn");
+            })
+            .catch((error) =>
+              console.error("Error setting new user flag:", error)
+            );
         }
       })
       .catch((error) => {

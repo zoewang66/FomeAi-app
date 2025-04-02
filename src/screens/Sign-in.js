@@ -12,8 +12,10 @@ import {
   Platform,
   StatusBar,
 } from "react-native";
+
 import DarkButton from "../components/Button-Dark";
 import { useRef } from "react";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const logoImg = require("../../assets/FOME-logo-blue.png");
 const windowHeight = Dimensions.get("window").height;
@@ -26,6 +28,15 @@ const SignIn = ({ navigation }) => {
     if (scrollViewRef.current) {
       scrollViewRef.current.scrollToEnd({ animated: true });
     }
+  };
+
+  const handleSignIn = async () => {
+    try {
+      await AsyncStorage.setItem("isNewUser", "false");
+    } catch (error) {
+      console.error("Error setting isNewUser flag:", error);
+    }
+    navigation.navigate("HomePage");
   };
 
   return (
@@ -62,8 +73,8 @@ const SignIn = ({ navigation }) => {
         </TouchableOpacity>
         <DarkButton
           buttonText="Sign in"
+          onPress={handleSignIn}
           navigation={navigation}
-          goTo="HomePage"
         />
       </ScrollView>
     </KeyboardAvoidingView>

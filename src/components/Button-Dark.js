@@ -5,19 +5,32 @@ import {
   StyleSheet,
   Dimensions,
 } from "react-native";
+import PropTypes from "prop-types";
 
-export default function DarkButton({ buttonText, navigation, goTo }) {
+export default function DarkButton({ buttonText, navigation, goTo, onPress }) {
   return (
     <View>
       <TouchableOpacity
         style={styles.button}
-        onPress={() => navigation.navigate({ name: goTo })}
+        onPress={
+          onPress
+            ? onPress
+            : () => {
+                if (goTo) navigation.navigate(goTo);
+              }
+        }
       >
         <Text style={styles.text}>{buttonText}</Text>
       </TouchableOpacity>
     </View>
   );
 }
+DarkButton.propTypes = {
+  buttonText: PropTypes.string.isRequired,
+  navigation: PropTypes.object.isRequired,
+  goTo: PropTypes.string,
+  onPress: PropTypes.func,
+};
 
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;

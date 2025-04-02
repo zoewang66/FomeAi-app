@@ -27,7 +27,7 @@ export default function AssessStart({ navigation }) {
     greeting = "Good Evening";
   }
 
-  const userName = "Dylan";
+  const userName = "Zoe W";
   return (
     <View style={styles.container}>
       <ScrollView contentContainerStyle={styles.scrollContainer}>
@@ -103,7 +103,7 @@ const styles = StyleSheet.create({
   userName: {
     alignSelf: "flex-start",
     fontSize: 43,
-    color: "#F90A0A",
+    color: "#3C80E6",
     paddingBottom: 20,
   },
   subText: {

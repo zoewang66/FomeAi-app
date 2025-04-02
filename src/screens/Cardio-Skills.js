@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
     paddingBottom: windowWidth > 375 ? 80 : 60,
   },
   level: {
-    color: "red",
+    color: "#3C80E6",
   },
 });
 
