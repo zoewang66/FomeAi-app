@@ -73,8 +73,12 @@ const SignIn = ({ navigation }) => {
         </TouchableOpacity>
         <DarkButton
           buttonText="Sign in"
-          onPress={handleSignIn}
           navigation={navigation}
+          onPress={() => {
+            console.log("DarkButton pressed!");
+            // Additional sign-in logic here.
+            navigation.navigate("HomePage");
+          }}
         />
       </ScrollView>
     </KeyboardAvoidingView>

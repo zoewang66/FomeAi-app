@@ -6,9 +6,10 @@ import UpcomingExercise from "../components/UpcomingExercise";
 
 const styles = StyleSheet.create({
   container: {
-    flex: 0,
+    flex: 1,
     backgroundColor: "#E4EBEE",
     justifyContent: "space-around",
+    paddingBottom: 50,
   },
 
   navbarWrapper: {
@@ -28,21 +29,21 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     width: 350,
     flexShrink: 0,
-    paddingLeft: 50,
-    height: 7000,
+    paddingLeft: 40,
+    height: 680,
   },
 
   text: {
-    color: "#472938",
-    fontSize: 20,
+    color: "#3C80E6",
+    fontSize: 26,
     fontStyle: "normal",
     fontWeight: "400",
     paddingTop: 20,
   },
 
   challengeBox: {
-    paddingTop: 30,
-    paddingBottom: 30,
+    paddingTop: 25,
+    paddingBottom: 20,
   },
 
   upcomingExerciseContainer: {

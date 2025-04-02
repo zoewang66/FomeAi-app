@@ -77,22 +77,6 @@ const styles = StyleSheet.create({
 });
 
 export default function HomePage({ navigation }) {
-  const [hasChallenge, setHasChallenge] = useState(false);
-
-  useEffect(() => {
-    const getUserStatus = async () => {
-      try {
-        const value = await AsyncStorage.getItem("isNewUser");
-        // Set hasChallenge to true only if value is "true"
-        setHasChallenge(value === "true");
-      } catch (error) {
-        console.error("Error retrieving user status", error);
-      }
-    };
-
-    getUserStatus();
-  }, []);
-
   const currentTime = new Date().getHours();
   let greeting;
 
@@ -106,6 +90,7 @@ export default function HomePage({ navigation }) {
 
   const userName = "Zoe W";
 
+  const hasChallenge = true;
   return (
     <View style={styles.container}>
       <ScrollView contentContainerStyle={styles.contentContainer}>
@@ -164,7 +149,7 @@ function HomeNoExercise({ navigation }) {
 
 function HomeHasExercise({ navigation }) {
   return (
-    <View>
+    <ScrollView>
       <TouchableOpacity
         navigate={navigation}
         onPress={() => navigation.navigate("Score")}
@@ -190,6 +175,6 @@ function HomeHasExercise({ navigation }) {
           />
         </View>
       </View>
-    </View>
+    </ScrollView>
   );
 }
