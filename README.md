@@ -20,7 +20,7 @@ A capstone project mobile app developed for Fome Ai, a real-industry company lev
 
 ## Prototype Video
 
-Please dowmload the video of the app interface:
+Please download the video of the app interface:
 
 [Watch the Prototype Video](./assets/VID_20250402152727486.MP4)
 
