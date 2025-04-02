@@ -20,12 +20,10 @@ A capstone project mobile app developed for Fome Ai, a real-industry company lev
 
 ## Prototype Video
 
-Below is a video of the app interface:
+Please dowmload the video of the app interface:
 
-<video width="640" height="360" controls>
-  <source src="./assets/VID_20250402152727486.MP4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+[Watch the Prototype Video](./assets/VID_20250402152727486.MP4)
+
 
 ---
 
